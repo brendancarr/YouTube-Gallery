@@ -34,8 +34,7 @@ class YotuViews{
 					'default'		=> 'grid',
 					'priority' 		=> 10,
 					'description'	=> __('Layout for display videos.', 'yotuwp-easy-youtube-embed'),
-					'options' 		=> $templates,
-					'extbtn'		=> '<a href="https://www.yotuwp.com/pro/" target="_blank" class="extra-btn"><span class="dashicons dashicons-arrow-right-alt"></span>Get More Layouts</a>'
+					'options' 		=> $templates
 				),
 				array(
 					'name'			=> 'column',
@@ -383,8 +382,7 @@ class YotuViews{
 							'title' => __( 'Yabnb - Grid Only', 'yotuwp-easy-youtube-embed' ),
 							'img'   => 'images/fields/video_style/yabnb.jpg'
 						)
-					),
-					'extbtn'		=> '<a href="https://www.yotuwp.com/pro/" target="_blank" class="extra-btn"><span class="dashicons dashicons-arrow-right-alt"></span>Get More Styles</a>'
+					)
 				)
 			)
 		);

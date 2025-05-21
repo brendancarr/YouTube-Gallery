@@ -1,14 +1,17 @@
 <?php
 /*
 * Plugin Name: YouTube Gallery
+* Plugin URI: https://infinus.ca/plugins/youtube-gallery/
 * Description: Easy embed YouTube playlist, channel, videos and user videos to posts/pages/widgets.
-* Version: 1.3.15
+* Version: 1.3.16
 * Text Domain: yotuwp-easy-youtube-embed
 * Domain Path: /languages
 * License:     GPL-3.0
 * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 * Author:      YotuThemes + Infinus
 * Author URI:  https://infinus.ca
+
+
 
 */
 if( !defined( 'YOTU_ADMIN_URI' ) )
@@ -18,7 +21,7 @@ if( !defined( 'YTDS' ) )
 	define( 'YTDS', DIRECTORY_SEPARATOR );
 
 if( !defined( 'YOTUWP_VERSION' ) )
-	define( 'YOTUWP_VERSION', '1.3.14' );
+	define( 'YOTUWP_VERSION', '1.3.16' );
 
 global $yotuwp, $yotuwp_inline_script;
 
@@ -205,7 +208,6 @@ class YotuWP{
 			
 		}, 10, 3);
 
-		add_action( 'plugins_loaded', array( $this, 'textdomain' ) );
 		add_action( 'yotuwp_cache_event', array( $this, 'clear_cache' ), 10);
 
 		register_activation_hook(__FILE__,array( $this, 'activation' ) );
@@ -217,6 +219,8 @@ class YotuWP{
 	}
 
 	public function init() {
+
+		
 
 		$options = get_option( 'yotu-settings' );
 		$player  = get_option( 'yotu-player' );
@@ -295,13 +299,7 @@ class YotuWP{
 			}
 		}
 
-	}
-	
-
-	function textdomain() {
-	    load_plugin_textdomain( 'yotuwp-easy-youtube-embed', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
-	}
-	
+	}	
 
 	public function enqueue_admin() {
 		wp_enqueue_style( 'wp-color-picker' );
@@ -385,6 +383,8 @@ class YotuWP{
 	}
 
 	public function get_actions() {
+		
+		load_plugin_textdomain( 'yotuwp-easy-youtube-embed', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 		
 		$this->views = new YotuViews();
 
