@@ -42,13 +42,13 @@ $video_classes = apply_filters( 'yotu_video_classes', array("yotu-video"), $sett
 
 				$_classes_a = implode(" ", $video_classes);
 			?>
-			<li class="<?php esc_attr_e( $_classes_li );?>">
+			<li class="<?php echo esc_attr( $_classes_li ); ?>">
 				<?php do_action('yotuwp_before_link', $videoId, $video);?>
-				<a href="#<?php esc_attr_e( $videoId );?>" class="<?php esc_attr_e( $_classes_a ) ;?>" data-videoid="<?php esc_attr_e( $videoId );?>" data-title="<?php esc_attr_e( $_title_encode );?>" title="<?php esc_attr_e( $video_title );?>">
+				<a href="#<?php echo esc_attr( $videoId ); ?>" class="<?php echo esc_attr( $_classes_a ); ?>" data-videoid="<?php echo esc_attr( $videoId ); ?>" data-title="<?php echo esc_attr( $_title_encode ); ?>" title="<?php echo esc_attr( $video_title ); ?>">
 					<div class="yotu-video-thumb-wrp">
 						<div>
 							<?php do_action('yotuwp_before_thumbnail', $videoId, $video, $settings);?>
-							<img class="yotu-video-thumb" src="<?php esc_attr_e( $thumb );?>" alt="<?php esc_attr_e( $video_title ) ;?>">
+							<img class="yotu-video-thumb" src="<?php echo esc_url( $thumb ); ?>" alt="<?php echo esc_attr( $video_title ); ?>">
 							<?php do_action('yotuwp_after_thumbnail', $videoId, $video);?>
 						</div>
 					</div>

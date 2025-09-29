@@ -147,6 +147,7 @@ class YotuWP{
 
 
 		add_action( 'init', array( &$this, 'init' ) );
+		add_action( 'init', array( $this, 'lang_cfg' ) );
 
 		if( !is_admin() ) {
 			add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_script' ), 10 );
@@ -215,8 +216,6 @@ class YotuWP{
 
 		register_activation_hook(__FILE__,array( $this, 'activation' ) );
 		register_deactivation_hook(__FILE__, array( $this, 'deactivation' ) );
-
-		$this->lang_cfg();
 
 		do_action( 'yotu_init' );
 	}
@@ -386,8 +385,6 @@ class YotuWP{
 	}
 
 	public function get_actions() {
-
-		load_plugin_textdomain( 'yotuwp-easy-youtube-embed', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 
 		$this->views = new YotuViews();
 
@@ -837,7 +834,9 @@ class YotuWP{
 			$path = apply_filters( 'yotu_template_path', $path, $template);
 			if(file_exists( $path) )
 				load_template( $path, false );
-			else echo __( 'Template not found : ', 'yotuwp-easy-youtube-embed' ). esc_html($template);
+			else {
+				printf( esc_html__( 'Template not found : %s', 'yotuwp-easy-youtube-embed' ), esc_html( $template ) );
+			}
 		}
 
 		$html = ob_get_contents();
@@ -945,8 +944,8 @@ class YotuWP{
 
 		add_submenu_page(
 			'yotuwp',
-			esc_html__( 'YotuWP', 'yotuwp-easy-youtube-embed' ),
-			esc_html__( 'General Settings', 'yotuwp-easy-youtube-embed' ),
+			__( 'YotuWP', 'yotuwp-easy-youtube-embed' ),
+			__( 'General Settings', 'yotuwp-easy-youtube-embed' ),
 			'manage_options',
 			'yotuwp',
 			array( $this->views, 'admin_page' )
@@ -1006,9 +1005,9 @@ class YotuWP{
 		}
 
 		$button_tip = __( 'Yotu - Embed Youtube', 'yotuwp-easy-youtube-embed' );
-		$icon = '<img src="'. esc_url($this->url) . 'assets/images/yotu.png'.'"/>';
+		$icon = '<img src="'. esc_url( $this->url . 'assets/images/yotu.png' ) . '"/>';
 
-		echo '<a title="' . __( 'Yotu - Embed Youtube', 'yotuwp-easy-youtube-embed' ) . '" title="' . esc_attr($button_tip) . '" href="#TB_inline?width=750&height=550&inlineId=yotu_insert_popup" class="yotu-insert-btn button thickbox" >'. wp_kses_post( $icon ).' YotuWP</a>';
+		echo '<a title="' . esc_attr__( 'Yotu - Embed Youtube', 'yotuwp-easy-youtube-embed' ) . '" title="' . esc_attr( $button_tip ) . '" href="#TB_inline?width=750&height=550&inlineId=yotu_insert_popup" class="yotu-insert-btn button thickbox" >'. wp_kses_post( $icon ).' YotuWP</a>';
 
 	}
 
@@ -1075,102 +1074,102 @@ class YotuWP{
 	public function cron_intervals( $schedules ) {
 		$schedules['everyminute'] = array(
 		    'interval' => 60*1,
-		    'display' => __( 'Once Every 1 Minute' )
+		    'display' => __( 'Once Every 1 Minute', 'yotuwp-easy-youtube-embed' )
 	    );
 
 		$schedules['everyfiveminute'] = array(
 		    'interval' => 60*5,
-		    'display' => __( 'Once Every 5 Minutes' )
+		    'display' => __( 'Once Every 5 Minutes', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	   	$schedules['everyfifteenminute'] = array(
 		    'interval' => 60*15,
-		    'display' => __( 'Once Every 15 Minutes' )
+		    'display' => __( 'Once Every 15 Minutes', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['twiceanhour'] = array(
 		    'interval' => 60*30,
-		    'display' => __( 'Twice an Hour' )
+		    'display' => __( 'Twice an Hour', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['onceanhour'] = array(
 		    'interval' => 60*60,
-		    'display' => __( 'Once an Hour' )
+		    'display' => __( 'Once an Hour', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['everytwohours'] = array(
 		    'interval' => 60*60*2,
-		    'display' => __( 'Once Every 2 Hours' )
+		    'display' => __( 'Once Every 2 Hours', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['everythreehours'] = array(
 		    'interval' => 60*60*3,
-		    'display' => __( 'Once Every 3 Hours' )
+		    'display' => __( 'Once Every 3 Hours', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['everyfourhours'] = array(
 		    'interval' => 60*60*4,
-		    'display' => __( 'Once Every 4 Hours' )
+		    'display' => __( 'Once Every 4 Hours', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['everyfivehours'] = array(
 		    'interval' => 60*60*5,
-		    'display' => __( 'Once Every 5 Hours' )
+		    'display' => __( 'Once Every 5 Hours', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['everysixhours'] = array(
 		    'interval' => 60*60*6,
-		    'display' => __( 'Once Every 6 Hours' )
+		    'display' => __( 'Once Every 6 Hours', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['everysevenhours'] = array(
 		    'interval' => 60*60*7,
-		    'display' => __( 'Once Every 7 Hours' )
+		    'display' => __( 'Once Every 7 Hours', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['everyeighthours'] = array(
 		    'interval' => 60*60*8,
-		    'display' => __( 'Once Every 8 Hours' )
+		    'display' => __( 'Once Every 8 Hours', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['everyninehours'] = array(
 		    'interval' => 60*60*9,
-		    'display' => __( 'Once Every 9 Hours' )
+		    'display' => __( 'Once Every 9 Hours', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['everytenhours'] = array(
 		    'interval' => 60*60*10,
-		    'display' => __( 'Once Every 10 Hours' )
+		    'display' => __( 'Once Every 10 Hours', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['onceaday'] = array(
 		    'interval' => 60*60*24,
-		    'display' => __( 'Once a Day' )
+		    'display' => __( 'Once a Day', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['everythreedays'] = array(
 		    'interval' => 60*60*24*3,
-		    'display' => __( 'Once Every 3 Days' )
+		    'display' => __( 'Once Every 3 Days', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['weekly'] = array(
 		    'interval' => 60*60*24*7,
-		    'display' => __( 'Once a Week' )
+		    'display' => __( 'Once a Week', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['everytendays'] = array(
 		    'interval' => 60*60*24*10,
-		    'display' => __( 'Once Every 10 Days' )
+		    'display' => __( 'Once Every 10 Days', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['montly'] = array(
 		    'interval' => 60*60*24*30,
-		    'display' => __( 'Once a Month' )
+		    'display' => __( 'Once a Month', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    $schedules['yearly'] = array(
 		    'interval' => 60*60*24*30*12,
-		    'display' => __( 'Once a Year' )
+		    'display' => __( 'Once a Year', 'yotuwp-easy-youtube-embed' )
 	    );
 
 	    return $schedules;
@@ -1213,6 +1212,9 @@ class YotuWP{
 
 
 	public function lang_cfg() {
+
+		load_plugin_textdomain( 'yotuwp-easy-youtube-embed', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+
 		$this->lang = array(
 			1 => __( 'Forbidden: You do not have permission to access resource on this server.', 'yotuwp-easy-youtube-embed' ),
 			2 => __( 'Resource not found, please ensure you has correct information.', 'yotuwp-easy-youtube-embed' ),
@@ -1226,6 +1228,7 @@ class YotuWP{
 			10 => __( 'Are you sure about deactivation current license for this domain?', 'yotuwp-easy-youtube-embed' ),
 			11 => __( 'Checking...', 'yotuwp-easy-youtube-embed' ),
 		);
+
 	}
 
 	public function classes( $classes, $settings, $atts = array()) {

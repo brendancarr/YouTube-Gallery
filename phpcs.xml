@@ -174,10 +174,6 @@
 		<exclude name="WordPress.WP.DeprecatedParameters.Load_plugin_textdomainParam2Found" />
 		<exclude name="WordPress.WP.EnqueuedResourceParameters.MissingVersion" />
 		<exclude name="WordPress.WP.EnqueuedResourceParameters.NotInFooter" />
-		<exclude name="WordPress.WP.I18n.MissingArgDomain" />
-		<exclude name="WordPress.WP.I18n.NoEmptyStrings" />
-		<exclude name="WordPress.WP.I18n.NonSingularStringLiteralText" />
-		<exclude name="WordPress.WP.I18n.TextDomainMismatch" />
 
 	</rule>
 

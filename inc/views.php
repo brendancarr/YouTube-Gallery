@@ -399,17 +399,17 @@ class YotuViews{
 		$sections['effects'] = array(
 			'icon'      => 'dashicons-visibility',
 			'key'       => 'effects',
-			'title'     => __('Effects', 'yotuwp-pro'),
+			'title'     => __('Effects', 'yotuwp-easy-youtube-embed'),
 			'priority'  => 30,
 			'pro'       => true,
 			'fields'    => array(
 				array(
 					'name'          => 'video_box',
-					'label'         => __( 'Video Box Effect', 'yotuwp-pro' ),
+					'label'         => __( 'Video Box Effect', 'yotuwp-easy-youtube-embed' ),
 					'type'          => 'effects',
 					'priority'      => 10,
 					'default'       => '',
-					'description'   => 'The hover effect on each video thumnails on gallery.',
+					'description'   => __( 'The hover effect on each video thumnails on gallery.', 'yotuwp-easy-youtube-embed' ),
 				)
 			)
 		);
@@ -711,17 +711,17 @@ class YotuViews{
 
 			?>
 			<div
-			class="<?php esc_attr_e( $classes_attr );?>"
+			class="<?php echo esc_attr( $classes_attr ); ?>"
 			data-page="1"
-			id="yotuwp-<?php esc_attr_e( $settings['gallery_id'] );?>"
-			data-yotu="<?php esc_attr_e($playerId);?>"
-			data-total="<?php esc_attr_e($data->totalPage);?>"
-			data-settings="<?php esc_attr_e(base64_encode(json_encode( $settings )));?>"
-			data-player="<?php esc_attr_e($settings['player']['mode']);?>"
-			data-showdesc="<?php esc_attr_e($settings['description']);?>" >
+			id="yotuwp-<?php echo esc_attr( $settings['gallery_id'] ); ?>"
+			data-yotu="<?php echo esc_attr( $playerId ); ?>"
+			data-total="<?php echo esc_attr( $data->totalPage ); ?>"
+			data-settings="<?php echo esc_attr( base64_encode( json_encode( $settings ) ) ); ?>"
+			data-player="<?php echo esc_attr( $settings['player']['mode'] ); ?>"
+			data-showdesc="<?php echo esc_attr( $settings['description'] ); ?>" >
 				<div>
 					<?php if ( $player['mode'] =='large'):?>
-					<div class="yotu-wrapper-player" style="<?php esc_attr_e( $width );?>">
+					<div class="yotu-wrapper-player" style="<?php echo esc_attr( $width ); ?>">
 						<?php if ( $player['playing'] ):?>
 							<div class="yotu-playing">
 								<?php if (count( $data->items) > 0 ):
@@ -731,7 +731,7 @@ class YotuViews{
 							</div>
 						<?php endif;?>
 						<div class="yotu-player">
-							<div class="yotu-video-placeholder" id="yotu-player-<?php esc_attr_e( $playerId );?>"></div>
+							<div class="yotu-video-placeholder" id="yotu-player-<?php echo esc_attr( $playerId ); ?>"></div>
 						</div>
 						<div class="yotu-playing-status"></div>
 						<?php if( $player['playing_description']):?>
@@ -795,12 +795,12 @@ class YotuViews{
 
 				<div class="yotu-body-form">
 					<form method="post" action="options.php">
-						<input type="hidden" id="yotu-settings-last_tab" class="yotu-param" name="yotu-settings[last_tab]" value="<?php esc_attr_e($yotuwp->options['last_tab']) ;?>">
-						<input type="hidden" id="yotu-settings-last_update" class="yotu-param" name="yotu-settings[last_update]" value="<?php echo time();?>">
+						<input type="hidden" id="yotu-settings-last_tab" class="yotu-param" name="yotu-settings[last_tab]" value="<?php echo esc_attr( $yotuwp->options['last_tab'] ); ?>">
+						<input type="hidden" id="yotu-settings-last_update" class="yotu-param" name="yotu-settings[last_update]" value="<?php echo esc_attr( time() ); ?>">
 						<div class="yotu-settings-title">
 							<div class="yotu-logo">
-								<img src="<?php esc_attr_e($yotuwp->url);?>assets/images/yotu-small.png" height="80"/>
-								<div><?php _e('Version', 'yotuwp-easy-youtube-embed'); echo ' '. wp_kses_post($yotuwp->version);?></div>
+								<img src="<?php echo esc_url( $yotuwp->url ); ?>assets/images/yotu-small.png" height="80"/>
+								<div><?php printf( esc_html__( 'Version %s', 'yotuwp-easy-youtube-embed' ), esc_html( $yotuwp->version ) ); ?></div>
 							</div>
 							<span><?php _e('YouTube Gallery Settings', 'yotuwp-easy-youtube-embed');?></span>
 							<?php submit_button(); ?>
@@ -928,12 +928,13 @@ class YotuViews{
 		?>
 		<div class="yotu-wrap wrap">
 			<div class="yotu-logo">
-				<img src="<?php esc_attr_e( $yotuwp->url . 'assets/images/yotu-small.png' );?>" height="80"/>
-				<div><?php _e('Version', 'yotuwp-easy-youtube-embed'); echo ' '. esc_html_e( $yotuwp->version );?></div>
+				<img src="<?php echo esc_url( $yotuwp->url . 'assets/images/yotu-small.png' ); ?>" height="80"/>
+				<div><?php printf( esc_html__( 'Version %s', 'yotuwp-easy-youtube-embed' ), esc_html( $yotuwp->version ) ); ?>
+				</div>
 			</div>
 			<div class="yotu-body shortcode_gen">
-				<h1><?php _e('YotuWP Shortcode Generate', 'yotuwp-easy-youtube-embed');?></h1>
-				<p><?php _e('This feature helps you generate a YouTube Gallery shortcode to adding to any page builder, product description or widget.', 'yotuwp-easy-youtube-embed');?></p>
+				<h1><?php esc_html_e( 'YotuWP Shortcode Generate', 'yotuwp-easy-youtube-embed' ); ?></h1>
+				<p><?php esc_html_e( 'This feature helps you generate a YouTube Gallery shortcode to adding to any page builder, product description or widget.', 'yotuwp-easy-youtube-embed' ); ?></p>
 				<?php $this->popup( $yotuwp, false); ?>
 
 			</div>
