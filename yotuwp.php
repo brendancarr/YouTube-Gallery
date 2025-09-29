@@ -148,12 +148,12 @@ class YotuWP {
 		require $this->path . YTDS . 'inc' . YTDS . 'views.php';
 		require $this->path . YTDS . 'inc' . YTDS . 'misc-functions.php';
 
-		add_action( 'init', array( &$this, 'init' ) );
+		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'init', array( $this, 'lang_cfg' ) );
 
 		if ( ! is_admin() ) {
-			add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_script' ), 10 );
-			add_action( 'wp_footer', array( &$this, 'enqueue_inline_script' ), 10 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_script' ), 10 );
+			add_action( 'wp_footer', array( $this, 'enqueue_inline_script' ), 10 );
 
 		} else {
 
@@ -180,16 +180,16 @@ class YotuWP {
 		add_action( 'media_buttons', array( $this, 'media_button' ) );
 		add_action( 'admin_footer', array( $this, 'insert_popup' ) );
 
-		add_action( 'wp_ajax_nopriv_yotu_pagination', array( &$this, 'load_more' ) );
-		add_action( 'wp_ajax_yotu_pagination', array( &$this, 'load_more' ) );
+		add_action( 'wp_ajax_nopriv_yotu_pagination', array( $this, 'load_more' ) );
+		add_action( 'wp_ajax_yotu_pagination', array( $this, 'load_more' ) );
 
-		//add_action( 'wp_ajax_nopriv_yotu_deletecache', array( &$this, 'deletecache' ) );
-		add_action( 'wp_ajax_yotu_deletecache', array( &$this, 'deletecache' ) );
+		//add_action( 'wp_ajax_nopriv_yotu_deletecache', array( $this, 'deletecache' ) );
+		add_action( 'wp_ajax_yotu_deletecache', array( $this, 'deletecache' ) );
 
-		//add_action( 'wp_ajax_nopriv_yotu_thumbs', array( &$this, 'load_thumbs' ) );
-		//add_action( 'wp_ajax_yotu_thumbs', array( &$this, 'load_thumbs' ) );
-		add_action( 'wp_ajax_nopriv_yotu_getinfo', array( &$this, 'search' ) );
-		add_action( 'wp_ajax_yotu_getinfo', array( &$this, 'search' ) );
+		//add_action( 'wp_ajax_nopriv_yotu_thumbs', array( $this, 'load_thumbs' ) );
+		//add_action( 'wp_ajax_yotu_thumbs', array( $this, 'load_thumbs' ) );
+		add_action( 'wp_ajax_nopriv_yotu_getinfo', array( $this, 'search' ) );
+		add_action( 'wp_ajax_yotu_getinfo', array( $this, 'search' ) );
 
 		add_action( 'wp', array( $this, 'schedule_events' ) );
 		add_action( 'admin_init', array( $this, 'plugin_redirect' ), 1 );
