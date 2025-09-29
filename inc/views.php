@@ -756,8 +756,9 @@ class YotuViews {
 									<?php if ( count( $data->items ) > 0 ) : ?>
 										<?php
 
+										// Echoed with allowed tags, so no need to escape.
 										$video_title = yotuwp_video_title( $data->items[0] );
-										// TODO: Review.
+										// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 										echo yotuwp_kses( $video_title );
 
 										?>
@@ -773,8 +774,9 @@ class YotuViews {
 									<?php if ( count( $data->items ) > 1 ) : ?>
 										<?php
 
+										// Echoed with allowed tags, so no need to escape.
 										$video_desc = yotuwp_video_description( $data->items[0] );
-										// TODO: Review.
+										// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 										echo yotuwp_kses( $video_desc );
 
 										?>
@@ -795,8 +797,9 @@ class YotuViews {
 						include $yotuwp->path . YTDS . 'templates' . YTDS . 'pagination.php';
 					}
 
+					// Echoed with allowed tags, so no need to escape.
 					$template_html = $yotuwp->template( $template, $data, $settings );
-					// TODO: Review.
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					echo yotuwp_kses( $template_html );
 
 					if (
@@ -963,7 +966,8 @@ class YotuViews {
 			<ul>
 				<?php
 
-				// TODO: Review.
+				// Echoed with allowed tags, so no need to escape.
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo yotuwp_kses( implode( '', $tabs_control ) );
 
 				?>
@@ -972,7 +976,8 @@ class YotuViews {
 		<div class="yotu-tabs-content">
 			<?php
 
-				// TODO: Review.
+			// Echoed with allowed tags, so no need to escape.
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo yotuwp_kses( implode( '', $tabs_content ) );
 
 			?>
