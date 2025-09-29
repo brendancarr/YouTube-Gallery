@@ -11,12 +11,15 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Views class.
  */
-class YotuViews{
+class YotuViews {
 
 	public $sections = array();
 
-	public function __construct()
-	{
+	/**
+	 * Constructor.
+	 */
+	public function __construct() {
+
 		global $yotuwp;
 
 		$sections = array();
@@ -414,13 +417,15 @@ class YotuViews{
 			)
 		);
 
-
 		$sections = apply_filters('yotu_settings', $sections, array());
 
 		$this->sections = $sections;
 
 	}
 
+	/**
+	 * Settings.
+	 */
 	public function settings( $data ) {
 		global $yotuwp;
 
@@ -541,13 +546,15 @@ class YotuViews{
 		$this->render_tabs( $this->sections, ( isset( $data['is_panel'] )? true : false ) );
 	}
 
-
-
+	/**
+	 * Render popup.
+	 */
 	public function popup( $yotuwp, $is_panel = true) {
 	?>
 
 	<div class="yotu_insert_popup" data-type="playlist">
 		<?php
+
 		if (is_array( $yotuwp->api) && $yotuwp->api['api_key'] !=''):?>
 			<h4><?php _e('Step #1: Select type videos you want to inserts', 'yotuwp-easy-youtube-embed');?></h4>
 			<ul class="yotu-tabs yotu-tabs-insert">
@@ -666,8 +673,12 @@ class YotuViews{
 		<?php endif;?>
 	</div>
 	<?php
+
 	}
 
+	/**
+	 * Display handler.
+	 */
 	public function display( $template, $data, $settings) {
 		global $yotuwp;
 
@@ -778,10 +789,12 @@ class YotuViews{
 		return $html;
 	}
 
-
-	public function admin_page()
-	{
+	/**
+	 * Admin page handler.
+	 */
+	public function admin_page() {
 		global $yotuwp;
+
 		?>
 		<div class="yotu-wrap wrap yotuwp-settings">
 			<h1></h1>
@@ -833,7 +846,11 @@ class YotuViews{
 
 	}
 
+	/**
+	 * Slugify text.
+	 */
 	public function slugify( $text) {
+
 		$text = preg_replace('~[^\pL\d]+~u', '-', $text);
 		$text = @iconv('utf-8', 'us-ascii//TRANSLIT', $text);
 		$text = preg_replace('~[^-\w]+~', '', $text);
@@ -846,8 +863,12 @@ class YotuViews{
 		}
 
 		return $text;
+
 	}
 
+	/**
+	 * Render tabs.
+	 */
 	public function render_tabs( $sections, $is_panel = false) {
 		global $yotuwp;
 
@@ -857,9 +878,6 @@ class YotuViews{
 			include( $yotuwp->pro_path . YTDS . 'inc' . YTDS  .  'fields.php');
 			$field_control = new YotuProFields();
 		} else $field_control = new YotuFields();
-
-
-
 
 		$tabs_control = array();
 		$tabs_content = array();
@@ -918,7 +936,11 @@ class YotuViews{
 
 	}
 
+	/**
+	 * Shortcode generator.
+	 */
 	public function shortcode_gen(){
+
 		global $yotuwp, $current_user ;
 
 		$user_id = $current_user->ID;
@@ -941,6 +963,8 @@ class YotuViews{
 
 		</div>
 		<?php
+
 	}
+
 }
 
