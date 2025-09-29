@@ -266,7 +266,6 @@ class YotuWP {
 						$this->player[ $key ] = 0;
 					}
 				}
-
 			}
 		}
 
@@ -512,7 +511,6 @@ class YotuWP {
 
 				wp_add_inline_style( 'yotu-style', $custom_css );
 			}
-
 		}
 
 		if ( $player_options['thumbnails'] ) {
@@ -575,7 +573,6 @@ class YotuWP {
 			} else {
 				$response = json_decode( $cache_content, true );
 			}
-
 		} else {
 
 			$response = wp_remote_get(
@@ -717,11 +714,9 @@ class YotuWP {
 				} else {
 					$data->totalPage = 0;
 				}
-
 			} else {
 				$data->totalPage = $totalPages;
 			}
-
 		}
 
 		return $data;
@@ -1483,7 +1478,6 @@ class YotuWP {
 					FS_CHMOD_FILE
 				);
 			}
-
 		}
 
 	}
@@ -1500,7 +1494,7 @@ class YotuWP {
 	 */
 	private function weekly_events() {
 		if ( ! wp_next_scheduled( 'yotuwp_weekly_scheduled_events' ) ) {
-			wp_schedule_event( current_time( 'timestamp', true ), 'weekly', 'yotuwp_weekly_scheduled_events' );
+			wp_schedule_event( time(), 'weekly', 'yotuwp_weekly_scheduled_events' );
 		}
 	}
 
