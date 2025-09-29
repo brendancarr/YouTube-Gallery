@@ -69,9 +69,9 @@ class YotuWP{
 		'playing'             => 'off',
 		'playing_description' => 'off',
 		'thumbnails'          => 'off',
-		'cc_load_policy'     => '1',
-		'cc_lang_pref'     => '1',
-		'hl'     			  => '',
+		'cc_load_policy'      => '1',
+		'cc_lang_pref'        => '1',
+		'hl'                  => '',
 		'iv_load_policy'      => '1'
 	);
 
@@ -99,7 +99,7 @@ class YotuWP{
 		'loadmoretext'  => '',
 		'player'        => '',
 		'last_tab'      => 'settings',
-		'use_as_modal'      => 'off',
+		'use_as_modal'  => 'off',
 		'modal_id'      => 'off',
 		'last_update'   => ''
 	);
@@ -114,7 +114,7 @@ class YotuWP{
 		'video_style'           => '',
 		'playicon_color'        => '',
 		'hover_icon'            => '',
-		'gallery_bg'			=> ''
+		'gallery_bg'            => ''
 	);
 
 	public $effects = array(
@@ -124,31 +124,31 @@ class YotuWP{
 
 	public function __construct( $version )
 	{
-		
 
-		$this->version 		= $version;
-		$this->url 			= plugin_dir_url( __FILE__ );
-		$this->path 		= plugin_dir_path( __FILE__ );
-		$this->assets_url 	= $this->url . 'assets/';
-		$this->cache_path 	= trailingslashit(WP_CONTENT_DIR).'yotuwp_cache' . YTDS;
-		
-		$upload_dir   		= wp_upload_dir();
-		$this->preset_path 	= $upload_dir['basedir'].YTDS.'yotuwp-presets' . YTDS;
-		$this->preset_url 	= $upload_dir['baseurl'].'/yotuwp-presets/';
 
-		$this->api 			= get_option( 'yotu-api', $this->api );
-		$this->pro_path 	= trailingslashit(WP_CONTENT_DIR).'plugins'.YTDS.'yotuwp-pro'.YTDS;
+		$this->version      = $version;
+		$this->url          = plugin_dir_url( __FILE__ );
+		$this->path         = plugin_dir_path( __FILE__ );
+		$this->assets_url   = $this->url . 'assets/';
+		$this->cache_path   = trailingslashit(WP_CONTENT_DIR).'yotuwp_cache' . YTDS;
+
+		$upload_dir         = wp_upload_dir();
+		$this->preset_path  = $upload_dir['basedir'].YTDS.'yotuwp-presets' . YTDS;
+		$this->preset_url   = $upload_dir['baseurl'].'/yotuwp-presets/';
+
+		$this->api          = get_option( 'yotu-api', $this->api );
+		$this->pro_path     = trailingslashit(WP_CONTENT_DIR).'plugins'.YTDS.'yotuwp-pro'.YTDS;
 
 		require( $this->path . YTDS . 'inc' . YTDS  .  'views.php' );
 		require( $this->path . YTDS . 'inc' . YTDS  .  'misc-functions.php' );
-	
+
 
 		add_action( 'init', array( &$this, 'init' ) );
 
 		if( !is_admin() ) {
 			add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_script' ), 10 );
 			add_action('wp_footer', array( &$this, 'enqueue_inline_script' ), 10 );
-			
+
 		} else {
 
 			if ( !get_option( 'yotuwp_install_date', false ) ) {
@@ -157,43 +157,43 @@ class YotuWP{
 				update_option( 'yotuwp_install_date', $date_now);
 			}
 
-			add_action( 'admin_init', 				array( $this, 'check_notice' ) );
-			add_action( 'admin_menu', 				array( $this, 'menu_page' ) );
-			add_action( 'admin_enqueue_scripts', 	array( $this, 'enqueue_admin' ), 90 );
-			add_action( 'admin_notices', 			array( $this, 'admin_notice' ) );
+			add_action( 'admin_init',               array( $this, 'check_notice' ) );
+			add_action( 'admin_menu',               array( $this, 'menu_page' ) );
+			add_action( 'admin_enqueue_scripts',    array( $this, 'enqueue_admin' ), 90 );
+			add_action( 'admin_notices',            array( $this, 'admin_notice' ) );
 
-			add_action( 'admin_footer', 				array( $this, 'admin_header_css' ) );
+			add_action( 'admin_footer',                 array( $this, 'admin_header_css' ) );
 
 			foreach( array('styling', 'api') as $option ) {
 				add_action( 'update_option_yotu-' . $option, array( $this, 'update_option_' . $option ), 10, 3 );
 			}
 		}
 
-		add_filter( 'yotu_video_classes', 		array( $this, 'video_classes' ), 10, 2);
+		add_filter( 'yotu_video_classes',       array( $this, 'video_classes' ), 10, 2);
 
-		add_action( 'init', 							array( $this, 'get_actions' ) );
-		add_action( 'media_buttons', 					array( $this, 'media_button' ) );
-		add_action( 'admin_footer', 					array( $this, 'insert_popup' ) );
+		add_action( 'init',                             array( $this, 'get_actions' ) );
+		add_action( 'media_buttons',                    array( $this, 'media_button' ) );
+		add_action( 'admin_footer',                     array( $this, 'insert_popup' ) );
 
-		add_action( 'wp_ajax_nopriv_yotu_pagination', 	array( &$this, 'load_more' ) );
-		add_action( 'wp_ajax_yotu_pagination', 			array( &$this, 'load_more' ) );
-		
+		add_action( 'wp_ajax_nopriv_yotu_pagination',   array( &$this, 'load_more' ) );
+		add_action( 'wp_ajax_yotu_pagination',          array( &$this, 'load_more' ) );
+
 		//add_action( 'wp_ajax_nopriv_yotu_deletecache', 	array( &$this, 'deletecache' ) );
-		add_action( 'wp_ajax_yotu_deletecache', 			array( &$this, 'deletecache' ) );
+		add_action( 'wp_ajax_yotu_deletecache',             array( &$this, 'deletecache' ) );
 
 		//add_action( 'wp_ajax_nopriv_yotu_thumbs', 		array( &$this, 'load_thumbs' ) );
 		//add_action( 'wp_ajax_yotu_thumbs', 				array( &$this, 'load_thumbs' ) );
-		add_action( 'wp_ajax_nopriv_yotu_getinfo', 		array( &$this, 'search' ) );
-		add_action( 'wp_ajax_yotu_getinfo', 			array( &$this, 'search' ) );
+		add_action( 'wp_ajax_nopriv_yotu_getinfo',      array( &$this, 'search' ) );
+		add_action( 'wp_ajax_yotu_getinfo',             array( &$this, 'search' ) );
 
-		add_action( 'wp',             					array( $this, 'schedule_events' ) );
-		add_action( 'admin_init', 						array( $this, 'plugin_redirect' ), 1);
+		add_action( 'wp',                               array( $this, 'schedule_events' ) );
+		add_action( 'admin_init',                       array( $this, 'plugin_redirect' ), 1);
 
-		add_filter( 'yotu_classes', 					array( $this, 'classes' ), 10, 3);
-		add_filter( 'cron_schedules', 					array( $this, 'cron_intervals' ) );
-		add_filter( 'yotu_video_description', 			array( $this, 'description_length' ) );
-		
-		add_shortcode( 'yotuwp', 						array( $this, 'shortcode' ) );
+		add_filter( 'yotu_classes',                     array( $this, 'classes' ), 10, 3);
+		add_filter( 'cron_schedules',                   array( $this, 'cron_intervals' ) );
+		add_filter( 'yotu_video_description',           array( $this, 'description_length' ) );
+
+		add_shortcode( 'yotuwp',                        array( $this, 'shortcode' ) );
 
 		add_action( 'updated_option', function( $option, $old_value, $value ) {
 			if( $option == 'yotu-cache' ) {
@@ -205,7 +205,7 @@ class YotuWP{
 					wp_clear_scheduled_hook( 'yotuwp_cache_event' );
 				}
 			}
-			
+
 		}, 10, 3);
 
 		add_action( 'yotuwp_cache_event', array( $this, 'clear_cache' ), 10);
@@ -220,7 +220,7 @@ class YotuWP{
 
 	public function init() {
 
-		
+
 
 		$options = get_option( 'yotu-settings' );
 		$player  = get_option( 'yotu-player' );
@@ -254,10 +254,10 @@ class YotuWP{
 					else if( $this->player[ $key ] == 'off' )
 						$this->player[ $key ] = 0;
 				}
-				
+
 			}
 		}
-		
+
 		if( is_array( $options ) ) {
 			foreach ( $this->options as $key => $value ) {
 				if( !isset( $options[ $key ] ) && !in_array( $key, array( 'last_tab', 'last_update', 'pagitype', 'styling', 'player', 'hover_icon', 'type', 'id','thumbratio', 'nexttext', 'prevtext', 'loadmoretext' ) ) )
@@ -284,9 +284,9 @@ class YotuWP{
 		}
 
 		if( is_array( $cache ) ) {
-			$this->cache_cfg 		= $cache;
-			$this->is_cache 		= ( ( isset( $cache['enable'] ) && $cache['enable'] == 'on' ) )? true : false;
-			$this->cache_timeout 	= isset( $cache['timeout'] )? $cache['timeout'] : null;
+			$this->cache_cfg        = $cache;
+			$this->is_cache         = ( ( isset( $cache['enable'] ) && $cache['enable'] == 'on' ) )? true : false;
+			$this->cache_timeout    = isset( $cache['timeout'] )? $cache['timeout'] : null;
 		}
 
 		$effects = get_option( 'yotu-effects' );
@@ -299,7 +299,7 @@ class YotuWP{
 			}
 		}
 
-	}	
+	}
 
 	public function enqueue_admin() {
 		wp_enqueue_style( 'wp-color-picker' );
@@ -307,34 +307,34 @@ class YotuWP{
 		wp_enqueue_style( 'yotu-icons', $this->url .'assets/css/icons.css', false, $this->version );
 		wp_enqueue_style( 'yotu-admin', $this->url .'assets/css/admin.css', false, $this->version );
 		wp_enqueue_script( 'yotu-admin', $this->url .'assets/js/admin.js',array( 'jquery', 'wp-color-picker' ), $this->version, true  );
-		
-		
+
+
 		$yotujs = apply_filters( 'yotujs', array(
-			'ajax_url' 	=> admin_url( 'admin-ajax.php' ),
-			'options' 	=> $this->options,
-			'player' 	=> $this->player,
-			'styling' 	=> $this->styling,
-			'lang' 		=> $this->lang,
-			'effects' 	=> $this->effects,
-			'cache' => array(
+			'ajax_url'  => admin_url( 'admin-ajax.php' ),
+			'options'   => $this->options,
+			'player'    => $this->player,
+			'styling'   => $this->styling,
+			'lang'      => $this->lang,
+			'effects'   => $this->effects,
+			'cache'     => array(
 				'security' => wp_create_nonce( 'yotuwp_delete_cache' )
 			),
-			'security' => wp_create_nonce( 'yotuwp_admin_nonce' )
+			'security'  => wp_create_nonce( 'yotuwp_admin_nonce' )
 		) );
 		wp_localize_script( 'yotu-admin', 'yotujs', $yotujs );
 	}
 
 	public function enqueue_script() {
-		
+
 		wp_register_script( 'yotu-script', $this->url . 'assets/js/frontend'.( $this->deploy? '.min': '' ).'.js', array( 'jquery' ), $this->version, true);
 		wp_register_script( 'yotu-script', 'https://www.youtube.com/iframe_api' );
 		wp_register_style( 'yotu-style', $this->url.'assets/css/frontend'.( $this->deploy? '.min': '' ).'.css', false, $this->version);
 		wp_register_style( 'yotu-icons', $this->url.'assets/css/icons'.( $this->deploy? '.min': '' ).'.css', false, $this->version);
 
-		wp_localize_script( 'yotu-script', 'yotujs', array( 
-			'ajax_url' => admin_url( 'admin-ajax.php' ), 
-			'player' => $this->player,
-			'lang' => $this->lang,
+		wp_localize_script( 'yotu-script', 'yotujs', array(
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
+			'player'   => $this->player,
+			'lang'     => $this->lang,
 			'security' => wp_create_nonce( 'yotuwp_frontend_nonce' )
 		) );
 		//vendors
@@ -343,14 +343,14 @@ class YotuWP{
 		wp_register_style( 'jquery-owlcarousel-theme', $this->url.'assets/vendors/owlcarousel/assets/owl.theme.default.css', false, $this->version);
 
 		//custom css
-		$custom_css 	= '';
+		$custom_css     = '';
 
 		foreach ( $this->views->sections as $tab ) {
 			foreach ( $tab['fields'] as $field) {
-				
+
 				if (isset($field['css'])) {
 					//print_r($field);
-					$data 		= explode( '|', $field['css'] );
+					$data       = explode( '|', $field['css'] );
 					$custom_css .= !empty( $this->styling[ $field['name']] )? $data[0].'{'.$data[1].':'.$this->styling[ $field['name']].(isset($data[2])? '!important': '').'}' : '';
 				}
 			}
@@ -370,11 +370,11 @@ class YotuWP{
 		$custom_css = '';
 		foreach ( $this->views->sections as $tab) {
 			foreach ( $tab['fields'] as $field) {
-				
+
 				if(isset( $field['css'] ) ) {
 					$css_field = isset($field['preview_css'])? $field['preview_css'] : $field['css'];
-					$data 		= explode( '|', $css_field );
-					$field_id 	= 'yotu-' . strtolower( $tab['title'] ).'-'.$field['name'];
+					$data       = explode( '|', $css_field );
+					$field_id   = 'yotu-' . strtolower( $tab['title'] ).'-'.$field['name'];
 					$custom_css .= '/*'.$field_id.'*/' . ( !empty( $this->styling[ $field['name']] )? $data[0].'{'.$data[1].':'.$this->styling[ $field['name']].(isset($data[2])? '!important': '').'}' : '' )."/*end ".$field_id."*/";
 				}
 			}
@@ -383,9 +383,9 @@ class YotuWP{
 	}
 
 	public function get_actions() {
-		
+
 		load_plugin_textdomain( 'yotuwp-easy-youtube-embed', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
-		
+
 		$this->views = new YotuViews();
 
 		$key = !empty($_GET['ytwp_action']) ? sanitize_key($_GET['ytwp_action']) : false;
@@ -394,7 +394,7 @@ class YotuWP{
 			do_action( "yotuwp_{$key}" , $_GET );
 		}
 	}
-	
+
 	public function shortcode( $atts ) {
 		global $yotuwp_inline_script;
 		wp_enqueue_style( 'yotu-style' );
@@ -408,18 +408,18 @@ class YotuWP{
 
 		$default = $this->options;
 
-		$default['styling']   = '';
-		$default['effects']   = '';
-		$default['meta']   		= isset($default['meta'])? $default['meta'] : 'off';
-		$atts 				= shortcode_atts( $default, $atts, 'yotu' );
-		$player_options 	= $this->player;
-		$styling_options 	= $this->styling;
-		$effects_options 	= $this->effects;
+		$default['styling'] = '';
+		$default['effects'] = '';
+		$default['meta']    = isset($default['meta'])? $default['meta'] : 'off';
+		$atts               = shortcode_atts( $default, $atts, 'yotu' );
+		$player_options     = $this->player;
+		$styling_options    = $this->styling;
+		$effects_options    = $this->effects;
 
 		do_action( 'yotuwp_before_shortcode', $atts );
 
 		if ( $atts['player'] !='' ) {
-			
+
 			parse_str( $atts['player'], $player );
 
 			if ( is_array( $player) ) {
@@ -429,7 +429,7 @@ class YotuWP{
 		}
 
 		if ( $atts['effects'] !='' ) {
-			
+
 			parse_str( $atts['effects'], $effects );
 
 			if ( is_array( $effects) ) {
@@ -442,7 +442,7 @@ class YotuWP{
 
 		if (isset($atts['styling']) && $atts['styling'] !='') {
 
-			$custom_styling = array();			
+			$custom_styling = array();
 			parse_str(htmlspecialchars_decode($atts['styling']), $styling);
 
 			if (is_array($styling)) {
@@ -450,50 +450,50 @@ class YotuWP{
 					$custom_styling[$key] = $styling[$key];
 					$styling_options[$key] = $styling[$key];
 				}
-				
+
 				//render custom css
 				$custom_css = '';
 				foreach ( $this->views->sections as $tab ) {
 					foreach ( $tab['fields'] as $field) {
-						
+
 						if (isset($field['css']) && isset($custom_styling[$field['name']])) {
-							$data 		= explode( '|', $field['css'] );
-							$selector 	= str_replace('body', 'body #yotuwp-'. $atts['gallery_id'], $data[0]);
+							$data       = explode( '|', $field['css'] );
+							$selector   = str_replace('body', 'body #yotuwp-'. $atts['gallery_id'], $data[0]);
 							$custom_css .= !empty( $custom_styling[ $field['name']] )? $selector.'{'.$data[1].':'.$custom_styling[ $field['name']].(isset($data[2])? '!important': '').'}' : '';
 						}
 					}
 				};
-				
+
 				wp_add_inline_style( 'yotu-style', $custom_css );
 			}
-			
+
 		}
-		
+
 		if ( $player_options['thumbnails'] ) {
 			wp_enqueue_style( 'jquery-owlcarousel' );
 			wp_enqueue_style( 'jquery-owlcarousel-theme' );
 			wp_enqueue_script( 'jquery-owlcarousel' );
 		}
 
-		$atts['player'] 	= $player_options;
-		$atts['styling'] 	= $styling_options;
-		$atts['effects'] 	= $effects_options;
-		$data 				= $this->prepare( $atts);
-		$ids 				= array();
-		
+		$atts['player']  = $player_options;
+		$atts['styling'] = $styling_options;
+		$atts['effects'] = $effects_options;
+		$data            = $this->prepare( $atts);
+		$ids             = array();
+
 		if (
-			is_object( $data ) 
+			is_object( $data )
 			&& count( $data->items) >0
 		) {
 			foreach( $data->items as $video ) {
-				$videoId 	= $this->getVideoId( $video );
-				$ids[] 		= $videoId;
-				$info 		= array( yotuwp_video_title($video), yotuwp_video_description($video) );
+				$videoId    = $this->getVideoId( $video );
+				$ids[]      = $videoId;
+				$info       = array( yotuwp_video_title($video), yotuwp_video_description($video) );
 				$yotuwp_inline_script .= "yotuwp.data.videos['" . $videoId . "'] = " . json_encode( $info, true ) . ';';
-				
+
 			}
 		}
-		
+
 		$data = apply_filters( 'yotuwp_data', $data, $ids );
 		$html = $this->views->display( $atts['template'], $data, $atts );
 
@@ -508,8 +508,8 @@ class YotuWP{
 
 		if ( $this->is_cache) {
 
-			$cache_id 		= md5( $url);
-			$cache_content 	= $this->cache( $cache_id );
+			$cache_id       = md5( $url);
+			$cache_content  = $this->cache( $cache_id );
 
 			if( !is_string( $cache_content ) ) {
 				$response = wp_remote_get( $url, array(
@@ -528,7 +528,7 @@ class YotuWP{
 				'Referer' => home_url()
 			)
 		));
-			
+
 		if (is_wp_error( $response ) || $response['response']['code'] !== 200)
 		{
 
@@ -547,7 +547,7 @@ class YotuWP{
 		}
 
 		return json_decode( $response['body'] );
-	}	
+	}
 
 	public function prepare( &$atts ) {
 		$api_url = '';
@@ -567,7 +567,7 @@ class YotuWP{
 				$offset     = ( $page - 1) * $atts['per_page'];
 				if( $offset < 0 ) $offset = 0;
 
-				$cur_ids 	= array_slice( $all_ids, $offset, $atts['per_page'] );
+				$cur_ids    = array_slice( $all_ids, $offset, $atts['per_page'] );
 
 				$atts['next'] = $page;
 
@@ -588,14 +588,14 @@ class YotuWP{
 
 			case 'channel':
 
-				//find playlist id from channel 
+				//find playlist id from channel
 				$url = 'https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id='.$atts['id'];
 				$data = $this->load_content( $url);
-				
+
 				if( !is_array( $data) ) {
 					//print_r($data);
-					$playlist 		= $data->items[0]->contentDetails->relatedPlaylists->uploads;
-					$api_url  		= 'https://www.googleapis.com/youtube/v3/playlistItems?part=id,snippet,contentDetails,status&maxResults='.$atts['per_page'].'&playlistId='. $playlist;
+					$playlist       = $data->items[0]->contentDetails->relatedPlaylists->uploads;
+					$api_url        = 'https://www.googleapis.com/youtube/v3/playlistItems?part=id,snippet,contentDetails,status&maxResults='.$atts['per_page'].'&playlistId='. $playlist;
 					//$api_url  		= 'https://www.googleapis.com/youtube/v3/search?part=id,snippet&maxResults='.$atts['per_page'].'&type=video&channelId='. $atts['id'];
 					//echo $api_url;
 					$atts['type']   = 'playlist';
@@ -606,7 +606,7 @@ class YotuWP{
 
 			case 'username':
 
-				//find playlist id from channel 
+				//find playlist id from channel
 				$url = 'https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forUsername='.$atts['id'];
 				$data = $this->load_content( $url);
 
@@ -621,17 +621,17 @@ class YotuWP{
 				break;
 
 			default:
-				# code...
+				// code...
 				break;
 		}
 
-		
+
 		if (isset( $atts['pageToken'] ) )
 			$api_url .= '&pageToken=' . $atts['pageToken'];
-			
+
 		$data = $this->load_content( $api_url );
 		//print_r($data);
-		
+
 		if ( !is_array( $data) ) {
 
 			if( $atts['type'] !== 'videos' ) {
@@ -696,29 +696,29 @@ class YotuWP{
 		$page = sanitize_text_field( $_POST['page'] );
 		$settings_data = isset($_POST['settings'])? sanitize_textarea_field( $_POST['settings'] ) : '[]';
 		$atts = json_decode( urldecode( base64_decode( $settings_data )), true);
-		
+
 		switch ( $page) {
-			
+
 			case 'next':
 			case 'more':
 				$atts['pageToken'] = $atts['next'];
 				break;
-			
+
 			default:
 				$atts['pageToken'] = $atts['prev'];
 				break;
 		}
 
-		$data     	= $this->prepare( $atts );
-		$atts_tmp 	= $atts;
+		$data       = $this->prepare( $atts );
+		$atts_tmp   = $atts;
 
-		$items 		= ( !is_array( $data) )? $data->items : array();
+		$items      = ( !is_array( $data) )? $data->items : array();
 
-		$filtered 	= array();
-		$ids      	= array();
+		$filtered   = array();
+		$ids        = array();
 
 		foreach( $items as $video ) {
-			
+
 			if( $this->is_private($video) ) continue;
 
 			$vid = $this->getVideoId( $video );
@@ -730,7 +730,7 @@ class YotuWP{
 				'videoId'     => $vid
 			);
 
-			$ids[] 	= $vid;
+			$ids[]  = $vid;
 		}
 
 		do_action( 'yotuwp_before_shortcode', $atts );
@@ -749,7 +749,7 @@ class YotuWP{
 	public function load_thumbs() {
 
 		check_ajax_referer( 'yotuwp_frontend_nonce', 'security' );
-		
+
 		$settings_data = isset($_POST['settings'])? sanitize_textarea_field( $_POST['settings'] ) : '[]';
 		$atts        = json_decode( urldecode(base64_decode( $settings_data )), true);
 		$atts['pageToken'] = (isset( $_POST['token'] ) && $_POST['token'] != '' )? sanitize_text_field( $_POST['token'] ) : $atts['next'];
@@ -768,7 +768,7 @@ class YotuWP{
 		$filtered = array();
 
 		foreach( $items as $video) {
-			
+
 			if ( $this->is_private($video) ) continue;
 
 			$filtered[] = array(
@@ -824,7 +824,7 @@ class YotuWP{
 			'data' => $data,
 			'settings' => $settings
 		);
-		
+
 		ob_start();
 
 		if ( $overridden_template = locate_template( 'yotu'.YTDS. $template .'.php' ) ) {
@@ -979,7 +979,7 @@ class YotuWP{
 		));
 		register_setting( 'yotu', 'yotu-effects' , array(
 			'sanitize_callback' => array( $this, 'admin_post_save_data' ),
-		));	
+		));
 
 		do_action( 'yotu_register_setting' );
 	}
@@ -1027,10 +1027,10 @@ class YotuWP{
 	function deactivation() {
 		wp_clear_scheduled_hook( 'yotuwp_cache_event' );
 	}
-	
+
 	function activation() {
 		add_option( 'yotuwp_activation_redirect', true);
-		
+
 		if ( !get_option( 'yotuwp_install_date', false) ) {
 			$date_now = date( 'Y-m-d G:i:s' );
 			update_option( 'yotuwp_rating_date', $date_now);
@@ -1050,7 +1050,7 @@ class YotuWP{
 	}
 
 	public function is_private( $video ){
-		if ( 
+		if (
 			!isset($video->snippet->thumbnails) ||
 			( isset($video->snippet->status) && $video->snippet->status->privacyStatus == 'private')
 		) return true;
@@ -1177,7 +1177,7 @@ class YotuWP{
 		global $current_user;
 		if ( !current_user_can( 'edit_user' ) ) return;
 		$user_id = $current_user->ID;
-		
+
 		if (isset( $_GET['yotuwp_rating_ignore_notice'] ) ) {
 
 			$rating_notice = sanitize_text_field( $_GET['yotuwp_rating_ignore_notice'] );
@@ -1191,7 +1191,7 @@ class YotuWP{
 					$date_now = date( 'Y-m-d G:i:s' );
 					update_option( 'yotuwp_rating_date', $date_now);
 					break;
-				
+
 				default:
 					// code...
 					break;
@@ -1206,8 +1206,8 @@ class YotuWP{
 
 	}
 
-	
-	
+
+
 
 	public function lang_cfg() {
 		$this->lang = array(
@@ -1229,7 +1229,7 @@ class YotuWP{
 		global $yotuwp;
 
 		$styling = isset($settings['styling'])? $settings['styling'] : array();
-		
+
 		if ( isset( $styling['video_style'] ) && $styling['video_style'] != '' ) {
 			$classes[] = 'yotu-preset yotu-preset-'.$styling['video_style'];
 		}
@@ -1247,8 +1247,8 @@ class YotuWP{
 
 	public function video_classes( $cls, $settings) {
 		if (
-			isset($settings['effects']) && 
-			isset($settings['effects']['video_box']) && 
+			isset($settings['effects']) &&
+			isset($settings['effects']['video_box']) &&
 			$settings['effects']['video_box'] != ''
 		){
 			$cls[] = $settings['effects']['video_box'];
@@ -1257,7 +1257,7 @@ class YotuWP{
 	}
 
 
-	
+
 
 	public function __call( $name, $args ) {
 
@@ -1267,7 +1267,7 @@ class YotuWP{
 			$sections   = $this->views->sections;
 			$presets    = get_option('yotuwp_presets');
 			$custom_css = '';
-			
+
 			if (isset($sections[$tab])) {
 
 				$new_data = $args[1];
@@ -1285,7 +1285,7 @@ class YotuWP{
 				}
 			}
 
-					
+
 			if ($custom_css !== '') {
 				global $wp_filesystem;
 				$wp_filesystem->put_contents(
@@ -1294,7 +1294,7 @@ class YotuWP{
 					FS_CHMOD_FILE
 				);
 			}
-			
+
 		}
 	}
 
@@ -1319,12 +1319,12 @@ class YotuWP{
 				$status = 1;
 				$msg = __('All cache files were deleted!', 'yotuwp-easy-youtube-embed');
 			}
-			wp_send_json(array( 'status' => $status, 'msg' => $msg) );	
+			wp_send_json(array( 'status' => $status, 'msg' => $msg) );
 		} else {
 			header('HTTP/1.0 403 Forbidden');
 			die('You are not allowed to access this file.');
 		}
-		
+
 	}
 
 	public function go_pro( $actions, $file ) {

@@ -3,7 +3,7 @@
  * Field system by YotuWP
  */
 class YotuFields{
-    
+
     public function __construct()
     {
 
@@ -12,7 +12,7 @@ class YotuFields{
     public function render_field($data ) {
 
 		ob_start();
-		
+
 		$data = apply_filters('yotuwp_before_render_field', $data );
 
 		?>
@@ -26,7 +26,7 @@ class YotuFields{
 				<?php do_action('yotuwp_after_render_field', $data );?>
 				<label class="yotu-field-description" for="yotu-<?php echo esc_html($data['group']) . '-'. esc_attr($data['name']);?>"><?php echo esc_html_e($data['description']);?></label>
 			</div>
-			<?php 
+			<?php
 			if (isset($data['extbtn']) && $data['extbtn'] != '') {
 				echo wp_kses_post($data['extbtn']);
 			}
@@ -66,30 +66,30 @@ class YotuFields{
 				?>
 				<option value="<?php echo esc_attr($key);?>"<?php echo ($value == $key)? ' selected="selected"' : '';?>>
 					<?php echo esc_attr($val);?>
-						
+
 				</option>
 				<?php
 				}
 			?>
 		</select>
-		<?php 
+		<?php
 		if (isset($data['extbtn']) && $data['extbtn'] != '') {
 			echo wp_kses_post($data['extbtn']);
 		}
-	
+
 	}
 
 	public function checkbox( $data ) {
 		$value = (isset($data['value']) && !empty($data['value'])) ? $data['value'] : $data['default'];
 		?>
-		
+
 			<?php
 				foreach ($data['options'] as $key => $val) {
 					$key_id = $data['group'] . '-'. $data['name'] .'-'. $key;
 					$name = $data['name'] .'|'. $key;
 				?>
 				<div class="yotuwp-field-checkbox-item">
-					<input type="checkbox"<?php echo (isset( $value[ $key ] ) && $value[ $key ] == 'on' )? ' checked="checked"' :'' ;?> id="yotuwp-<?php echo esc_attr( $key_id );?>" class="yotu-param" name="yotu-<?php echo esc_attr($data['group']);?>[<?php echo esc_attr( $name );?>]">		
+					<input type="checkbox"<?php echo (isset( $value[ $key ] ) && $value[ $key ] == 'on' )? ' checked="checked"' :'' ;?> id="yotuwp-<?php echo esc_attr( $key_id );?>" class="yotu-param" name="yotu-<?php echo esc_attr($data['group']);?>[<?php echo esc_attr( $name );?>]">
 					<label for="yotuwp-<?php echo esc_attr( $key_id );?>"><?php echo esc_attr($val);?></label>
 				</div>
 				<?php
@@ -111,7 +111,7 @@ class YotuFields{
 
 	public function radios( $data ) {
 		global $yotuwp;
-		
+
 		$value = (isset($data['value']) && !empty($data['value']) && isset($data['options'][ $data['value'] ])) ? $data['value'] : $data['default'];
 
 		?>
@@ -145,11 +145,11 @@ class YotuFields{
 				}
 			?>
 		</div>
-		<?php 
+		<?php
 		if (isset($data['extbtn']) && $data['extbtn'] != '') {
 			echo wp_kses_post($data['extbtn']);
 		}
-	
+
 	}
 
 	public function buttons($data ) {
@@ -231,13 +231,13 @@ class YotuFields{
 					<label class="yotu-field-effects<?php echo esc_attr($selected_class) ;?>" for="<?php esc_attr_e( $id );?>">
 						<span class="<?php esc_attr_e( $eff[0] );?>"><?php esc_html_e( $eff[1] );?></span>
 						<input class="yotu-param" value="<?php esc_attr_e( $eff[0] );?>" type="radio"<?php esc_attr_e( $selected_attr ) ;?> id="<?php esc_attr_e( $id );?>" name="yotu-<?php echo esc_attr($data['group']);?>[<?php echo esc_attr($data['name']);?>]" />
-						
+
 					</label>
 				<?php
 				}
 			?>
 		</div>
-		
+
 		<?php
 	}
 }

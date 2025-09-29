@@ -34,7 +34,7 @@ function yotuwp_kses( $content ) {
 	//return $content;
 
 	$allowed_html = wp_kses_allowed_html( 'post' );
-	
+
 	// iframe
 	$allowed_html['iframe'] = array(
 		'src'             => array(),
@@ -78,7 +78,7 @@ function yotuwp_kses( $content ) {
 		'src' => array(),
 		'type' => array(),
 	);
-	
+
 
 	return wp_kses( $content, $allowed_html );
 }

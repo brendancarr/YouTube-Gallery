@@ -49,11 +49,11 @@ $video_classes = apply_filters( 'yotu_video_classes', array("yotu-video"), $sett
 				</a>
 				<?php do_action('yotuwp_after_link', $videoId, $video);?>
 			</li>
-				
+
 			<?php
 			$count++;
 			}
-		endif;	
+		endif;
 		?>
 	</ul>
 </div>

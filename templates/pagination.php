@@ -1,9 +1,9 @@
-<?php 
-$buton_style 	= ' yotu-button-prs '.(isset($settings['styling']['button'])? 'yotu-button-prs-' . $settings['styling']['button'] : ' yotu-button-prs');
-$buton_layout 	= isset($settings['styling']['button'])? ' yotu-pager_layout-' . $settings['styling']['pager_layout'] : '';
-$prev_text 		= apply_filters( 'yotuwp_prev_text', __('Prev', 'yotuwp-easy-youtube-embed'));
-$next_text 		= apply_filters( 'yotuwp_next_text', __('Next', 'yotuwp-easy-youtube-embed'));
-$loadmore_text 	= apply_filters( 'yotuwp_loadmore_text', __('Load more', 'yotuwp-easy-youtube-embed'));
+<?php
+$buton_style    = ' yotu-button-prs '.(isset($settings['styling']['button'])? 'yotu-button-prs-' . $settings['styling']['button'] : ' yotu-button-prs');
+$buton_layout   = isset($settings['styling']['button'])? ' yotu-pager_layout-' . $settings['styling']['pager_layout'] : '';
+$prev_text      = apply_filters( 'yotuwp_prev_text', __('Prev', 'yotuwp-easy-youtube-embed'));
+$next_text      = apply_filters( 'yotuwp_next_text', __('Next', 'yotuwp-easy-youtube-embed'));
+$loadmore_text  = apply_filters( 'yotuwp_loadmore_text', __('Load more', 'yotuwp-easy-youtube-embed'));
 
 do_action('yotuwp_before_pagination', $settings);
 

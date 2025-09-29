@@ -1,12 +1,12 @@
 <?php
 
 /**
- * 
+ *
  */
 class YotuViews{
 
 	public $sections = array();
-	
+
 	public function __construct()
 	{
 		global $yotuwp;
@@ -22,27 +22,27 @@ class YotuViews{
 		$templates = apply_filters( 'yotuwp_templates', $templates );
 		//Setting general
 		$sections['settings'] = array(
-			'icon' 		=> 'dashicons-admin-generic',
-			'key' 		=> 'settings',
-			'title' 	=> __('General', 'yotuwp-easy-youtube-embed'),
-			'priority' 	=> 10,
+			'icon'      => 'dashicons-admin-generic',
+			'key'       => 'settings',
+			'title'     => __('General', 'yotuwp-easy-youtube-embed'),
+			'priority'  => 10,
 			'fields' => array(
 				array(
-					'name'			=> 'template',
-					'type' 			=> 'select',
-					'label'			=> __('Videos Layout Template', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'grid',
-					'priority' 		=> 10,
-					'description'	=> __('Layout for display videos.', 'yotuwp-easy-youtube-embed'),
-					'options' 		=> $templates
+					'name'          => 'template',
+					'type'          => 'select',
+					'label'         => __('Videos Layout Template', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'grid',
+					'priority'      => 10,
+					'description'   => __('Layout for display videos.', 'yotuwp-easy-youtube-embed'),
+					'options'       => $templates
 				),
 				array(
-					'name'			=> 'column',
-					'type'			=> 'select',
-					'label'			=> __('Columns', 'yotuwp-easy-youtube-embed'),
-					'default'		=> '3',
-					'priority' 		=> 20,
-					'description'	=> __('The number columns of videos on Grid and Mix layout mode.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'column',
+					'type'          => 'select',
+					'label'         => __('Columns', 'yotuwp-easy-youtube-embed'),
+					'default'       => '3',
+					'priority'      => 20,
+					'description'   => __('The number columns of videos on Grid and Mix layout mode.', 'yotuwp-easy-youtube-embed'),
 					'options' => array(
 						'1' => '1 column',
 						'2' => '2 columns',
@@ -53,332 +53,332 @@ class YotuViews{
 					)
 				),
 				array(
-					'name'			=> 'per_page',
-					'type'			=> 'text',
-					'label'			=> __('Videos per page', 'yotuwp-easy-youtube-embed'),
-					'default'		=> '12',
-					'priority' 		=> 30,
-					'description'	=> __('The limit number videos per page.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'per_page',
+					'type'          => 'text',
+					'label'         => __('Videos per page', 'yotuwp-easy-youtube-embed'),
+					'default'       => '12',
+					'priority'      => 30,
+					'description'   => __('The limit number videos per page.', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'pagination',
-					'type'			=> 'toggle',
-					'label'			=> __('Pagination?', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'on',
-					'priority' 		=> 40,
-					'description'	=> __('The pagination for reaching more videos on list.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'pagination',
+					'type'          => 'toggle',
+					'label'         => __('Pagination?', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'on',
+					'priority'      => 40,
+					'description'   => __('The pagination for reaching more videos on list.', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'pagitype',
-					'type'			=> 'select',
-					'label'			=> __('Pagination type', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'pager',
-					'priority' 		=> 50,
-					'description'	=> __('The type display and loading of pagination. Pager display next/preve button and current page. Load more displays one button on bottom. Default: pager', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'pagitype',
+					'type'          => 'select',
+					'label'         => __('Pagination type', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'pager',
+					'priority'      => 50,
+					'description'   => __('The type display and loading of pagination. Pager display next/preve button and current page. Load more displays one button on bottom. Default: pager', 'yotuwp-easy-youtube-embed'),
 					'options' => array(
 						'pager' => 'Pager',
 						'loadmore' => 'Load More'
 					)
 				),
 				array(
-					'name'			=> 'title',
-					'type'			=> 'toggle',
-					'label'			=> __('Videos Title?', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'on',
-					'priority' 		=> 60,
-					'description'	=> __('Display video title on listing.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'title',
+					'type'          => 'toggle',
+					'label'         => __('Videos Title?', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'on',
+					'priority'      => 60,
+					'description'   => __('Display video title on listing.', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'description',
-					'type'			=> 'toggle',
-					'label'			=> __('Videos Description?', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'on',
-					'priority' 		=> 70,
-					'description'	=> __('Display video description on listing.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'description',
+					'type'          => 'toggle',
+					'label'         => __('Videos Description?', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'on',
+					'priority'      => 70,
+					'description'   => __('Display video description on listing.', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'thumbratio',
-					'type'			=> 'select',
-					'label'			=> __('Video Thumbnail Ratio', 'yotuwp-easy-youtube-embed'),
-					'default'		=> '43',
-					'priority' 		=> 59,
-					'description'	=> __('Change video thumnail ratio to remove top and bottom bar.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'thumbratio',
+					'type'          => 'select',
+					'label'         => __('Video Thumbnail Ratio', 'yotuwp-easy-youtube-embed'),
+					'default'       => '43',
+					'priority'      => 59,
+					'description'   => __('Change video thumnail ratio to remove top and bottom bar.', 'yotuwp-easy-youtube-embed'),
 					'options' => array(
 						'43'  => 'Normal - 4:3',
 						'169' => 'HD - 16:9'
 					)
 				)
-				
+
 			)
 		);
 
 		//Player settings
 		$sections['player'] = array(
-			'icon' 		=> 'dashicons-video-alt3',
-			'key' 		=> 'player',
-			'title' 	=> __('Player', 'yotuwp-easy-youtube-embed'),
-			'priority' 	=> 20,
+			'icon'      => 'dashicons-video-alt3',
+			'key'       => 'player',
+			'title'     => __('Player', 'yotuwp-easy-youtube-embed'),
+			'priority'  => 20,
 			'fields' => array(
 				array(
-					'name'			=> 'mode',
-					'type' 			=> 'select',
-					'label'			=> __('Player Mode', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'large',
-					'priority' 		=> 10,
-					'description'	=> __('Layout for video player.', 'yotuwp-easy-youtube-embed'),
-					'options' 		=> array(
+					'name'          => 'mode',
+					'type'          => 'select',
+					'label'         => __('Player Mode', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'large',
+					'priority'      => 10,
+					'description'   => __('Layout for video player.', 'yotuwp-easy-youtube-embed'),
+					'options'       => array(
 						'large' => __('Large', 'yotuwp-easy-youtube-embed'),
 						'popup' => __('Popup', 'yotuwp-easy-youtube-embed')
 					)
 				),
 				array(
-					'name'			=> 'width',
-					'type'			=> 'text',
-					'priority' 		=> 20,
-					'label'			=> __('Player width', 'yotuwp-easy-youtube-embed'),
-					'default'		=> '600',
-					'description'	=> __('The default width of player. Set 0 to use full container width player. Default : 600(px)', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'width',
+					'type'          => 'text',
+					'priority'      => 20,
+					'label'         => __('Player width', 'yotuwp-easy-youtube-embed'),
+					'default'       => '600',
+					'description'   => __('The default width of player. Set 0 to use full container width player. Default : 600(px)', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'scrolling',
-					'type'			=> 'text',
-					'priority' 		=> 30,
-					'label'			=> __('Scrolling Offset', 'yotuwp-easy-youtube-embed'),
-					'default'		=> '100',
-					'description'	=> __('The distance betwen top browser with player when play a video. Set 0 for auto center player in screen. Default : 100(px)', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'scrolling',
+					'type'          => 'text',
+					'priority'      => 30,
+					'label'         => __('Scrolling Offset', 'yotuwp-easy-youtube-embed'),
+					'default'       => '100',
+					'description'   => __('The distance betwen top browser with player when play a video. Set 0 for auto center player in screen. Default : 100(px)', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'playing',
-					'type'			=> 'toggle',
-					'label'			=> __('Playing Title', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'off',
-					'priority' 		=> 40,
-					'description'	=> __('Show title playing video on top of player. Default disabled.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'playing',
+					'type'          => 'toggle',
+					'label'         => __('Playing Title', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'off',
+					'priority'      => 40,
+					'description'   => __('Show title playing video on top of player. Default disabled.', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'playing_description',
-					'type'			=> 'toggle',
-					'label'			=> __('Playing Description', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'off',
-					'priority' 		=> 50,
-					'description'	=> __('Show description playing video at bottom of player. Default disabled.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'playing_description',
+					'type'          => 'toggle',
+					'label'         => __('Playing Description', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'off',
+					'priority'      => 50,
+					'description'   => __('Show description playing video at bottom of player. Default disabled.', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'controls',
-					'type'			=> 'toggle',
-					'label'			=> __('Controls', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'on',
-					'priority' 		=> 60,
-					'description'	=> __('This parameter indicates whether the video player controls are displayed', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'controls',
+					'type'          => 'toggle',
+					'label'         => __('Controls', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'on',
+					'priority'      => 60,
+					'description'   => __('This parameter indicates whether the video player controls are displayed', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'autoplay',
-					'type'			=> 'toggle',
-					'label'			=> __('Auto play', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'on',
-					'priority' 		=> 70,
-					'description'	=> __('This parameter specifies whether the initial video will automatically start to play when the player loads.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'autoplay',
+					'type'          => 'toggle',
+					'label'         => __('Auto play', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'on',
+					'priority'      => 70,
+					'description'   => __('This parameter specifies whether the initial video will automatically start to play when the player loads.', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'autonext',
-					'type'			=> 'toggle',
-					'label'			=> __('Auto Next Video', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'off',
-					'priority' 		=> 71,
-					'description'	=> __('Enable play next video in list automatically after previous one end.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'autonext',
+					'type'          => 'toggle',
+					'label'         => __('Auto Next Video', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'off',
+					'priority'      => 71,
+					'description'   => __('Enable play next video in list automatically after previous one end.', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'rel',
-					'type'			=> 'toggle',
-					'label'			=> __('Related Videos', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'on',
-					'priority' 		=> 80,
-					'description'	=> __('This parameter indicates whether the player should show related videos when playback of the initial video ends.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'rel',
+					'type'          => 'toggle',
+					'label'         => __('Related Videos', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'on',
+					'priority'      => 80,
+					'description'   => __('This parameter indicates whether the player should show related videos when playback of the initial video ends.', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'loop',
-					'type'			=> 'toggle',
-					'label'			=> __('Loop', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'on',
-					'priority' 		=> 90,
-					'description'	=> __('In the case of a single video player, enable this for the player to play the initial video again and again.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'loop',
+					'type'          => 'toggle',
+					'label'         => __('Loop', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'on',
+					'priority'      => 90,
+					'description'   => __('In the case of a single video player, enable this for the player to play the initial video again and again.', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'modestbranding',
-					'type'			=> 'toggle',
-					'label'			=> __('Branding logo', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'on',
-					'priority' 		=> 100,
-					'description'	=> __('Display your brand logo from displaying in the control bar. This option will remove YouTube logo as well.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'modestbranding',
+					'type'          => 'toggle',
+					'label'         => __('Branding logo', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'on',
+					'priority'      => 100,
+					'description'   => __('Display your brand logo from displaying in the control bar. This option will remove YouTube logo as well.', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'showinfo',
-					'type'			=> 'toggle',
-					'label'			=> __('Show info', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'on',
-					'priority' 		=> 110,
-					'description'	=> __('Enable information like the video title and uploader before the video starts playing.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'showinfo',
+					'type'          => 'toggle',
+					'label'         => __('Show info', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'on',
+					'priority'      => 110,
+					'description'   => __('Enable information like the video title and uploader before the video starts playing.', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'thumbnails',
-					'type'			=> 'toggle',
-					'label'			=> __('Modal Thumbnails', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'on',
-					'priority' 		=> 120,
-					'description'	=> __('Display list of videos on Modal popup player.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'thumbnails',
+					'type'          => 'toggle',
+					'label'         => __('Modal Thumbnails', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'on',
+					'priority'      => 120,
+					'description'   => __('Display list of videos on Modal popup player.', 'yotuwp-easy-youtube-embed'),
 				),
 
 				array(
-					'name'			=> 'cc_load_policy',
-					'type'			=> 'select',
-					'label'			=> __('Force Closed Captions', 'yotuwp-easy-youtube-embed'),
-					'default'		=> '0',
-					'priority' 		=> 130,
-					'description'	=> __('Enable closed captions for video. .', 'yotuwp-easy-youtube-embed'),
-					'options' 		=> array(
+					'name'          => 'cc_load_policy',
+					'type'          => 'select',
+					'label'         => __('Force Closed Captions', 'yotuwp-easy-youtube-embed'),
+					'default'       => '0',
+					'priority'      => 130,
+					'description'   => __('Enable closed captions for video. .', 'yotuwp-easy-youtube-embed'),
+					'options'       => array(
 						'0' => __('No', 'yotuwp-easy-youtube-embed'),
 						'1' => __('Yes', 'yotuwp-easy-youtube-embed')
 					)
 				),
 				array(
-					'name'			=> 'iv_load_policy',
-					'type'			=> 'select',
-					'label'			=> __('Show annotations', 'yotuwp-easy-youtube-embed'),
-					'default'		=> '1',
-					'priority' 		=> 135,
-					'description'	=> __('Choose whether to show annotations or not', 'yotuwp-easy-youtube-embed'),
-					'options' 		=> array(
+					'name'          => 'iv_load_policy',
+					'type'          => 'select',
+					'label'         => __('Show annotations', 'yotuwp-easy-youtube-embed'),
+					'default'       => '1',
+					'priority'      => 135,
+					'description'   => __('Choose whether to show annotations or not', 'yotuwp-easy-youtube-embed'),
+					'options'       => array(
 						'3' => __('No', 'yotuwp-easy-youtube-embed'),
 						'1' => __('Yes', 'yotuwp-easy-youtube-embed')
 					)
 				),
-				
+
 				array(
-					'name'			=> 'hl',
-					'type'			=> 'text',
-					'priority' 		=> 140,
-					'label'			=> __('Player Language', 'yotuwp-easy-youtube-embed'),
-					'default'		=> '',
-					'description'	=> sprintf(__('The language in interface of player. Default is English. The option value is an ISO 639-1 two-letter language code or a fully specified locale. You can get your language code from %s', 'yotuwp-easy-youtube-embed'), '<a href="http://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">this page</a>'),
+					'name'          => 'hl',
+					'type'          => 'text',
+					'priority'      => 140,
+					'label'         => __('Player Language', 'yotuwp-easy-youtube-embed'),
+					'default'       => '',
+					'description'   => sprintf(__('The language in interface of player. Default is English. The option value is an ISO 639-1 two-letter language code or a fully specified locale. You can get your language code from %s', 'yotuwp-easy-youtube-embed'), '<a href="http://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">this page</a>'),
 				),
 
 				array(
-					'name'			=> 'cc_lang_pref',
-					'type'			=> 'text',
-					'priority' 		=> 145,
-					'label'			=> __('Preferred captions language', 'yotuwp-easy-youtube-embed'),
-					'default'		=> '',
-					'description'	=> sprintf(__('Change preferred language for captions. The option value is an ISO 639-1 two-letter language code or a fully specified locale. You can get your language code from %s', 'yotuwp-easy-youtube-embed'), '<a href="http://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">this page</a>'),
+					'name'          => 'cc_lang_pref',
+					'type'          => 'text',
+					'priority'      => 145,
+					'label'         => __('Preferred captions language', 'yotuwp-easy-youtube-embed'),
+					'default'       => '',
+					'description'   => sprintf(__('Change preferred language for captions. The option value is an ISO 639-1 two-letter language code or a fully specified locale. You can get your language code from %s', 'yotuwp-easy-youtube-embed'), '<a href="http://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">this page</a>'),
 				),
 			)
 		);
 
 		$sections['styling'] = array(
-			'icon' 		=> 'dashicons-admin-customizer',
-			'key' 		=> 'styling',
-			'title' 	=> __('Styling', 'yotuwp-easy-youtube-embed'),
-			'priority' 	=> 30,
+			'icon'      => 'dashicons-admin-customizer',
+			'key'       => 'styling',
+			'title'     => __('Styling', 'yotuwp-easy-youtube-embed'),
+			'priority'  => 30,
 			'fields' => array(
 				array(
-					'name'			=> 'pager_layout',
-					'type'			=> 'radios',
-					'label'			=> __('Pager Layout', 'yotuwp-easy-youtube-embed'),
-					'default'		=> 'default',
-					'description'	=> __('The layout for pager. Select one of them to use.', 'yotuwp-easy-youtube-embed'),
-					'priority' 		=> 20,
-					'options' 		=> array(
-						'default' 	=> array(
+					'name'          => 'pager_layout',
+					'type'          => 'radios',
+					'label'         => __('Pager Layout', 'yotuwp-easy-youtube-embed'),
+					'default'       => 'default',
+					'description'   => __('The layout for pager. Select one of them to use.', 'yotuwp-easy-youtube-embed'),
+					'priority'      => 20,
+					'options'       => array(
+						'default'   => array(
 							'title' => __('Default', 'yotuwp-easy-youtube-embed'),
-							'img' 	=> 'images/fields/pager_layout/default.png' 
+							'img'   => 'images/fields/pager_layout/default.png'
 						),
 						'center_no_text' => array(
 							'title' => __('Center No Text', 'yotuwp-easy-youtube-embed'),
-							'img' 	=> 'images/fields/pager_layout/center_no_text.png' 
+							'img'   => 'images/fields/pager_layout/center_no_text.png'
 						),
-						'bothside' 	=> array(
+						'bothside'  => array(
 							'title' => __('Both Side', 'yotuwp-easy-youtube-embed'),
-							'img' 	=> 'images/fields/pager_layout/bothside.png'
+							'img'   => 'images/fields/pager_layout/bothside.png'
 						),
 						'bothside_no_text' => array(
 							'title' => __('Both Side No Text', 'yotuwp-easy-youtube-embed'),
-							'img' 	=> 'images/fields/pager_layout/bothside_no_text.png'
+							'img'   => 'images/fields/pager_layout/bothside_no_text.png'
 						),
 					),
-					
+
 				),
-				
+
 				array(
-					'name'			=> 'button',
-					'type'			=> 'buttons',
-					'label'			=> __('Button Style', 'yotuwp-easy-youtube-embed'),
-					'default'		=> '10',
-					'priority' 		=> 20,
-					'class' 		=> 'noful',
-					'description'	=> __('The styling for all buttons. Select one of them to using.', 'yotuwp-easy-youtube-embed'),
-				),
-				array(
-					'name'			=> 'button_color',
-					'type'			=> 'color',
-					'label'			=> __('Button Text Color', 'yotuwp-easy-youtube-embed'),
-					'default'		=> '',
-					'priority' 		=> 30,
-					'description'	=> __('The color of text on button.', 'yotuwp-easy-youtube-embed'),
-					'css' 			=> '.yotu-button-prs|color'
+					'name'          => 'button',
+					'type'          => 'buttons',
+					'label'         => __('Button Style', 'yotuwp-easy-youtube-embed'),
+					'default'       => '10',
+					'priority'      => 20,
+					'class'         => 'noful',
+					'description'   => __('The styling for all buttons. Select one of them to using.', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'button_bg_color',
-					'type'			=> 'color',
-					'label'			=> __('Button Background Color', 'yotuwp-easy-youtube-embed'),
-					'default'		=> '',
-					'priority' 		=> 40,
-					'css'			=> '.yotu-button-prs|background-color',
-					'description'	=> __('The button background color.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'button_color',
+					'type'          => 'color',
+					'label'         => __('Button Text Color', 'yotuwp-easy-youtube-embed'),
+					'default'       => '',
+					'priority'      => 30,
+					'description'   => __('The color of text on button.', 'yotuwp-easy-youtube-embed'),
+					'css'           => '.yotu-button-prs|color'
 				),
 				array(
-					'name'			=> 'button_color_hover',
-					'type'			=> 'color',
-					'label'			=> __('Button Color Hover', 'yotuwp-easy-youtube-embed'),
-					'default'		=> '',
-					'priority' 		=> 50,
-					'css'			=> '.yotu-button-prs:hover,.yotu-button-prs:focus|color',
-					'description'	=> __('The color of text button on hover.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'button_bg_color',
+					'type'          => 'color',
+					'label'         => __('Button Background Color', 'yotuwp-easy-youtube-embed'),
+					'default'       => '',
+					'priority'      => 40,
+					'css'           => '.yotu-button-prs|background-color',
+					'description'   => __('The button background color.', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'button_bg_color_hover',
-					'type'			=> 'color',
-					'label'			=> __('Button Background Color Hover', 'yotuwp-easy-youtube-embed'),
-					'default'		=> '',
-					'priority' 		=> 60,
-					'css'			=> '.yotu-button-prs:hover,.yotu-button-prs:focus|background-color',
-					'description'	=> __('The background color of button on hover.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'button_color_hover',
+					'type'          => 'color',
+					'label'         => __('Button Color Hover', 'yotuwp-easy-youtube-embed'),
+					'default'       => '',
+					'priority'      => 50,
+					'css'           => '.yotu-button-prs:hover,.yotu-button-prs:focus|color',
+					'description'   => __('The color of text button on hover.', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'gallery_bg',
-					'type'			=> 'color',
-					'label'			=> __('Gallery Background Color', 'yotuwp-easy-youtube-embed'),
-					'default'		=> '',
-					'priority' 		=> 70,
-					'css'			=> 'body .yotuwp.yotu-playlist|background-color',
-					'description'	=> __('The background color of gallery.', 'yotuwp-easy-youtube-embed'),
+					'name'          => 'button_bg_color_hover',
+					'type'          => 'color',
+					'label'         => __('Button Background Color Hover', 'yotuwp-easy-youtube-embed'),
+					'default'       => '',
+					'priority'      => 60,
+					'css'           => '.yotu-button-prs:hover,.yotu-button-prs:focus|background-color',
+					'description'   => __('The background color of button on hover.', 'yotuwp-easy-youtube-embed'),
 				),
 				array(
-					'name'			=> 'video_style',
-					'type'			=> 'radios',
-					'label'			=> __( 'Video Thumbnail', 'yotuwp-easy-youtube-embed' ),
-					'default'		=> '',
-					'priority' 		=> 11,
-					'preset' 		=> true,
-					'description'	=> __( 'Style for a video on list', 'yotuwp-easy-youtube-embed' ),
-					'options'		=> array(
-						'' 	=> array(
+					'name'          => 'gallery_bg',
+					'type'          => 'color',
+					'label'         => __('Gallery Background Color', 'yotuwp-easy-youtube-embed'),
+					'default'       => '',
+					'priority'      => 70,
+					'css'           => 'body .yotuwp.yotu-playlist|background-color',
+					'description'   => __('The background color of gallery.', 'yotuwp-easy-youtube-embed'),
+				),
+				array(
+					'name'          => 'video_style',
+					'type'          => 'radios',
+					'label'         => __( 'Video Thumbnail', 'yotuwp-easy-youtube-embed' ),
+					'default'       => '',
+					'priority'      => 11,
+					'preset'        => true,
+					'description'   => __( 'Style for a video on list', 'yotuwp-easy-youtube-embed' ),
+					'options'       => array(
+						''  => array(
 							'title' => __( 'Default', 'yotuwp-easy-youtube-embed' ),
 							'img'   => ''
 						),
-						'gplus' 	=> array(
+						'gplus'     => array(
 							'title' => __( 'Yooglus - Grid Only', 'yotuwp-easy-youtube-embed' ),
 							'img'   => 'images/fields/video_style/yplus.jpg'
 						),
-						'abnb' 	=> array(
+						'abnb'  => array(
 							'title' => __( 'Yabnb - Grid Only', 'yotuwp-easy-youtube-embed' ),
 							'img'   => 'images/fields/video_style/yabnb.jpg'
 						)
@@ -387,21 +387,21 @@ class YotuViews{
 			)
 		);
 
-		//effect 
+		//effect
 		$sections['effects'] = array(
-			'icon' 		=> 'dashicons-visibility',
-			'key' 		=> 'effects',
-			'title' 	=> __('Effects', 'yotuwp-pro'),
-			'priority' 	=> 30,
-			'pro'		=> true,
-			'fields' 	=> array(
+			'icon'      => 'dashicons-visibility',
+			'key'       => 'effects',
+			'title'     => __('Effects', 'yotuwp-pro'),
+			'priority'  => 30,
+			'pro'       => true,
+			'fields'    => array(
 				array(
-					'name'			=> 'video_box',
-					'label'			=> __( 'Video Box Effect', 'yotuwp-pro' ),
-					'type'			=> 'effects',
-					'priority' 		=> 10,
-					'default'		=> '',
-					'description'	=> 'The hover effect on each video thumnails on gallery.',
+					'name'          => 'video_box',
+					'label'         => __( 'Video Box Effect', 'yotuwp-pro' ),
+					'type'          => 'effects',
+					'priority'      => 10,
+					'default'       => '',
+					'description'   => 'The hover effect on each video thumnails on gallery.',
 				)
 			)
 		);
@@ -412,7 +412,7 @@ class YotuViews{
 		$this->sections = $sections;
 
 	}
-	
+
 	public function settings( $data ) {
 		global $yotuwp;
 
@@ -421,7 +421,7 @@ class YotuViews{
 		foreach ( $this->sections as $tab => $section ) {
 			foreach( $section['fields'] as $ind => $field ) {
 				$field_name = isset($field['name'])? $field['name'] : '';
-				if( 
+				if(
 					isset( $data[ $tab ]) &&
 					isset( $data[ $tab ][ $field_name ])
 				) {
@@ -441,22 +441,22 @@ class YotuViews{
 
 		if ( isset( $data['api']) ) {
 			$api = $data['api'];
-						
+
 			$this->sections['api'] = array(
-				'icon' 		=> 'dashicons-admin-network',
-				'key' 		=> 'api',
-				'title' 	=> __('API', 'yotuwp-easy-youtube-embed'),
-				'priority' 	=> 60,
-				'fields' 	=> array(
+				'icon'      => 'dashicons-admin-network',
+				'key'       => 'api',
+				'title'     => __('API', 'yotuwp-easy-youtube-embed'),
+				'priority'  => 60,
+				'fields'    => array(
 					array(
-						'name'			=> 'api_key',
-						'type'			=> 'text',
-						'priority' 		=> 10,
-						'label'			=> __('Youtube API Key', 'yotuwp-easy-youtube-embed'),
-						'default'		=> '',
-						'description'	=> 'You will need a valid API key with Youtube Data API v3 access enabled. ',
-						'value'			=> isset($api['api_key'])? $api['api_key'] : '',
-						'extbtn'		=> '<a href="https://www.youtube.com/watch?v=uz7dY8qTFJw" target="_blank" class="extra-btn"><span class="dashicons dashicons-arrow-right-alt"></span>How to get an API key</a>'
+						'name'          => 'api_key',
+						'type'          => 'text',
+						'priority'      => 10,
+						'label'         => __('Youtube API Key', 'yotuwp-easy-youtube-embed'),
+						'default'       => '',
+						'description'   => 'You will need a valid API key with Youtube Data API v3 access enabled. ',
+						'value'         => isset($api['api_key'])? $api['api_key'] : '',
+						'extbtn'        => '<a href="https://www.youtube.com/watch?v=uz7dY8qTFJw" target="_blank" class="extra-btn"><span class="dashicons dashicons-arrow-right-alt"></span>How to get an API key</a>'
 					),
 
 				)
@@ -470,61 +470,61 @@ class YotuViews{
 				'icon' => 'dashicons-dashboard',
 				'key' => 'cache',
 				'title' => __('Cache', 'yotuwp-easy-youtube-embed'),
-				'priority' 	=> 50,
+				'priority'  => 50,
 				'fields' => array(
 					array(
-						'name'			=> 'enable',
-						'type'			=> 'toggle',
-						'label'			=> __('Enable?', 'yotuwp-easy-youtube-embed'),
-						'default'		=> 'off',
-						'priority' 		=> 10,
-						'description'	=> __('The cache to reduce time for loading videos. Give best experience to your readers.', 'yotuwp-easy-youtube-embed'),
-						'value'			=> isset( $cache['enable']) ? $cache['enable'] : 'off'
+						'name'          => 'enable',
+						'type'          => 'toggle',
+						'label'         => __('Enable?', 'yotuwp-easy-youtube-embed'),
+						'default'       => 'off',
+						'priority'      => 10,
+						'description'   => __('The cache to reduce time for loading videos. Give best experience to your readers.', 'yotuwp-easy-youtube-embed'),
+						'value'         => isset( $cache['enable']) ? $cache['enable'] : 'off'
 					),
 					array(
-						'name'			=> 'timeout',
-						'type'			=> 'select',
-						'label'			=> __('Timeout', 'yotuwp-easy-youtube-embed'),
-						'default'		=> 'weekly',
-						'priority' 		=> 20,
-						'description'	=> __('The time your cache removed after created to ensure your videos are fresh.', 'yotuwp-easy-youtube-embed'),
-						'value'			=> $cache['timeout'],
+						'name'          => 'timeout',
+						'type'          => 'select',
+						'label'         => __('Timeout', 'yotuwp-easy-youtube-embed'),
+						'default'       => 'weekly',
+						'priority'      => 20,
+						'description'   => __('The time your cache removed after created to ensure your videos are fresh.', 'yotuwp-easy-youtube-embed'),
+						'value'         => $cache['timeout'],
 						'options' => array(
-							"weekly" 				=> "Once a Week",
-							"everyminute" 			=> "Once Every 1 Minute",
-							"everyfiveminute" 		=> "Once Every 5 Minutes",
-							"everyfifteenminute" 	=> "Once Every 15 Minutes",
-							"twiceanhour" 			=> "Twice an Hour",
-							"onceanhour" 			=> "Once an Hour",
-							"everytwohours" 		=> "Once Every 2 Hours",
-							"everythreehours" 		=> "Once Every 3 Hours",
-							"everyfourhours" 		=> "Once Every 4 Hours",
-							"everyfivehours" 		=> "Once Every 5 Hours",
-							"everysixhours" 		=> "Once Every 6 Hours",
-							"everysevenhours" 		=> "Once Every 7 Hours",
-							"everyeighthours" 		=> "Once Every 8 Hours",
-							"everyninehours" 		=> "Once Every 9 Hours",
-							"everytenhours" 		=> "Once Every 10 Hours",
-							"onceaday" 				=> "Once a Day",
-							"everythreedays" 		=> "Once Every 3 Days",
-							"everytendays" 			=> "Once Every 10 Days",
-							"montly" 				=> "Once a Month",
-							"yearly" 				=> "Once a Year",
-							"hourly" 				=> "Once Hourly",
-							"twicedaily" 			=> "Twice Daily",
-							"daily" 				=> "Once Daily"
+							"weekly"                => "Once a Week",
+							"everyminute"           => "Once Every 1 Minute",
+							"everyfiveminute"       => "Once Every 5 Minutes",
+							"everyfifteenminute"    => "Once Every 15 Minutes",
+							"twiceanhour"           => "Twice an Hour",
+							"onceanhour"            => "Once an Hour",
+							"everytwohours"         => "Once Every 2 Hours",
+							"everythreehours"       => "Once Every 3 Hours",
+							"everyfourhours"        => "Once Every 4 Hours",
+							"everyfivehours"        => "Once Every 5 Hours",
+							"everysixhours"         => "Once Every 6 Hours",
+							"everysevenhours"       => "Once Every 7 Hours",
+							"everyeighthours"       => "Once Every 8 Hours",
+							"everyninehours"        => "Once Every 9 Hours",
+							"everytenhours"         => "Once Every 10 Hours",
+							"onceaday"              => "Once a Day",
+							"everythreedays"        => "Once Every 3 Days",
+							"everytendays"          => "Once Every 10 Days",
+							"montly"                => "Once a Month",
+							"yearly"                => "Once a Year",
+							"hourly"                => "Once Hourly",
+							"twicedaily"            => "Twice Daily",
+							"daily"                 => "Once Daily"
 
 						)
 					),
 
 					array(
-						'name'			=> 'clearcache',
-						'type'			=> 'button',
-						'label'			=> __('Clear cache data', 'yotuwp-easy-youtube-embed'),
-						'btn-label'		=> __('Delete Cache', 'yotuwp-easy-youtube-embed'),
-						'priority' 		=> 30,
-						'func' 		=> 'delete-cache',
-						'description'	=> __('Delete all videos cache to get latest update from your channel/playlist.', 'yotuwp-easy-youtube-embed'),
+						'name'          => 'clearcache',
+						'type'          => 'button',
+						'label'         => __('Clear cache data', 'yotuwp-easy-youtube-embed'),
+						'btn-label'     => __('Delete Cache', 'yotuwp-easy-youtube-embed'),
+						'priority'      => 30,
+						'func'      => 'delete-cache',
+						'description'   => __('Delete all videos cache to get latest update from your channel/playlist.', 'yotuwp-easy-youtube-embed'),
 					)
 				)
 			);
@@ -539,7 +539,7 @@ class YotuViews{
 	?>
 
 	<div class="yotu_insert_popup" data-type="playlist">
-		<?php 
+		<?php
 		if (is_array( $yotuwp->api) && $yotuwp->api['api_key'] !=''):?>
 			<h4><?php _e('Step #1: Select type videos you want to inserts', 'yotuwp-easy-youtube-embed');?></h4>
 			<ul class="yotu-tabs yotu-tabs-insert">
@@ -555,10 +555,10 @@ class YotuViews{
 				<li>
 					<a href="#" data-tab="single" data-yotu="insert"><?php _e('Single Video', 'yotuwp-easy-youtube-embed');?></a>
 				</li>
-				<li>	
+				<li>
 					<a href="#" data-tab="videos" data-yotu="insert"><?php _e('Multi Videos', 'yotuwp-easy-youtube-embed');?></a>
 				</li>
-				<li>	
+				<li>
 					<a href="#" data-tab="keyword" data-yotu="insert"><?php _e('By Keyword', 'yotuwp-easy-youtube-embed');?></a>
 				</li>
 			</ul>
@@ -639,14 +639,14 @@ class YotuViews{
 			</div>
 			<?php if( $is_panel):?>
 				<div class="yotu-actions">
-					<a href="#" class="yotu-button yotu-button-primary"><?php _e('Insert Shortcode', 'yotuwp-easy-youtube-embed');?></a>    
+					<a href="#" class="yotu-button yotu-button-primary"><?php _e('Insert Shortcode', 'yotuwp-easy-youtube-embed');?></a>
 				</div>
 			<?php else:?>
 				<div class="yotu-step">
 					<h4><?php _e('Step #3: Copy your shortcode', 'yotuwp-easy-youtube-embed');?></h4>
 					<p><?php _e('Click on the input the select shortcode text then paste into your place you want to display gallery.', 'yotuwp-easy-youtube-embed');?></p>
 					<div class="yotu-shortcode-gen yotu-input-url">
-						<input type="text" name="shortcode" id="shortcode_val" value="" class="yotu-input-value" />   
+						<input type="text" name="shortcode" id="shortcode_val" value="" class="yotu-input-value" />
 					</div>
 				</div>
 			<?php endif;?>
@@ -675,7 +675,7 @@ class YotuViews{
 			$html = (isset($data['error']) && $data['error'] == 1) ? $data['msg'] : __('YouTube Gallery: An issue happend when getting the videos, please check your connection and refresh page again .', 'yotuwp-easy-youtube-embed');
 		}
 		else {
-				
+
 			$playerId = uniqid();
 
 			if( $settings['player']['mode'] == 'popup')
@@ -690,7 +690,7 @@ class YotuViews{
 			else
 				$width_class = 'yotu-player-full';
 
-			$classeses 		= apply_filters('yotuwp_top_classes', array('yotu-playlist yotuwp'), $settings);
+			$classeses      = apply_filters('yotuwp_top_classes', array('yotu-playlist yotuwp'), $settings);
 			$classeses[]    = 'yotu-limit-min'. (( $data->totalPage == 1)? ' yotu-limit-max' : '');
 			$classeses[]    = $width_class;
 
@@ -702,8 +702,8 @@ class YotuViews{
 			$classes_attr = implode( ' ', $classeses );
 
 			?>
-			<div 
-			class="<?php esc_attr_e( $classes_attr );?>" 
+			<div
+			class="<?php esc_attr_e( $classes_attr );?>"
 			data-page="1"
 			id="yotuwp-<?php esc_attr_e( $settings['gallery_id'] );?>"
 			data-yotu="<?php esc_attr_e($playerId);?>"
@@ -738,10 +738,10 @@ class YotuViews{
 
 					<?php
 					endif;
-					
+
 					if (
-						isset( $settings['pagination'] ) && 
-						$settings['pagination'] == 'on' && 
+						isset( $settings['pagination'] ) &&
+						$settings['pagination'] == 'on' &&
 						$settings['pagitype'] == 'pager'
 					) {
 						$pagination_pos = 'top';
@@ -752,7 +752,7 @@ class YotuViews{
 					echo yotuwp_kses($template_html);
 
 					if (
-						isset( $settings['pagination']) && 
+						isset( $settings['pagination']) &&
 						$settings['pagination'] == 'on'
 					) {
 						$pagination_pos = 'bottom';
@@ -762,7 +762,7 @@ class YotuViews{
 				</div>
 			</div>
 			<?php
-			
+
 			$html = ob_get_contents();
 			ob_end_clean();
 		}
@@ -778,13 +778,13 @@ class YotuViews{
 		<div class="yotu-wrap wrap yotuwp-settings">
 			<h1></h1>
 			<div class="yotu-body">
-				
+
 				<?php if (isset( $_GET['install'])):?>
 					<div id="message" class="updated notice notice-success is-dismissible megabounce-msg">
 						<p><?php _e('Thank you for activation YotuWP! Set your API key to start using. <a href="https://www.yotuwp.com/document/?utm_source=clientsite&amp;utm_medium=docs&amp;utm_campaign=doc" target="_blank">Read more</a>', 'yotuwp-easy-youtube-embed');?></p>
 					</div>
 				<?php endif?>
-				
+
 				<div class="yotu-body-form">
 					<form method="post" action="options.php">
 						<input type="hidden" id="yotu-settings-last_tab" class="yotu-param" name="yotu-settings[last_tab]" value="<?php esc_attr_e($yotuwp->options['last_tab']) ;?>">
@@ -798,7 +798,7 @@ class YotuViews{
 							<?php submit_button(); ?>
 						</div>
 						<?php settings_errors(); ?>
-						
+
 						<?php
 						//unset($yotuwp->options['premium']);
 						$data = array(
@@ -816,13 +816,13 @@ class YotuViews{
 						?>
 					</form>
 				</div>
-				
+
 
 			</div>
-			
+
 		</div>
 		<?php
-		
+
 	}
 
 	public function slugify( $text) {
@@ -849,13 +849,13 @@ class YotuViews{
 			include( $yotuwp->pro_path . YTDS . 'inc' . YTDS  .  'fields.php');
 			$field_control = new YotuProFields();
 		} else $field_control = new YotuFields();
-		
 
-		
+
+
 
 		$tabs_control = array();
 		$tabs_content = array();
-		
+
 		uasort( $sections, function( $a, $b ) {
 			if( !isset( $a['priority'] ) ) return false;
 			if( !isset( $b['priority'] ) ) return true;
@@ -865,13 +865,13 @@ class YotuViews{
 		foreach ( $sections as $tab => $section) {
 
 			//if(!isset($section['title'])) print_r($section);
-			
+
 			$group_id = $section['key'];
 
 			$tabs_control[] = '<li><a href="#" data-tab="'.$group_id.'">'.( isset( $section['icon'] )? '<span class="dashicons '. $section['icon'] .'"></span>' : '' ) . $section['title'].'</a></li>';
 			$tabs_content[] = '<div class="yotu-tab-content" style="display:block;" id="yotu-tab-'.$group_id.'">';
 
-			
+
 			uasort($section['fields'], function($a, $b) {
 				if( !isset( $a['priority'] ) ) return false;
 				if( !isset( $b['priority'] ) ) return true;
@@ -893,7 +893,7 @@ class YotuViews{
 		<div class="yotu-tabs">
 			<ul><?php echo yotuwp_kses( implode( '', $tabs_control ) );?></ul>
 		</div>
-		
+
 		<div class="yotu-tabs-content"><?php echo yotuwp_kses(implode( '',  $tabs_content ) );?></div>
 		<?php if ( $is_panel ):
 		?>
@@ -912,7 +912,7 @@ class YotuViews{
 
 	public function shortcode_gen(){
 		global $yotuwp, $current_user ;
-		
+
 		$user_id = $current_user->ID;
 		if ( !get_user_meta( $user_id, 'yotuwp_scgen_ignore_notice' ) ) {
 			update_user_meta( $user_id, 'yotuwp_scgen_ignore_notice', false);
@@ -927,9 +927,9 @@ class YotuViews{
 				<h1><?php _e('YotuWP Shortcode Generate', 'yotuwp-easy-youtube-embed');?></h1>
 				<p><?php _e('This feature helps you generate a YouTube Gallery shortcode to adding to any page builder, product description or widget.', 'yotuwp-easy-youtube-embed');?></p>
 				<?php $this->popup( $yotuwp, false); ?>
-				
+
 			</div>
-			
+
 		</div>
 		<?php
 	}

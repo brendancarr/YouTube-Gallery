@@ -16,7 +16,7 @@ $video_classes = apply_filters( 'yotu_video_classes', array("yotu-video"), $sett
 
 			foreach($data->items as $video){
 				if ( $yotuwp->is_private($video) ) continue;
-				
+
 				$thumb = yotuwp_video_thumb($video);
 				$videoId = $yotuwp->getVideoId($video);
 
@@ -39,7 +39,7 @@ $video_classes = apply_filters( 'yotu_video_classes', array("yotu-video"), $sett
 					<div class="yotu-video-thumb-wrp">
 						<div>
 							<?php do_action('yotuwp_before_thumbnail', $videoId, $video, $settings);?>
-							<img class="yotu-video-thumb" src="<?php esc_attr_e( $thumb );?>" alt="<?php esc_attr_e( $video_title ) ;?>">	
+							<img class="yotu-video-thumb" src="<?php esc_attr_e( $thumb );?>" alt="<?php esc_attr_e( $video_title ) ;?>">
 							<?php do_action('yotuwp_after_thumbnail', $videoId, $video);?>
 						</div>
 					</div>
@@ -53,11 +53,11 @@ $video_classes = apply_filters( 'yotu_video_classes', array("yotu-video"), $sett
 				</a>
 				<?php do_action('yotuwp_after_link', $videoId, $video);?>
 			</li>
-				
+
 			<?php
 			$count++;
 			}
-		endif;	
+		endif;
 		?>
 	</ul>
 </div>
