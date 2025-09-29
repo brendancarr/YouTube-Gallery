@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<ruleset name="YouTube Gallery">
+
+	<!-- Add source codes in the report. -->
+	<arg value="s" />
+	<arg name="colors" />
+
+	<!-- Check all PHP files in directory tree by default. -->
+	<arg name="extensions" value="php" />
+	<file>.</file>
+
+	<rule ref="WordPress">
+
+		<!-- PSR4: Allow custom file names. -->
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+
+		<!-- Allow example code blocks. -->
+		<exclude name="Squiz.PHP.CommentedOutCode.Found" />
+		<exclude name="Squiz.Commenting.BlockComment.HasEmptyLineBefore" />
+
+		<!-- Outstanding rules to apply. -->
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamName" />
+		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop" />
+		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
+		<exclude name="Squiz.Commenting.InlineComment.NoSpaceBefore" />
+		<exclude name="Squiz.Commenting.InlineComment.SpacingBefore" />
+		<exclude name="Squiz.Commenting.VariableComment.Missing" />
+
+		<exclude name="WordPress.NamingConventions.ValidVariableName.InterpolatedVariableNotSnakeCase" />
+		<exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid" />
+		<exclude name="WordPress.NamingConventions.ValidVariableName.PropertyNotSnakeCase" />
+		<exclude name="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase" />
+		<exclude name="WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase" />
+		<exclude name="WordPress.PHP.StrictComparisons.LooseComparison" />
+		<exclude name="WordPress.PHP.StrictInArray.MissingTrueStrict" />
+		<exclude name="WordPress.PHP.YodaConditions.NotYoda" />
+		<exclude name="WordPress.WP.CronInterval.CronSchedulesInterval" />
+		<exclude name="WordPress.WP.EnqueuedResourceParameters.MissingVersion" />
+		<exclude name="WordPress.WP.EnqueuedResourceParameters.NotInFooter" />
+		<exclude name="WordPress.WP.I18n.MissingTranslatorsComment" />
+
+	</rule>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array" value="yotuwp-easy-youtube-embed" />
+		</properties>
+	</rule>
+
+	<!-- Enforce short array syntax.
+	<rule ref="Generic.Arrays.DisallowShortArraySyntax.Found">
+		<severity>0</severity>
+	</rule>
+	<rule ref="Generic.Arrays.DisallowLongArraySyntax.Found" />
+	-->
+
+	<!-- Nesting levels. -->
+	<rule ref="Generic.Metrics.NestingLevel">
+		<properties>
+			<!-- Warning level. -->
+            <property name="nestingLevel" value="4"/>
+			<!-- Error level. -->
+			<property name="absoluteNestingLevel" value="5" />
+		</properties>
+	</rule>
+
+	<exclude-pattern>tests/*</exclude-pattern>
+
+</ruleset>
