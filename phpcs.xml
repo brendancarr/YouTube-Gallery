@@ -23,9 +23,6 @@
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamName" />
 		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop" />
-		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
-		<exclude name="Squiz.Commenting.InlineComment.NoSpaceBefore" />
-		<exclude name="Squiz.Commenting.InlineComment.SpacingBefore" />
 		<exclude name="Squiz.Commenting.VariableComment.Missing" />
 
 		<exclude name="WordPress.NamingConventions.ValidVariableName.InterpolatedVariableNotSnakeCase" />

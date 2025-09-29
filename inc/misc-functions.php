@@ -14,15 +14,15 @@ defined( 'ABSPATH' ) || exit;
 function yotuwp_doing_cron() {
 
 	if ( function_exists( 'wp_doing_cron' ) && wp_doing_cron() ) {
-		// Bail if not doing WordPress cron (>4.8.0)
+		// Bail if not doing WordPress cron (>4.8.0).
 		return true;
 
 	} elseif ( defined( 'DOING_CRON' ) && ( true === DOING_CRON ) ) {
-		// Bail if not doing WordPress cron (<4.8.0)
+		// Bail if not doing WordPress cron (<4.8.0).
 		return true;
 	}
 
-	// Default to false
+	// Default to false.
 	return false;
 }
 
@@ -53,11 +53,10 @@ function yotuwp_video_thumb( $video ) {
  * Applieed KSES to content.
  */
 function yotuwp_kses( $content ) {
-	//return $content;
 
 	$allowed_html = wp_kses_allowed_html( 'post' );
 
-	// iframe
+	// Iframe.
 	$allowed_html['iframe'] = array(
 		'src'             => array(),
 		'height'          => array(),
@@ -65,7 +64,8 @@ function yotuwp_kses( $content ) {
 		'frameborder'     => array(),
 		'allowfullscreen' => array(),
 	);
-	// form fields - input
+
+	// Form fields - input.
 	$allowed_html['input'] = array(
 		'class'    => array(),
 		'data-*'   => 1,
@@ -76,7 +76,8 @@ function yotuwp_kses( $content ) {
 		'selected' => array(),
 		'checked'  => array(),
 	);
-	// select
+
+	// Select.
 	$allowed_html['select'] = array(
 		'class'  => array(),
 		'data-*' => 1,
@@ -85,17 +86,19 @@ function yotuwp_kses( $content ) {
 		'value'  => array(),
 		'type'   => array(),
 	);
-	// select options
+
+	// Select options.
 	$allowed_html['option'] = array(
 		'selected' => array(),
 		'value'    => array(),
 	);
-	// style
+
+	// Style.
 	$allowed_html['style'] = array(
 		'types' => array(),
 	);
 
-	// style
+	// Script.
 	$allowed_html['script'] = array(
 		'src'  => array(),
 		'type' => array(),

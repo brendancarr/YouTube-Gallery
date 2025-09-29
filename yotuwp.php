@@ -183,11 +183,18 @@ class YotuWP {
 		add_action( 'wp_ajax_nopriv_yotu_pagination', array( $this, 'load_more' ) );
 		add_action( 'wp_ajax_yotu_pagination', array( $this, 'load_more' ) );
 
-		//add_action( 'wp_ajax_nopriv_yotu_deletecache', array( $this, 'deletecache' ) );
+		/*
+		// Do not clear cache for unprivileged users.
+		add_action( 'wp_ajax_nopriv_yotu_deletecache', array( $this, 'deletecache' ) );
+		*/
 		add_action( 'wp_ajax_yotu_deletecache', array( $this, 'deletecache' ) );
 
-		//add_action( 'wp_ajax_nopriv_yotu_thumbs', array( $this, 'load_thumbs' ) );
-		//add_action( 'wp_ajax_yotu_thumbs', array( $this, 'load_thumbs' ) );
+		/*
+		// Load thumbs is disabled.
+		add_action( 'wp_ajax_nopriv_yotu_thumbs', array( $this, 'load_thumbs' ) );
+		add_action( 'wp_ajax_yotu_thumbs', array( $this, 'load_thumbs' ) );
+		*/
+
 		add_action( 'wp_ajax_nopriv_yotu_getinfo', array( $this, 'search' ) );
 		add_action( 'wp_ajax_yotu_getinfo', array( $this, 'search' ) );
 
@@ -364,19 +371,18 @@ class YotuWP {
 			)
 		);
 
-		//vendors
+		// Vendors.
 		wp_register_script( 'jquery-owlcarousel', $this->url . 'assets/vendors/owlcarousel/owl.carousel.min.js', array( 'jquery' ), $this->version, true );
 		wp_register_style( 'jquery-owlcarousel', $this->url . 'assets/vendors/owlcarousel/assets/owl.carousel.min.css', false, $this->version );
 		wp_register_style( 'jquery-owlcarousel-theme', $this->url . 'assets/vendors/owlcarousel/assets/owl.theme.default.css', false, $this->version );
 
-		//custom css
+		// Custom CSS.
 		$custom_css = '';
 
 		foreach ( $this->views->sections as $tab ) {
 			foreach ( $tab['fields'] as $field ) {
 
 				if ( isset( $field['css'] ) ) {
-					//print_r($field);
 					$data        = explode( '|', $field['css'] );
 					$custom_css .= ! empty( $this->styling[ $field['name'] ] ) ? $data[0] . '{' . $data[1] . ':' . $this->styling[ $field['name'] ] . ( isset( $data[2] ) ? '!important' : '' ) . '}' : '';
 				}
@@ -496,7 +502,7 @@ class YotuWP {
 					$styling_options[ $key ] = $styling[ $key ];
 				}
 
-				//render custom css
+				// Render custom CSS.
 				$custom_css = '';
 				foreach ( $this->views->sections as $tab ) {
 					foreach ( $tab['fields'] as $field ) {
@@ -660,24 +666,26 @@ class YotuWP {
 				break;
 
 			case 'channel':
-				//find playlist id from channel
+				// Find Playlist ID from channel.
 				$url  = 'https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=' . $atts['id'];
 				$data = $this->load_content( $url );
 
 				if ( ! is_array( $data ) ) {
-					//print_r($data);
-					$playlist = $data->items[0]->contentDetails->relatedPlaylists->uploads;
-					$api_url  = 'https://www.googleapis.com/youtube/v3/playlistItems?part=id,snippet,contentDetails,status&maxResults=' . $atts['per_page'] . '&playlistId=' . $playlist;
-					//$api_url  		= 'https://www.googleapis.com/youtube/v3/search?part=id,snippet&maxResults='.$atts['per_page'].'&type=video&channelId='. $atts['id'];
-					//echo $api_url;
+					$playlist     = $data->items[0]->contentDetails->relatedPlaylists->uploads;
+					$api_url      = 'https://www.googleapis.com/youtube/v3/playlistItems?part=id,snippet,contentDetails,status&maxResults=' . $atts['per_page'] . '&playlistId=' . $playlist;
 					$atts['type'] = 'playlist';
 					$atts['id']   = $playlist;
+
+					/*
+					// Legacy API URL comment.
+					$api_url = 'https://www.googleapis.com/youtube/v3/search?part=id,snippet&maxResults=' . $atts['per_page'] . '&type=video&channelId=' . $atts['id'];
+					*/
 				}
 
 				break;
 
 			case 'username':
-				//find playlist id from channel
+				// Find Playlist ID from channel.
 				$url  = 'https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forUsername=' . $atts['id'];
 				$data = $this->load_content( $url );
 
@@ -692,7 +700,7 @@ class YotuWP {
 				break;
 
 			default:
-				// code...
+				// TODO: Is something meant to go here?
 				break;
 		}
 
@@ -974,12 +982,12 @@ class YotuWP {
 
 		global $wp_filesystem;
 
-		//check folder is exist
+		// Check folder exists.
 		if ( ! $wp_filesystem->is_dir( $this->cache_path ) ) {
 			$wp_filesystem->mkdir( $this->cache_path );
 		}
 
-		//check folder is exist
+		// Check folder exists.
 		if ( ! $wp_filesystem->is_dir( $this->preset_path ) ) {
 			$wp_filesystem->mkdir( $this->preset_path );
 		}
@@ -1005,7 +1013,7 @@ class YotuWP {
 
 			global $wp_filesystem;
 
-			// get content
+			// Get content.
 			if ( empty( $content ) ) {
 				$file_name = $this->cache_path . $id . '.json';
 
@@ -1015,8 +1023,7 @@ class YotuWP {
 					return $wp_filesystem->get_contents( $file_name );
 				}
 			} else {
-				// store content
-				// check folder is exist
+				// Store content.
 				$wp_filesystem->put_contents(
 					$this->cache_path . $id . '.json',
 					$content,
@@ -1462,7 +1469,7 @@ class YotuWP {
 					$field_name = $field['name'];
 
 					if ( isset( $field['preset'] ) && isset( $presets[ $field_name ] ) ) {
-						//collect value
+						// Collect value.
 						$new_value   = $new_data[ $field_name ];
 						$custom_css .= "\n";
 						$custom_css .= stripslashes( $presets[ $field_name ][ $new_value ]['data'] );
