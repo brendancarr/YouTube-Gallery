@@ -1070,7 +1070,7 @@ class YotuWP {
 	 *
 	 * TODO: This looks cursory.
 	 */
-	public function admin_post_save_data( $inputs = NULL ) {
+	public function admin_post_save_data( $inputs = null ) {
 
 		foreach( $inputs as $key => $val ) {
 			$inputs[ $key ] = sanitize_text_field( esc_js($val));
@@ -1085,7 +1085,7 @@ class YotuWP {
 	 */
 	public function media_button() {
 
-		if ( stripos( $_SERVER['REQUEST_URI'], 'post.php' ) === FALSE && stripos( $_SERVER['REQUEST_URI'], 'post-new.php' ) === FALSE ) {
+		if ( stripos( $_SERVER['REQUEST_URI'], 'post.php' ) === false && stripos( $_SERVER['REQUEST_URI'], 'post-new.php' ) === false ) {
 			return;
 		}
 
@@ -1101,7 +1101,7 @@ class YotuWP {
 	 */
 	public function insert_popup() {
 
-		if ( stripos( $_SERVER['REQUEST_URI'], 'post.php' ) === FALSE && stripos( $_SERVER['REQUEST_URI'], 'post-new.php' ) === FALSE ) {
+		if ( stripos( $_SERVER['REQUEST_URI'], 'post.php' ) === false && stripos( $_SERVER['REQUEST_URI'], 'post-new.php' ) === false ) {
 			return;
 		}
 		add_thickbox();
@@ -1330,7 +1330,7 @@ class YotuWP {
 	 */
 	public function lang_cfg() {
 
-		load_plugin_textdomain( 'yotuwp-easy-youtube-embed', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'yotuwp-easy-youtube-embed', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 
 		$this->lang = array(
 			1 => __( 'Forbidden: You do not have permission to access resource on this server.', 'yotuwp-easy-youtube-embed' ),

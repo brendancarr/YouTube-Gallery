@@ -48,7 +48,6 @@
 		<exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.SpaceBeforeBrace" />
 		<exclude name="Generic.Metrics.NestingLevel.MaxExceeded" />
 		<exclude name="Generic.Metrics.NestingLevel.TooHigh" />
-		<exclude name="Generic.PHP.LowerCaseConstant.Found" />
 		<exclude name="Generic.Strings.UnnecessaryStringConcat.Found" />
 		<exclude name="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed" />
 		<exclude name="Generic.WhiteSpace.ArbitraryParenthesesSpacing.SpaceAfterOpen" />
