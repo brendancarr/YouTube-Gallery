@@ -1,0 +1,737 @@
+# Copyright (C) 2025 YotuThemes + Infinus
+# This file is distributed under the GPL-3.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: YouTube Gallery 1.3.16\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/youtube-gallery\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-09-29T20:15:47+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: yotuwp-easy-youtube-embed\n"
+
+#. Plugin Name of the plugin
+#: yotuwp.php
+msgid "YouTube Gallery"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: yotuwp.php
+msgid "https://infinus.ca/plugins/youtube-gallery/"
+msgstr ""
+
+#. Description of the plugin
+#: yotuwp.php
+msgid "Easy embed YouTube playlist, channel, videos and user videos to posts/pages/widgets."
+msgstr ""
+
+#. Author of the plugin
+#: yotuwp.php
+msgid "YotuThemes + Infinus"
+msgstr ""
+
+#. Author URI of the plugin
+#: yotuwp.php
+msgid "https://infinus.ca"
+msgstr ""
+
+#: inc/fields.php:177
+#, php-format
+msgid "%s Settings"
+msgstr ""
+
+#: inc/fields.php:218
+#: templates/pagination.php:13
+msgid "Prev"
+msgstr ""
+
+#: inc/fields.php:219
+#: templates/pagination.php:14
+msgid "Next"
+msgstr ""
+
+#: inc/fields.php:222
+#, php-format
+msgid "Style %s"
+msgstr ""
+
+#: inc/views.php:28
+msgid "Grid"
+msgstr ""
+
+#: inc/views.php:29
+msgid "List"
+msgstr ""
+
+#: inc/views.php:30
+msgid "Mix"
+msgstr ""
+
+#: inc/views.php:39
+msgid "General"
+msgstr ""
+
+#: inc/views.php:45
+msgid "Videos Layout Template"
+msgstr ""
+
+#: inc/views.php:48
+msgid "Layout for display videos."
+msgstr ""
+
+#: inc/views.php:54
+msgid "Columns"
+msgstr ""
+
+#: inc/views.php:57
+msgid "The number columns of videos on Grid and Mix layout mode."
+msgstr ""
+
+#: inc/views.php:70
+msgid "Videos per page"
+msgstr ""
+
+#: inc/views.php:73
+msgid "The limit number videos per page."
+msgstr ""
+
+#: inc/views.php:78
+msgid "Pagination?"
+msgstr ""
+
+#: inc/views.php:81
+msgid "The pagination for reaching more videos on list."
+msgstr ""
+
+#: inc/views.php:86
+msgid "Pagination type"
+msgstr ""
+
+#: inc/views.php:89
+msgid "The type display and loading of pagination. Pager display next/preve button and current page. Load more displays one button on bottom. Default: pager"
+msgstr ""
+
+#: inc/views.php:98
+msgid "Videos Title?"
+msgstr ""
+
+#: inc/views.php:101
+msgid "Display video title on listing."
+msgstr ""
+
+#: inc/views.php:106
+msgid "Videos Description?"
+msgstr ""
+
+#: inc/views.php:109
+msgid "Display video description on listing."
+msgstr ""
+
+#: inc/views.php:114
+msgid "Video Thumbnail Ratio"
+msgstr ""
+
+#: inc/views.php:117
+msgid "Change video thumnail ratio to remove top and bottom bar."
+msgstr ""
+
+#: inc/views.php:130
+msgid "Player"
+msgstr ""
+
+#: inc/views.php:136
+msgid "Player Mode"
+msgstr ""
+
+#: inc/views.php:139
+msgid "Layout for video player."
+msgstr ""
+
+#: inc/views.php:141
+msgid "Large"
+msgstr ""
+
+#: inc/views.php:142
+msgid "Popup"
+msgstr ""
+
+#: inc/views.php:149
+msgid "Player width"
+msgstr ""
+
+#: inc/views.php:151
+msgid "The default width of player. Set 0 to use full container width player. Default : 600(px)"
+msgstr ""
+
+#: inc/views.php:157
+msgid "Scrolling Offset"
+msgstr ""
+
+#: inc/views.php:159
+msgid "The distance betwen top browser with player when play a video. Set 0 for auto center player in screen. Default : 100(px)"
+msgstr ""
+
+#: inc/views.php:164
+msgid "Playing Title"
+msgstr ""
+
+#: inc/views.php:167
+msgid "Show title playing video on top of player. Default disabled."
+msgstr ""
+
+#: inc/views.php:172
+msgid "Playing Description"
+msgstr ""
+
+#: inc/views.php:175
+msgid "Show description playing video at bottom of player. Default disabled."
+msgstr ""
+
+#: inc/views.php:180
+msgid "Controls"
+msgstr ""
+
+#: inc/views.php:183
+msgid "This parameter indicates whether the video player controls are displayed"
+msgstr ""
+
+#: inc/views.php:188
+msgid "Auto play"
+msgstr ""
+
+#: inc/views.php:191
+msgid "This parameter specifies whether the initial video will automatically start to play when the player loads."
+msgstr ""
+
+#: inc/views.php:196
+msgid "Auto Next Video"
+msgstr ""
+
+#: inc/views.php:199
+msgid "Enable play next video in list automatically after previous one end."
+msgstr ""
+
+#: inc/views.php:204
+msgid "Related Videos"
+msgstr ""
+
+#: inc/views.php:207
+msgid "This parameter indicates whether the player should show related videos when playback of the initial video ends."
+msgstr ""
+
+#: inc/views.php:212
+msgid "Loop"
+msgstr ""
+
+#: inc/views.php:215
+msgid "In the case of a single video player, enable this for the player to play the initial video again and again."
+msgstr ""
+
+#: inc/views.php:220
+msgid "Branding logo"
+msgstr ""
+
+#: inc/views.php:223
+msgid "Display your brand logo from displaying in the control bar. This option will remove YouTube logo as well."
+msgstr ""
+
+#: inc/views.php:228
+msgid "Show info"
+msgstr ""
+
+#: inc/views.php:231
+msgid "Enable information like the video title and uploader before the video starts playing."
+msgstr ""
+
+#: inc/views.php:236
+msgid "Modal Thumbnails"
+msgstr ""
+
+#: inc/views.php:239
+msgid "Display list of videos on Modal popup player."
+msgstr ""
+
+#: inc/views.php:245
+msgid "Force Closed Captions"
+msgstr ""
+
+#: inc/views.php:248
+msgid "Enable closed captions for video. ."
+msgstr ""
+
+#: inc/views.php:250
+#: inc/views.php:262
+msgid "No"
+msgstr ""
+
+#: inc/views.php:251
+#: inc/views.php:263
+msgid "Yes"
+msgstr ""
+
+#: inc/views.php:257
+msgid "Show annotations"
+msgstr ""
+
+#: inc/views.php:260
+msgid "Choose whether to show annotations or not"
+msgstr ""
+
+#: inc/views.php:270
+msgid "Player Language"
+msgstr ""
+
+#: inc/views.php:272
+#, php-format
+msgid "The language in interface of player. Default is English. The option value is an ISO 639-1 two-letter language code or a fully specified locale. You can get your language code from %s"
+msgstr ""
+
+#: inc/views.php:279
+msgid "Preferred captions language"
+msgstr ""
+
+#: inc/views.php:281
+#, php-format
+msgid "Change preferred language for captions. The option value is an ISO 639-1 two-letter language code or a fully specified locale. You can get your language code from %s"
+msgstr ""
+
+#: inc/views.php:289
+msgid "Styling"
+msgstr ""
+
+#: inc/views.php:295
+msgid "Pager Layout"
+msgstr ""
+
+#: inc/views.php:297
+msgid "The layout for pager. Select one of them to use."
+msgstr ""
+
+#: inc/views.php:301
+#: inc/views.php:383
+msgid "Default"
+msgstr ""
+
+#: inc/views.php:305
+msgid "Center No Text"
+msgstr ""
+
+#: inc/views.php:309
+msgid "Both Side"
+msgstr ""
+
+#: inc/views.php:313
+msgid "Both Side No Text"
+msgstr ""
+
+#: inc/views.php:322
+msgid "Button Style"
+msgstr ""
+
+#: inc/views.php:326
+msgid "The styling for all buttons. Select one of them to using."
+msgstr ""
+
+#: inc/views.php:331
+msgid "Button Text Color"
+msgstr ""
+
+#: inc/views.php:334
+msgid "The color of text on button."
+msgstr ""
+
+#: inc/views.php:340
+msgid "Button Background Color"
+msgstr ""
+
+#: inc/views.php:344
+msgid "The button background color."
+msgstr ""
+
+#: inc/views.php:349
+msgid "Button Color Hover"
+msgstr ""
+
+#: inc/views.php:353
+msgid "The color of text button on hover."
+msgstr ""
+
+#: inc/views.php:358
+msgid "Button Background Color Hover"
+msgstr ""
+
+#: inc/views.php:362
+msgid "The background color of button on hover."
+msgstr ""
+
+#: inc/views.php:367
+msgid "Gallery Background Color"
+msgstr ""
+
+#: inc/views.php:371
+msgid "The background color of gallery."
+msgstr ""
+
+#: inc/views.php:376
+msgid "Video Thumbnail"
+msgstr ""
+
+#: inc/views.php:380
+msgid "Style for a video on list"
+msgstr ""
+
+#: inc/views.php:387
+msgid "Yooglus - Grid Only"
+msgstr ""
+
+#: inc/views.php:391
+msgid "Yabnb - Grid Only"
+msgstr ""
+
+#: inc/views.php:403
+msgid "Effects"
+msgstr ""
+
+#: inc/views.php:409
+msgid "Video Box Effect"
+msgstr ""
+
+#: inc/views.php:413
+msgid "The hover effect on each video thumnails on gallery."
+msgstr ""
+
+#: inc/views.php:458
+msgid "API"
+msgstr ""
+
+#: inc/views.php:465
+msgid "Youtube API Key"
+msgstr ""
+
+#: inc/views.php:482
+msgid "Cache"
+msgstr ""
+
+#: inc/views.php:488
+msgid "Enable?"
+msgstr ""
+
+#: inc/views.php:491
+msgid "The cache to reduce time for loading videos. Give best experience to your readers."
+msgstr ""
+
+#: inc/views.php:497
+msgid "Timeout"
+msgstr ""
+
+#: inc/views.php:500
+msgid "The time your cache removed after created to ensure your videos are fresh."
+msgstr ""
+
+#: inc/views.php:532
+msgid "Clear cache data"
+msgstr ""
+
+#: inc/views.php:533
+msgid "Delete Cache"
+msgstr ""
+
+#: inc/views.php:536
+msgid "Delete all videos cache to get latest update from your channel/playlist."
+msgstr ""
+
+#: inc/views.php:554
+msgid "Step #1: Select type videos you want to inserts"
+msgstr ""
+
+#: inc/views.php:557
+msgid "Playlist/List"
+msgstr ""
+
+#: inc/views.php:560
+msgid "Channel"
+msgstr ""
+
+#: inc/views.php:563
+msgid "Username"
+msgstr ""
+
+#: inc/views.php:566
+msgid "Single Video"
+msgstr ""
+
+#: inc/views.php:569
+msgid "Multi Videos"
+msgstr ""
+
+#: inc/views.php:572
+msgid "By Keyword"
+msgstr ""
+
+#: inc/views.php:577
+msgid "Please enter playlist/list URL for getting info. Then press Verify button to checking data."
+msgstr ""
+
+#: inc/views.php:580
+#: inc/views.php:587
+#: inc/views.php:596
+#: inc/views.php:605
+#: inc/views.php:614
+#: inc/views.php:623
+msgid "Verify"
+msgstr ""
+
+#: inc/views.php:584
+msgid "Please enter channel URL for getting info. Then press Verify button to checking data."
+msgstr ""
+
+#: inc/views.php:591
+msgid "Please enter username you want to get videos. Then press Verify button to checking data."
+msgstr ""
+
+#: inc/views.php:600
+msgid "Enter your video URL into text box below. Each video filled into each line. Then press Verify button to checking data."
+msgstr ""
+
+#: inc/views.php:609
+msgid "Enter your videos URL into text box below. Each video filled into each line. Then press Verify button to checking data."
+msgstr ""
+
+#: inc/views.php:618
+msgid "Enter your keyword into text box below to listing all videos with that keyword."
+msgstr ""
+
+#: inc/views.php:629
+msgid "Step #2: Layout Settings"
+msgstr ""
+
+#: inc/views.php:631
+msgid "Use default options"
+msgstr ""
+
+#: inc/views.php:640
+msgid "Do you need help?"
+msgstr ""
+
+#: inc/views.php:640
+#: inc/views.php:680
+msgid "Check out document here"
+msgstr ""
+
+#: inc/views.php:654
+msgid "Insert Shortcode"
+msgstr ""
+
+#: inc/views.php:658
+msgid "Step #3: Copy your shortcode"
+msgstr ""
+
+#: inc/views.php:659
+msgid "Click on the input the select shortcode text then paste into your place you want to display gallery."
+msgstr ""
+
+#: inc/views.php:673
+#, php-format
+msgid "Please enter your Youtube API key in %1$sthe setting page%2$s to use this feature."
+msgstr ""
+
+#: inc/views.php:680
+msgid "You can follow guide to get API Key and setup it."
+msgstr ""
+
+#: inc/views.php:703
+msgid "YouTube Gallery warning: API Key was removed, please contact to your admin about this issues."
+msgstr ""
+
+#: inc/views.php:705
+msgid "YouTube Gallery: An issue happend when getting the videos, please check your connection and refresh page again ."
+msgstr ""
+
+#: inc/views.php:840
+msgid "Thank you for activating YouTube Gallery! Set your API key to start using."
+msgstr ""
+
+#: inc/views.php:850
+#: inc/views.php:1017
+#, php-format
+msgid "Version %s"
+msgstr ""
+
+#: inc/views.php:852
+msgid "YouTube Gallery Settings"
+msgstr ""
+
+#: inc/views.php:1021
+msgid "YouTube Gallery Shortcode Generator"
+msgstr ""
+
+#: inc/views.php:1022
+msgid "This feature helps you generate a YouTube Gallery shortcode to adding to any page builder, product description or widget."
+msgstr ""
+
+#: templates/pagination.php:15
+msgid "Load more"
+msgstr ""
+
+#: templates/pagination.php:28
+msgid "of"
+msgstr ""
+
+#: yotuwp.php:1008
+#, php-format
+msgid "Template not found : %s"
+msgstr ""
+
+#: yotuwp.php:1118
+#: yotuwp.php:1131
+msgid "YotuWP"
+msgstr ""
+
+#: yotuwp.php:1132
+msgid "General Settings"
+msgstr ""
+
+#: yotuwp.php:1140
+#: yotuwp.php:1141
+msgid "Shortcode Generator"
+msgstr ""
+
+#: yotuwp.php:1228
+msgid "Yotu - Embed Youtube"
+msgstr ""
+
+#: yotuwp.php:1332
+msgid "Once Every 1 Minute"
+msgstr ""
+
+#: yotuwp.php:1337
+msgid "Once Every 5 Minutes"
+msgstr ""
+
+#: yotuwp.php:1342
+msgid "Once Every 15 Minutes"
+msgstr ""
+
+#: yotuwp.php:1347
+msgid "Twice an Hour"
+msgstr ""
+
+#: yotuwp.php:1352
+msgid "Once an Hour"
+msgstr ""
+
+#: yotuwp.php:1357
+msgid "Once Every 2 Hours"
+msgstr ""
+
+#: yotuwp.php:1362
+msgid "Once Every 3 Hours"
+msgstr ""
+
+#: yotuwp.php:1367
+msgid "Once Every 4 Hours"
+msgstr ""
+
+#: yotuwp.php:1372
+msgid "Once Every 5 Hours"
+msgstr ""
+
+#: yotuwp.php:1377
+msgid "Once Every 6 Hours"
+msgstr ""
+
+#: yotuwp.php:1382
+msgid "Once Every 7 Hours"
+msgstr ""
+
+#: yotuwp.php:1387
+msgid "Once Every 8 Hours"
+msgstr ""
+
+#: yotuwp.php:1392
+msgid "Once Every 9 Hours"
+msgstr ""
+
+#: yotuwp.php:1397
+msgid "Once Every 10 Hours"
+msgstr ""
+
+#: yotuwp.php:1402
+msgid "Once a Day"
+msgstr ""
+
+#: yotuwp.php:1407
+msgid "Once Every 3 Days"
+msgstr ""
+
+#: yotuwp.php:1412
+msgid "Once a Week"
+msgstr ""
+
+#: yotuwp.php:1417
+msgid "Once Every 10 Days"
+msgstr ""
+
+#: yotuwp.php:1422
+msgid "Once a Month"
+msgstr ""
+
+#: yotuwp.php:1427
+msgid "Once a Year"
+msgstr ""
+
+#: yotuwp.php:1442
+msgid "Forbidden: You do not have permission to access resource on this server."
+msgstr ""
+
+#: yotuwp.php:1443
+msgid "Resource not found, please ensure you has correct information."
+msgstr ""
+
+#: yotuwp.php:1444
+msgid "Resource not found, please inform administrator about issues."
+msgstr ""
+
+#: yotuwp.php:1445
+msgid "Search Results:"
+msgstr ""
+
+#: yotuwp.php:1446
+msgid "YotuWP: An issue happend when getting the videos, please check your connection and refresh page again."
+msgstr ""
+
+#: yotuwp.php:1447
+msgid "YotuWP: 500 Internal Server Error. Please inform administrator about issues."
+msgstr ""
+
+#: yotuwp.php:1448
+msgid "Play next video."
+msgstr ""
+
+#: yotuwp.php:1449
+msgid "Play previous video."
+msgstr ""
+
+#: yotuwp.php:1450
+msgid "Please insert license key before verify"
+msgstr ""
+
+#: yotuwp.php:1451
+msgid "Are you sure about deactivation current license for this domain?"
+msgstr ""
+
+#: yotuwp.php:1452
+msgid "Checking..."
+msgstr ""
+
+#: yotuwp.php:1565
+msgid "There is a error on clear cache files. Please ensure you have permission on folder /wp-content/yotuwp_cache/"
+msgstr ""
+
+#: yotuwp.php:1568
+msgid "All cache files were deleted!"
+msgstr ""

@@ -148,12 +148,12 @@ class YotuWP {
 		require $this->path . YTDS . 'inc' . YTDS . 'views.php';
 		require $this->path . YTDS . 'inc' . YTDS . 'misc-functions.php';
 
-		add_action( 'init', array( &$this, 'init' ) );
+		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'init', array( $this, 'lang_cfg' ) );
 
 		if ( ! is_admin() ) {
-			add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_script' ), 10 );
-			add_action( 'wp_footer', array( &$this, 'enqueue_inline_script' ), 10 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_script' ), 10 );
+			add_action( 'wp_footer', array( $this, 'enqueue_inline_script' ), 10 );
 
 		} else {
 
@@ -180,16 +180,23 @@ class YotuWP {
 		add_action( 'media_buttons', array( $this, 'media_button' ) );
 		add_action( 'admin_footer', array( $this, 'insert_popup' ) );
 
-		add_action( 'wp_ajax_nopriv_yotu_pagination', array( &$this, 'load_more' ) );
-		add_action( 'wp_ajax_yotu_pagination', array( &$this, 'load_more' ) );
+		add_action( 'wp_ajax_nopriv_yotu_pagination', array( $this, 'load_more' ) );
+		add_action( 'wp_ajax_yotu_pagination', array( $this, 'load_more' ) );
 
-		//add_action( 'wp_ajax_nopriv_yotu_deletecache', array( &$this, 'deletecache' ) );
-		add_action( 'wp_ajax_yotu_deletecache', array( &$this, 'deletecache' ) );
+		/*
+		// Do not clear cache for unprivileged users.
+		add_action( 'wp_ajax_nopriv_yotu_deletecache', array( $this, 'deletecache' ) );
+		*/
+		add_action( 'wp_ajax_yotu_deletecache', array( $this, 'deletecache' ) );
 
-		//add_action( 'wp_ajax_nopriv_yotu_thumbs', array( &$this, 'load_thumbs' ) );
-		//add_action( 'wp_ajax_yotu_thumbs', array( &$this, 'load_thumbs' ) );
-		add_action( 'wp_ajax_nopriv_yotu_getinfo', array( &$this, 'search' ) );
-		add_action( 'wp_ajax_yotu_getinfo', array( &$this, 'search' ) );
+		/*
+		// Load thumbs is disabled.
+		add_action( 'wp_ajax_nopriv_yotu_thumbs', array( $this, 'load_thumbs' ) );
+		add_action( 'wp_ajax_yotu_thumbs', array( $this, 'load_thumbs' ) );
+		*/
+
+		add_action( 'wp_ajax_nopriv_yotu_getinfo', array( $this, 'search' ) );
+		add_action( 'wp_ajax_yotu_getinfo', array( $this, 'search' ) );
 
 		add_action( 'wp', array( $this, 'schedule_events' ) );
 		add_action( 'admin_init', array( $this, 'plugin_redirect' ), 1 );
@@ -364,19 +371,18 @@ class YotuWP {
 			)
 		);
 
-		//vendors
+		// Vendors.
 		wp_register_script( 'jquery-owlcarousel', $this->url . 'assets/vendors/owlcarousel/owl.carousel.min.js', array( 'jquery' ), $this->version, true );
 		wp_register_style( 'jquery-owlcarousel', $this->url . 'assets/vendors/owlcarousel/assets/owl.carousel.min.css', false, $this->version );
 		wp_register_style( 'jquery-owlcarousel-theme', $this->url . 'assets/vendors/owlcarousel/assets/owl.theme.default.css', false, $this->version );
 
-		//custom css
+		// Custom CSS.
 		$custom_css = '';
 
 		foreach ( $this->views->sections as $tab ) {
 			foreach ( $tab['fields'] as $field ) {
 
 				if ( isset( $field['css'] ) ) {
-					//print_r($field);
 					$data        = explode( '|', $field['css'] );
 					$custom_css .= ! empty( $this->styling[ $field['name'] ] ) ? $data[0] . '{' . $data[1] . ':' . $this->styling[ $field['name'] ] . ( isset( $data[2] ) ? '!important' : '' ) . '}' : '';
 				}
@@ -428,6 +434,7 @@ class YotuWP {
 
 		$this->views = new YotuViews();
 
+		// TODO: I can't find where this is set. Perhaps it isn't?
 		$key = ! empty( $_GET['ytwp_action'] ) ? sanitize_key( wp_unslash( $_GET['ytwp_action'] ) ) : false;
 
 		if ( ! empty( $key ) ) {
@@ -496,7 +503,7 @@ class YotuWP {
 					$styling_options[ $key ] = $styling[ $key ];
 				}
 
-				//render custom css
+				// Render custom CSS.
 				$custom_css = '';
 				foreach ( $this->views->sections as $tab ) {
 					foreach ( $tab['fields'] as $field ) {
@@ -552,10 +559,16 @@ class YotuWP {
 	 */
 	public function load_content( $url ) {
 
+		// Return empty array if we hit an error.
+		$default = array(
+			'items' => array(),
+			'error' => true,
+			'msg'   => 'Error decoding JSON.',
+		);
+
 		$url .= '&key=' . trim( $this->api['api_key'] );
 
 		if ( $this->is_cache ) {
-
 			$cache_id      = md5( $url );
 			$cache_content = $this->cache( $cache_id );
 
@@ -572,9 +585,11 @@ class YotuWP {
 				$this->cache( $cache_id, wp_json_encode( $response ) );
 			} else {
 				$response = json_decode( $cache_content, true );
+				if ( JSON_ERROR_NONE !== json_last_error() ) {
+					return $default;
+				}
 			}
 		} else {
-
 			$response = wp_remote_get(
 				$url,
 				array(
@@ -584,15 +599,16 @@ class YotuWP {
 					),
 				)
 			);
-
 		}
 
 		if ( is_wp_error( $response ) || $response['response']['code'] !== 200 ) {
-
 			$msg = '';
 
 			if ( is_array( $response ) && isset( $response['body'] ) ) {
 				$obj = json_decode( $response['body'] );
+				if ( JSON_ERROR_NONE !== json_last_error() ) {
+					return $default;
+				}
 				$msg = $obj->error->message;
 			}
 
@@ -605,10 +621,14 @@ class YotuWP {
 				'error' => true,
 				'msg'   => $msg,
 			);
-
 		}
 
-		return json_decode( $response['body'] );
+		$return = json_decode( $response['body'] );
+		if ( JSON_ERROR_NONE !== json_last_error() ) {
+			return $default;
+		}
+
+		return $return;
 
 	}
 
@@ -617,26 +637,34 @@ class YotuWP {
 	 */
 	public function prepare( &$atts ) {
 
-		$api_url = '';
+		$api_url  = '';
+		$api_base = 'https://www.googleapis.com/youtube/v3/';
 
-		switch ( $atts['type'] ) {
+		// Sanitise decoded variables.
+		$type     = isset( $atts['type'] ) ? sanitize_text_field( $atts['type'] ) : '';
+		$per_page = isset( $atts['per_page'] ) ? (int) sanitize_text_field( $atts['per_page'] ) : 1;
+
+		// The ID can be a Playlist ID, Channel ID (etc) or a comma-delimited string of Video IDs.
+		$entity_id = isset( $atts['id'] ) ? sanitize_text_field( $atts['id'] ) : '';
+
+		switch ( $type ) {
 			case 'playlist':
-				$api_url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=id,snippet,contentDetails,status&maxResults=' . $atts['per_page'] . '&playlistId=' . $atts['id'];
+				$api_url = $api_base . 'playlistItems?part=id,snippet,contentDetails,status&maxResults=' . $per_page . '&playlistId=' . $entity_id;
 				break;
 
 			case 'videos':
 				$page       = isset( $atts['pageToken'] ) ? intval( $atts['pageToken'] ) + 1 : 1;
-				$all_ids    = explode( ',', $atts['id'] );
+				$all_ids    = explode( ',', $entity_id );
 				$total      = count( $all_ids );
-				$totalPages = ceil( $total / $atts['per_page'] );
+				$totalPages = ceil( $total / $per_page );
 				$page       = max( $page, 1 );
 				$page       = min( $page, $totalPages );
-				$offset     = ( $page - 1 ) * $atts['per_page'];
+				$offset     = ( $page - 1 ) * $per_page;
 				if ( $offset < 0 ) {
 					$offset = 0;
 				}
 
-				$cur_ids = array_slice( $all_ids, $offset, $atts['per_page'] );
+				$cur_ids = array_slice( $all_ids, $offset, $per_page );
 
 				$atts['next'] = $page;
 
@@ -652,38 +680,40 @@ class YotuWP {
 
 				unset( $atts['pageToken'] );
 
-				$api_url = 'https://www.googleapis.com/youtube/v3/videos?part=id,snippet,contentDetails,statistics&maxResults=' . $atts['per_page'] . '&id=' . implode( ',', $cur_ids );
+				$api_url = $api_base . 'videos?part=id,snippet,contentDetails,statistics&maxResults=' . $per_page . '&id=' . implode( ',', $cur_ids );
 				break;
 
 			case 'keyword':
-				$api_url = 'https://www.googleapis.com/youtube/v3/search?type=video&part=snippet,id&maxResults=' . $atts['per_page'] . '&q=' . $atts['id'];
+				$api_url = $api_base . 'search?type=video&part=snippet,id&maxResults=' . $per_page . '&q=' . $entity_id;
 				break;
 
 			case 'channel':
-				//find playlist id from channel
-				$url  = 'https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=' . $atts['id'];
+				// Find Playlist ID from channel.
+				$url  = $api_base . 'channels?part=contentDetails&id=' . $entity_id;
 				$data = $this->load_content( $url );
 
 				if ( ! is_array( $data ) ) {
-					//print_r($data);
-					$playlist = $data->items[0]->contentDetails->relatedPlaylists->uploads;
-					$api_url  = 'https://www.googleapis.com/youtube/v3/playlistItems?part=id,snippet,contentDetails,status&maxResults=' . $atts['per_page'] . '&playlistId=' . $playlist;
-					//$api_url  		= 'https://www.googleapis.com/youtube/v3/search?part=id,snippet&maxResults='.$atts['per_page'].'&type=video&channelId='. $atts['id'];
-					//echo $api_url;
+					$playlist     = $data->items[0]->contentDetails->relatedPlaylists->uploads;
+					$api_url      = $api_base . 'playlistItems?part=id,snippet,contentDetails,status&maxResults=' . $per_page . '&playlistId=' . $playlist;
 					$atts['type'] = 'playlist';
 					$atts['id']   = $playlist;
+
+					/*
+					// Legacy API URL comment in case anyone needs it. Shrug.
+					$api_url = $api_base . 'search?part=id,snippet&maxResults=' . $per_page . '&type=video&channelId=' . $entity_id;
+					*/
 				}
 
 				break;
 
 			case 'username':
-				//find playlist id from channel
-				$url  = 'https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forUsername=' . $atts['id'];
+				// Find Playlist ID from channel.
+				$url  = $api_base . 'channels?part=contentDetails&forUsername=' . $entity_id;
 				$data = $this->load_content( $url );
 
 				if ( ! is_array( $data ) ) {
 					$playlist = $data->items[0]->contentDetails->relatedPlaylists->uploads;
-					$api_url  = 'https://www.googleapis.com/youtube/v3/playlistItems?part=id,snippet,contentDetails,status&maxResults=' . $atts['per_page'] . '&playlistId=' . $playlist;
+					$api_url  = $api_base . 'playlistItems?part=id,snippet,contentDetails,status&maxResults=' . $per_page . '&playlistId=' . $playlist;
 
 					$atts['type'] = 'playlist';
 					$atts['id']   = $playlist;
@@ -692,7 +722,7 @@ class YotuWP {
 				break;
 
 			default:
-				// code...
+				// TODO: Is something meant to go here?
 				break;
 		}
 
@@ -704,7 +734,7 @@ class YotuWP {
 
 		if ( ! is_array( $data ) ) {
 
-			if ( $atts['type'] !== 'videos' ) {
+			if ( $type !== 'videos' ) {
 
 				$atts['next'] = isset( $data->nextPageToken ) ? $data->nextPageToken : '';
 				$atts['prev'] = isset( $data->prevPageToken ) ? $data->prevPageToken : '';
@@ -775,30 +805,43 @@ class YotuWP {
 		$page          = isset( $_POST['page'] ) ? sanitize_text_field( wp_unslash( $_POST['page'] ) ) : '';
 		$settings_data = isset( $_POST['settings'] ) ? sanitize_textarea_field( wp_unslash( $_POST['settings'] ) ) : '[]';
 
-		// TODO: This looks shonky.
+		// The plugin's Javascript sends its payload as Base64 encoded. Sanitize decoded variables instead.
+		// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
 		$atts = json_decode( urldecode( base64_decode( $settings_data ) ), true );
+		if ( JSON_ERROR_NONE !== json_last_error() ) {
+			wp_send_json( array( 'error' => true ) );
+		}
+
+		// Send error if not array.
+		if ( ! is_array( $atts ) ) {
+			wp_send_json( array( 'error' => true ) );
+		}
+
+		// Send error if neither next nor previous exist.
+		if ( empty( $atts['next'] ) && empty( $atts['prev'] ) ) {
+			wp_send_json( array( 'error' => true ) );
+		}
 
 		switch ( $page ) {
 			case 'next':
 			case 'more':
-				$atts['pageToken'] = $atts['next'];
+				$atts['pageToken'] = sanitize_text_field( $atts['next'] );
 				break;
 
 			default:
-				$atts['pageToken'] = $atts['prev'];
+				$atts['pageToken'] = sanitize_text_field( $atts['prev'] );
 				break;
 		}
 
 		$data     = $this->prepare( $atts );
 		$atts_tmp = $atts;
 
-		$items = ( ! is_array( $data ) ) ? $data->items : array();
+		$items = ! is_array( $data ) ? $data->items : array();
 
 		$filtered = array();
 		$ids      = array();
 
 		foreach ( $items as $video ) {
-
 			if ( $this->is_private( $video ) ) {
 				continue;
 			}
@@ -838,6 +881,10 @@ class YotuWP {
 
 	/**
 	 * AJAX thumbnail handler.
+	 *
+	 * This callback is disabled.
+	 *
+	 * @see self::__construct()
 	 */
 	public function load_thumbs() {
 
@@ -845,8 +892,17 @@ class YotuWP {
 
 		$settings_data = isset( $_POST['settings'] ) ? sanitize_textarea_field( wp_unslash( $_POST['settings'] ) ) : '[]';
 
-		// TODO: As above - check that this is doing what it's meant to do.
+		// Disabled method, so we can ignore.
+		// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
 		$atts = json_decode( urldecode( base64_decode( $settings_data ) ), true );
+		if ( JSON_ERROR_NONE !== json_last_error() ) {
+			wp_send_json(
+				array(
+					'items' => array(),
+					'token' => '',
+				)
+			);
+		}
 
 		$atts['pageToken'] = ( isset( $_POST['token'] ) && $_POST['token'] != '' ) ? sanitize_text_field( wp_unslash( $_POST['token'] ) ) : $atts['next'];
 		$data              = $this->prepare( $atts );
@@ -855,10 +911,8 @@ class YotuWP {
 		$thumb_type        = $this->get_thumb_type( $atts['column'] );
 
 		if ( ! is_array( $data ) ) {
-
 			$token = $data->nextPageToken;
 			$items = $data->items;
-
 		} else {
 			$items = array();
 		}
@@ -872,6 +926,8 @@ class YotuWP {
 
 			$filtered[] = array(
 				'thumb'   => $video->snippet->thumbnails->$thumb_type->url,
+				// Disabled method, so we can ignore.
+				// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 				'title'   => base64_encode( $video->snippet->title ),
 				'videoId' => $this->getVideoId( $video ),
 			);
@@ -974,12 +1030,12 @@ class YotuWP {
 
 		global $wp_filesystem;
 
-		//check folder is exist
+		// Check folder exists.
 		if ( ! $wp_filesystem->is_dir( $this->cache_path ) ) {
 			$wp_filesystem->mkdir( $this->cache_path );
 		}
 
-		//check folder is exist
+		// Check folder exists.
 		if ( ! $wp_filesystem->is_dir( $this->preset_path ) ) {
 			$wp_filesystem->mkdir( $this->preset_path );
 		}
@@ -1005,7 +1061,7 @@ class YotuWP {
 
 			global $wp_filesystem;
 
-			// get content
+			// Get content.
 			if ( empty( $content ) ) {
 				$file_name = $this->cache_path . $id . '.json';
 
@@ -1015,8 +1071,7 @@ class YotuWP {
 					return $wp_filesystem->get_contents( $file_name );
 				}
 			} else {
-				// store content
-				// check folder is exist
+				// Store content.
 				$wp_filesystem->put_contents(
 					$this->cache_path . $id . '.json',
 					$content,
@@ -1462,7 +1517,7 @@ class YotuWP {
 					$field_name = $field['name'];
 
 					if ( isset( $field['preset'] ) && isset( $presets[ $field_name ] ) ) {
-						//collect value
+						// Collect value.
 						$new_value   = $new_data[ $field_name ];
 						$custom_css .= "\n";
 						$custom_css .= stripslashes( $presets[ $field_name ][ $new_value ]['data'] );
