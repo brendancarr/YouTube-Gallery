@@ -1,0 +1,213 @@
+<?xml version="1.0"?>
+<ruleset name="YouTube Gallery">
+
+	<!-- Add source codes in the report. -->
+	<arg value="s" />
+	<arg name="colors" />
+
+	<!-- Check all PHP files in directory tree by default. -->
+	<arg name="extensions" value="php" />
+	<file>.</file>
+
+	<rule ref="WordPress">
+
+		<!-- Allow slash-delimited hook names. -->
+		<exclude name="WordPress.NamingConventions.ValidHookName.UseUnderscores" />
+
+		<!-- I prefer my control structures. -->
+		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing.BlankLineAfterEnd" />
+
+		<!-- PSR4: Allow short file names. -->
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+
+		<!-- Allow example code blocks. -->
+		<exclude name="Squiz.PHP.CommentedOutCode.Found" />
+		<exclude name="Squiz.Commenting.BlockComment.HasEmptyLineBefore" />
+
+		<!-- Outstanding rules to apply. -->
+		<exclude name="WordPress.Security.NonceVerification.Missing" />
+		<exclude name="WordPress.Security.NonceVerification.Recommended" />
+		<exclude name="WordPress.PHP.StrictInArray.MissingTrueStrict" />
+		<exclude name="WordPress.WP.I18n.MissingTranslatorsComment" />
+
+		<exclude name="Generic.Classes.OpeningBraceSameLine.SpaceBeforeBrace" />
+		<exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedElse" />
+		<exclude name="Generic.Commenting.DocComment.LongNotCapital" />
+		<exclude name="Generic.Commenting.DocComment.MissingShort" />
+		<exclude name="Generic.Commenting.DocComment.ShortNotCapital" />
+		<exclude name="Generic.Commenting.DocComment.SpacingBeforeTags" />
+		<exclude name="Generic.ControlStructures.InlineControlStructure.NotAllowed" />
+		<exclude name="Generic.Files.EndFileNewline.NotFound" />
+		<exclude name="Generic.Formatting.DisallowMultipleStatements.SameLine" />
+		<exclude name="Generic.Formatting.MultipleStatementAlignment.IncorrectWarning" />
+		<exclude name="Generic.Formatting.MultipleStatementAlignment.NotSameWarning" />
+		<exclude name="Generic.Functions.FunctionCallArgumentSpacing.NoSpaceAfterComma" />
+		<exclude name="Generic.Functions.FunctionCallArgumentSpacing.SpaceBeforeComma" />
+		<exclude name="Generic.Functions.FunctionCallArgumentSpacing.TooMuchSpaceAfterComma" />
+		<exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.BraceOnNewLine" />
+		<exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.SpaceBeforeBrace" />
+		<exclude name="Generic.Metrics.NestingLevel.MaxExceeded" />
+		<exclude name="Generic.Metrics.NestingLevel.TooHigh" />
+		<exclude name="Generic.PHP.LowerCaseConstant.Found" />
+		<exclude name="Generic.Strings.UnnecessaryStringConcat.Found" />
+		<exclude name="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed" />
+		<exclude name="Generic.WhiteSpace.ArbitraryParenthesesSpacing.SpaceAfterOpen" />
+		<exclude name="Generic.WhiteSpace.ArbitraryParenthesesSpacing.SpaceBeforeClose" />
+		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
+		<exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
+
+		<exclude name="PSR2.Classes.PropertyDeclaration.Underscore" />
+		<exclude name="PSR2.ControlStructures.ElseIfDeclaration.NotAllowed" />
+		<exclude name="PSR2.ControlStructures.SwitchDeclaration.BodyOnNextLineCASE" />
+		<exclude name="PSR2.ControlStructures.SwitchDeclaration.BodyOnNextLineDEFAULT" />
+		<exclude name="PSR2.ControlStructures.SwitchDeclaration.SpaceBeforeColonCASE" />
+		<exclude name="PSR2.ControlStructures.SwitchDeclaration.SpaceBeforeColonDEFAULT" />
+		<exclude name="PSR2.Methods.MethodDeclaration.Underscore" />
+
+		<exclude name="PEAR.Files.IncludingFile.BracketsNotRequired" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.MultipleArguments" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.SpaceAfterOpenBracket" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.SpaceAfterCloseBracket" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.SpaceBeforeCloseBracket" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.SpaceBeforeOpenBracket" />
+		<exclude name="PEAR.NamingConventions.ValidClassName.Invalid" />
+
+		<exclude name="Squiz.Commenting.BlockComment.NoCapital" />
+		<exclude name="Squiz.Commenting.BlockComment.NoNewLine" />
+		<exclude name="Squiz.Commenting.ClassComment.Missing" />
+		<exclude name="Squiz.Commenting.ClassComment.WrongStyle" />
+		<exclude name="Squiz.Commenting.DocCommentAlignment.SpaceBeforeStar" />
+		<exclude name="Squiz.Commenting.FileComment.Missing" />
+		<exclude name="Squiz.Commenting.FileComment.MissingPackageTag" />
+		<exclude name="Squiz.Commenting.FileComment.SpacingAfterComment" />
+		<exclude name="Squiz.Commenting.FileComment.WrongStyle" />
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
+		<exclude name="Squiz.Commenting.FunctionComment.Missing" />
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamName" />
+		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop" />
+		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfter" />
+		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType" />
+		<exclude name="Squiz.Commenting.FunctionComment.WrongStyle" />
+		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
+		<exclude name="Squiz.Commenting.InlineComment.NoSpaceBefore" />
+		<exclude name="Squiz.Commenting.InlineComment.SpacingBefore" />
+		<exclude name="Squiz.Commenting.VariableComment.Missing" />
+		<exclude name="Squiz.Commenting.VariableComment.WrongStyle" />
+		<exclude name="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace" />
+		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseParenthesis" />
+		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseBrace" />
+		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterKeyword" />
+		<exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpaceAfterEquals" />
+		<exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterOpen" />
+		<exclude name="Squiz.PHP.DisallowMultipleAssignments.Found" />
+		<exclude name="Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure" />
+		<exclude name="Squiz.PHP.EmbeddedPhp.ContentAfterOpen" />
+		<exclude name="Squiz.PHP.EmbeddedPhp.ContentBeforeOpen" />
+		<exclude name="Squiz.PHP.EmbeddedPhp.ContentBeforeEnd" />
+		<exclude name="Squiz.PHP.EmbeddedPhp.MultipleStatements" />
+		<exclude name="Squiz.PHP.EmbeddedPhp.NoSemicolon" />
+		<exclude name="Squiz.PHP.EmbeddedPhp.SpacingAfterOpen" />
+		<exclude name="Squiz.PHP.EmbeddedPhp.SpacingBeforeClose" />
+		<exclude name="Squiz.PHP.NonExecutableCode.Unreachable" />
+		<exclude name="Squiz.PHP.NonExecutableCode.ReturnNotRequired" />
+		<exclude name="Squiz.Scope.MethodScope.Missing" />
+		<exclude name="Squiz.Strings.ConcatenationSpacing.PaddingFound" />
+		<exclude name="Squiz.Strings.DoubleQuoteUsage.NotRequired" />
+		<exclude name="Squiz.WhiteSpace.SemicolonSpacing.Incorrect" />
+		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines" />
+
+		<exclude name="WordPress.DB.SlowDBQuery.slow_db_query_meta_key" />
+		<exclude name="WordPress.DB.SlowDBQuery.slow_db_query_meta_value" />
+		<exclude name="WordPress.Arrays.ArrayDeclarationSpacing.NoSpaceAfterArrayOpener" />
+		<exclude name="WordPress.Arrays.ArrayDeclarationSpacing.NoSpaceBeforeArrayCloser" />
+		<exclude name="WordPress.Arrays.ArrayDeclarationSpacing.ArrayItemNoNewLine" />
+		<exclude name="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound" />
+		<exclude name="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeKeyFound" />
+		<exclude name="WordPress.Arrays.ArrayIndentation.CloseBraceNotAligned" />
+		<exclude name="WordPress.Arrays.ArrayIndentation.ItemNotAligned" />
+		<exclude name="WordPress.Arrays.ArrayKeySpacingRestrictions.NoSpacesAroundArrayKeys" />
+		<exclude name="WordPress.Arrays.CommaAfterArrayItem.NoComma" />
+		<exclude name="WordPress.Arrays.CommaAfterArrayItem.NoSpaceAfterComma" />
+		<exclude name="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned" />
+		<exclude name="WordPress.CodeAnalysis.AssignmentInCondition.Found" />
+		<exclude name="WordPress.CodeAnalysis.EmptyStatement.SemicolonWithoutCodeDetected" />
+		<exclude name="WordPress.DateTime.CurrentTimeTimestamp.RequestedUTC" />
+		<exclude name="WordPress.DateTime.RestrictedFunctions.date_date" />
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+		<exclude name="WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid" />
+		<exclude name="WordPress.NamingConventions.ValidVariableName.InterpolatedVariableNotSnakeCase" />
+		<exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid" />
+		<exclude name="WordPress.NamingConventions.ValidVariableName.PropertyNotSnakeCase" />
+		<exclude name="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase" />
+		<exclude name="WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase" />
+		<exclude name="WordPress.PHP.DevelopmentFunctions.error_log_var_export" />
+		<exclude name="WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode" />
+		<exclude name="WordPress.PHP.DontExtract.extract_extract" />
+		<exclude name="WordPress.PHP.NoSilencedErrors.Discouraged" />
+		<exclude name="WordPress.PHP.StrictComparisons.LooseComparison" />
+		<exclude name="WordPress.PHP.YodaConditions.NotYoda" />
+		<exclude name="WordPress.Security.EscapeOutput.OutputNotEscaped" />
+		<exclude name="WordPress.Security.EscapeOutput.UnsafePrintingFunction" />
+		<exclude name="WordPress.Security.SafeRedirect.wp_redirect_wp_redirect" />
+		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotSanitized" />
+		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotValidated" />
+		<exclude name="WordPress.Security.ValidatedSanitizedInput.MissingUnslash" />
+		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing.ExtraSpaceBeforeCloseParenthesis" />
+		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing.ExtraSpaceAfterCloseParenthesis" />
+		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceAfterOpenParenthesis" />
+		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceBeforeOpenParenthesis" />
+		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceAfterCloseParenthesis" />
+		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceBeforeCloseParenthesis" />
+		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceAfterStructureOpen" />
+		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceBetweenStructureColon" />
+		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing.OpenBraceNotSameLine" />
+		<exclude name="WordPress.WhiteSpace.OperatorSpacing.NoSpaceAfter" />
+		<exclude name="WordPress.WhiteSpace.OperatorSpacing.NoSpaceBefore" />
+		<exclude name="WordPress.WhiteSpace.OperatorSpacing.SpacingAfter" />
+		<exclude name="WordPress.WhiteSpace.OperatorSpacing.SpacingBefore" />
+		<exclude name="WordPress.WhiteSpace.PrecisionAlignment.Found" />
+		<exclude name="WordPress.WP.AlternativeFunctions.json_encode_json_encode" />
+		<exclude name="WordPress.WP.AlternativeFunctions.strip_tags_strip_tags" />
+		<exclude name="WordPress.WP.CapitalPDangit.Misspelled" />
+		<exclude name="WordPress.WP.CronInterval.CronSchedulesInterval" />
+		<exclude name="WordPress.WP.DeprecatedFunctions.sanitize_urlFound" />
+		<exclude name="WordPress.WP.DeprecatedParameters.Load_plugin_textdomainParam2Found" />
+		<exclude name="WordPress.WP.EnqueuedResourceParameters.MissingVersion" />
+		<exclude name="WordPress.WP.EnqueuedResourceParameters.NotInFooter" />
+		<exclude name="WordPress.WP.I18n.MissingArgDomain" />
+		<exclude name="WordPress.WP.I18n.NoEmptyStrings" />
+		<exclude name="WordPress.WP.I18n.NonSingularStringLiteralText" />
+		<exclude name="WordPress.WP.I18n.TextDomainMismatch" />
+
+	</rule>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array" value="yotuwp-easy-youtube-embed" />
+		</properties>
+	</rule>
+
+	<!-- Enforce short array syntax.
+	<rule ref="Generic.Arrays.DisallowShortArraySyntax.Found">
+		<severity>0</severity>
+	</rule>
+	<rule ref="Generic.Arrays.DisallowLongArraySyntax.Found" />
+	-->
+
+	<!-- Nesting levels. -->
+	<rule ref="Generic.Metrics.NestingLevel">
+		<properties>
+			<!-- Warning level. -->
+            <property name="nestingLevel" value="4"/>
+			<!-- Error level. -->
+			<property name="absoluteNestingLevel" value="5" />
+		</properties>
+	</rule>
+
+	<exclude-pattern>tests/*</exclude-pattern>
+
+</ruleset>
