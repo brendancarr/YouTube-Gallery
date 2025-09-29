@@ -745,7 +745,7 @@ class YotuViews {
 			id="yotuwp-<?php echo esc_attr( $settings['gallery_id'] ); ?>"
 			data-yotu="<?php echo esc_attr( $playerId ); ?>"
 			data-total="<?php echo esc_attr( $data->totalPage ); ?>"
-			data-settings="<?php echo esc_attr( base64_encode( wp_json_encode( $settings ) ) ); ?>"
+			data-settings="<?php echo esc_attr( base64_encode( wp_json_encode( $settings ) ) ); /* phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode */ ?>"
 			data-player="<?php echo esc_attr( $settings['player']['mode'] ); ?>"
 			data-showdesc="<?php echo esc_attr( $settings['description'] ); ?>" >
 				<div>
