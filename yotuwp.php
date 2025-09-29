@@ -163,7 +163,6 @@ class YotuWP {
 				update_option( 'yotuwp_install_date', $date_now );
 			}
 
-			add_action( 'admin_init', array( $this, 'check_notice' ) );
 			add_action( 'admin_menu', array( $this, 'menu_page' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin' ), 90 );
 			add_action( 'admin_notices', array( $this, 'admin_notice' ) );
@@ -1379,48 +1378,6 @@ class YotuWP {
 		);
 
 		return $schedules;
-
-	}
-
-	/**
-	 * Checks rating nag.
-	 */
-	public function check_notice() {
-
-		if ( ! current_user_can( 'edit_user' ) ) {
-			return;
-		}
-
-		$user_id = get_current_user_id();
-
-		if ( isset( $_GET['yotuwp_rating_ignore_notice'] ) ) {
-
-			$rating_notice = sanitize_text_field( wp_unslash( $_GET['yotuwp_rating_ignore_notice'] ) );
-
-			switch ( $rating_notice ) {
-				case 'yes':
-					update_user_meta( $user_id, 'yotuwp_rating_ignore_notice', true );
-					break;
-
-				case 'one_week_review':
-					$date_now = gmdate( 'Y-m-d G:i:s' );
-					update_option( 'yotuwp_rating_date', $date_now );
-					break;
-
-				default:
-					// code...
-					break;
-			}
-
-			$http_referrer = isset( $_SERVER['HTTP_REFERER'] ) ? esc_url_raw( wp_unslash( $_SERVER['HTTP_REFERER'] ) ) : admin_url();
-			wp_safe_redirect( $http_referrer );
-			exit;
-
-		}
-
-		if ( isset( $_GET['yotuwp_scgen_ignore_notice'] ) ) {
-			update_user_meta( $user_id, 'yotuwp_scgen_ignore_notice', true );
-		}
 
 	}
 
