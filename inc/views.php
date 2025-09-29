@@ -837,7 +837,7 @@ class YotuViews {
 
 				<?php if ( isset( $_GET['install'] ) ) : // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
 					<div id="message" class="updated notice notice-success is-dismissible megabounce-msg">
-						<p><?php esc_html_e( 'Thank you for activation YotuWP! Set your API key to start using. <a href="https://www.yotuwp.com/document/?utm_source=clientsite&amp;utm_medium=docs&amp;utm_campaign=doc" target="_blank">Read more</a>', 'yotuwp-easy-youtube-embed' ); ?></p>
+						<p><?php esc_html_e( 'Thank you for activating YouTube Gallery! Set your API key to start using.', 'yotuwp-easy-youtube-embed' ); ?></p>
 					</div>
 				<?php endif ?>
 
@@ -1018,7 +1018,7 @@ class YotuViews {
 				</div>
 			</div>
 			<div class="yotu-body shortcode_gen">
-				<h1><?php esc_html_e( 'YotuWP Shortcode Generate', 'yotuwp-easy-youtube-embed' ); ?></h1>
+				<h1><?php esc_html_e( 'YouTube Gallery Shortcode Generator', 'yotuwp-easy-youtube-embed' ); ?></h1>
 				<p><?php esc_html_e( 'This feature helps you generate a YouTube Gallery shortcode to adding to any page builder, product description or widget.', 'yotuwp-easy-youtube-embed' ); ?></p>
 				<?php $this->popup( $yotuwp, false ); ?>
 
