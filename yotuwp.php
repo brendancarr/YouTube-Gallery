@@ -32,7 +32,7 @@ if ( ! defined( 'YOTUWP_VERSION' ) ) {
 global $yotuwp, $yotuwp_inline_script;
 
 /**
- * YotuWP class for plugin.
+ * Plugin class.
  */
 class YotuWP {
 
