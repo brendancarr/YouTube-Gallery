@@ -25,7 +25,7 @@ if ( $settings['pagitype'] == 'pager' ) :
 	?>
 	<div class="yotu-pagination<?php echo esc_attr( $_classes_pagi ); ?><?php echo esc_attr( $buton_layout ); ?>">
 		<a href="#" class="yotu-pagination-prev<?php echo esc_attr( $buton_style ); ?>" data-page="prev"><?php echo wp_kses_post( $prev_text ); ?></a>
-		<span class="yotu-pagination-current">1</span> <span><?php _e( 'of', 'yotuwp-easy-youtube-embed' ); ?></span> <span class="yotu-pagination-total"><?php echo esc_html( $data->totalPage ); ?></span>
+		<span class="yotu-pagination-current">1</span> <span><?php esc_html_e( 'of', 'yotuwp-easy-youtube-embed' ); ?></span> <span class="yotu-pagination-total"><?php echo esc_html( $data->totalPage ); ?></span>
 		<a href="#" class="yotu-pagination-next<?php echo esc_attr( $buton_style ); ?>" data-page="next"><?php echo wp_kses_post( $next_text ); ?></a>
 	</div>
 

@@ -74,7 +74,7 @@ class YotuFields {
 	public function text( $data ) {
 
 		?>
-		<input type="text" id="yotu-<?php echo esc_attr( $data['group'] . '-' . $data['name'] ); ?>" class="yotu-param" name="yotu-<?php echo esc_attr( $data['group'] ); ?>[<?php echo esc_attr( $data['name'] ); ?>]" value="<?php echo ( isset( $data['value'] ) ? $data['value'] : $data['default'] ); ?>" />
+		<input type="text" id="yotu-<?php echo esc_attr( $data['group'] . '-' . $data['name'] ); ?>" class="yotu-param" name="yotu-<?php echo esc_attr( $data['group'] ); ?>[<?php echo esc_attr( $data['name'] ); ?>]" value="<?php echo esc_attr( ( isset( $data['value'] ) ? $data['value'] : $data['default'] ) ); ?>" />
 		<?php
 
 	}
@@ -201,7 +201,7 @@ class YotuFields {
 		$value = ( isset( $data['value'] ) && ! empty( $data['value'] ) ) ? $data['value'] : $data['default'];
 
 		?>
-		<div class="yotu-radios-img-buttons yotu-radios-img yotu-radios-img-<?php echo isset( $data['class'] ) ? $data['class'] : 'full'; ?>">
+		<div class="yotu-radios-img-buttons yotu-radios-img yotu-radios-img-<?php echo esc_attr( ( isset( $data['class'] ) ? $data['class'] : 'full' ) ); ?>">
 			<?php
 
 			for ( $i = 1; $i <= 4; $i++ ) {

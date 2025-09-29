@@ -554,84 +554,84 @@ class YotuViews {
 		?>
 		<div class="yotu_insert_popup" data-type="playlist">
 			<?php if ( is_array( $yotuwp->api ) && $yotuwp->api['api_key'] != '' ) : ?>
-				<h4><?php _e( 'Step #1: Select type videos you want to inserts', 'yotuwp-easy-youtube-embed' ); ?></h4>
+				<h4><?php esc_html_e( 'Step #1: Select type videos you want to inserts', 'yotuwp-easy-youtube-embed' ); ?></h4>
 				<ul class="yotu-tabs yotu-tabs-insert">
 					<li>
-						<a href="#" data-tab="playlist" data-yotu="insert"><?php _e( 'Playlist/List', 'yotuwp-easy-youtube-embed' ); ?></a>
+						<a href="#" data-tab="playlist" data-yotu="insert"><?php esc_html_e( 'Playlist/List', 'yotuwp-easy-youtube-embed' ); ?></a>
 					</li>
 					<li>
-						<a href="#" data-tab="channel" data-yotu="insert"><?php _e( 'Channel', 'yotuwp-easy-youtube-embed' ); ?></a>
+						<a href="#" data-tab="channel" data-yotu="insert"><?php esc_html_e( 'Channel', 'yotuwp-easy-youtube-embed' ); ?></a>
 					</li>
 					<li>
-						<a href="#" data-tab="username" data-yotu="insert"><?php _e( 'Username', 'yotuwp-easy-youtube-embed' ); ?></a>
+						<a href="#" data-tab="username" data-yotu="insert"><?php esc_html_e( 'Username', 'yotuwp-easy-youtube-embed' ); ?></a>
 					</li>
 					<li>
-						<a href="#" data-tab="single" data-yotu="insert"><?php _e( 'Single Video', 'yotuwp-easy-youtube-embed' ); ?></a>
+						<a href="#" data-tab="single" data-yotu="insert"><?php esc_html_e( 'Single Video', 'yotuwp-easy-youtube-embed' ); ?></a>
 					</li>
 					<li>
-						<a href="#" data-tab="videos" data-yotu="insert"><?php _e( 'Multi Videos', 'yotuwp-easy-youtube-embed' ); ?></a>
+						<a href="#" data-tab="videos" data-yotu="insert"><?php esc_html_e( 'Multi Videos', 'yotuwp-easy-youtube-embed' ); ?></a>
 					</li>
 					<li>
-						<a href="#" data-tab="keyword" data-yotu="insert"><?php _e( 'By Keyword', 'yotuwp-easy-youtube-embed' ); ?></a>
+						<a href="#" data-tab="keyword" data-yotu="insert"><?php esc_html_e( 'By Keyword', 'yotuwp-easy-youtube-embed' ); ?></a>
 					</li>
 				</ul>
 				<div class="yotu-tabs-content yotu-insert-popup">
 					<div class="yotu-tab-content" id="yotu-tab-playlist" data-type="playlist">
-						<p><?php _e( 'Please enter playlist/list URL for getting info. Then press Verify button to checking data.', 'yotuwp-easy-youtube-embed' ); ?><br><em>Example: https://www.youtube.com/playlist?list=PLmU8B4gZ41idW0H82OGG8nvlkceNPqpvq</em></p>
+						<p><?php esc_html_e( 'Please enter playlist/list URL for getting info. Then press Verify button to checking data.', 'yotuwp-easy-youtube-embed' ); ?><br><em>Example: https://www.youtube.com/playlist?list=PLmU8B4gZ41idW0H82OGG8nvlkceNPqpvq</em></p>
 						<div class="yotu-input-url">
 							<input type="text" name="yotu-input-url" class="yotu-input-value"/>
-							<a href="#" class="yotu-button yotu-search-action"><?php _e( 'Verify', 'yotuwp-easy-youtube-embed' ); ?></a>
+							<a href="#" class="yotu-button yotu-search-action"><?php esc_html_e( 'Verify', 'yotuwp-easy-youtube-embed' ); ?></a>
 						</div>
 					</div>
 					<div class="yotu-tab-content" id="yotu-tab-channel" data-type="channel">
-						<p><?php _e( 'Please enter channel URL for getting info. Then press Verify button to checking data.', 'yotuwp-easy-youtube-embed' ); ?><br><em>Example: https://www.youtube.com/channel/UCANLZYMidaCbLQFWXBC95Jg</em></p>
+						<p><?php esc_html_e( 'Please enter channel URL for getting info. Then press Verify button to checking data.', 'yotuwp-easy-youtube-embed' ); ?><br><em>Example: https://www.youtube.com/channel/UCANLZYMidaCbLQFWXBC95Jg</em></p>
 						<div class="yotu-input-url">
 							<input type="text" name="yotu-input-url" class="yotu-input-value"/>
-							<a href="#" class="yotu-button yotu-search-action"><?php _e( 'Verify', 'yotuwp-easy-youtube-embed' ); ?></a>
+							<a href="#" class="yotu-button yotu-search-action"><?php esc_html_e( 'Verify', 'yotuwp-easy-youtube-embed' ); ?></a>
 						</div>
 					</div>
 					<div class="yotu-tab-content" id="yotu-tab-username" data-type="username">
-						<p><?php _e( 'Please enter username you want to get videos. Then press Verify button to checking data.', 'yotuwp-easy-youtube-embed' ); ?><br>
+						<p><?php esc_html_e( 'Please enter username you want to get videos. Then press Verify button to checking data.', 'yotuwp-easy-youtube-embed' ); ?><br>
 							<em>Example: <br />OneDirectionVEVO</em>
 						</p>
 						<div class="yotu-input-url">
 							<textarea type="text" rows="3" cols="50" name="yotu-input-url" class="yotu-input-value"></textarea>
-							<a href="#" class="yotu-button yotu-search-action"><?php _e( 'Verify', 'yotuwp-easy-youtube-embed' ); ?></a>
+							<a href="#" class="yotu-button yotu-search-action"><?php esc_html_e( 'Verify', 'yotuwp-easy-youtube-embed' ); ?></a>
 						</div>
 					</div>
 					<div class="yotu-tab-content" id="yotu-tab-single" data-type="videos">
-						<p><?php _e( 'Enter your video URL into text box below. Each video filled into each line. Then press Verify button to checking data.', 'yotuwp-easy-youtube-embed' ); ?><br>
+						<p><?php esc_html_e( 'Enter your video URL into text box below. Each video filled into each line. Then press Verify button to checking data.', 'yotuwp-easy-youtube-embed' ); ?><br>
 							<em>Example: <br />https://www.youtube.com/watch?v=JLf9q36UsBk</em>
 						</p>
 						<div class="yotu-input-url">
 							<input type="text" rows="3" cols="50" name="yotu-input-url" class="yotu-input-value"/>
-							<a href="#" class="yotu-button yotu-search-action"><?php _e( 'Verify', 'yotuwp-easy-youtube-embed' ); ?></a>
+							<a href="#" class="yotu-button yotu-search-action"><?php esc_html_e( 'Verify', 'yotuwp-easy-youtube-embed' ); ?></a>
 						</div>
 					</div>
 					<div class="yotu-tab-content" id="yotu-tab-videos" data-type="videos">
-						<p><?php _e( 'Enter your videos URL into text box below. Each video filled into each line. Then press Verify button to checking data.', 'yotuwp-easy-youtube-embed' ); ?><br>
+						<p><?php esc_html_e( 'Enter your videos URL into text box below. Each video filled into each line. Then press Verify button to checking data.', 'yotuwp-easy-youtube-embed' ); ?><br>
 							<em>Example: <br />https://www.youtube.com/watch?v=JLf9q36UsBk<br />https://www.youtube.com/watch?v=wyK7YuwUWsU<br />https://www.youtube.com/watch?v=dwdtzwua2pY</em>
 						</p>
 						<div class="yotu-input-url">
 							<textarea type="text" rows="3" cols="50" name="yotu-input-url" class="yotu-input-value"></textarea>
-							<a href="#" class="yotu-button yotu-search-action"><?php _e( 'Verify', 'yotuwp-easy-youtube-embed' ); ?></a>
+							<a href="#" class="yotu-button yotu-search-action"><?php esc_html_e( 'Verify', 'yotuwp-easy-youtube-embed' ); ?></a>
 						</div>
 					</div>
 					<div class="yotu-tab-content" id="yotu-tab-keyword" data-type="keyword">
-						<p><?php _e( 'Enter your keyword into text box below to listing all videos with that keyword.', 'yotuwp-easy-youtube-embed' ); ?><br>
+						<p><?php esc_html_e( 'Enter your keyword into text box below to listing all videos with that keyword.', 'yotuwp-easy-youtube-embed' ); ?><br>
 							<em>Example: <br />TED videos</em>
 						</p>
 						<div class="yotu-input-url">
 							<input type="text" rows="3" cols="50" name="yotu-input-url" class="yotu-input-value"/>
-							<a href="#" class="yotu-button yotu-search-action"><?php _e( 'Verify', 'yotuwp-easy-youtube-embed' ); ?></a>
+							<a href="#" class="yotu-button yotu-search-action"><?php esc_html_e( 'Verify', 'yotuwp-easy-youtube-embed' ); ?></a>
 						</div>
 					</div>
 				</div>
 				<div class="yotu-info-res"></div>
 				<div class="yotu-step">
-					<h4><?php _e( 'Step #2: Layout Settings', 'yotuwp-easy-youtube-embed' ); ?></h4>
+					<h4><?php esc_html_e( 'Step #2: Layout Settings', 'yotuwp-easy-youtube-embed' ); ?></h4>
 					<div class="yotu-field">
-						<label><?php _e( 'Use default options', 'yotuwp-easy-youtube-embed' ); ?></label>
+						<label><?php esc_html_e( 'Use default options', 'yotuwp-easy-youtube-embed' ); ?></label>
 						<label class="yotu-switch">
 							<input type="checkbox" checked="checked" id="yotu-settings-handler"/>
 							<span class="yotu-slider yotu-round"></span>
@@ -640,7 +640,7 @@ class YotuViews {
 				</div>
 				<div class="yotu-layout yotu-hidden">
 					<p>
-						<?php esc_html_e( 'Do you need help?', 'yotuwp-easy-youtube-embed' ); ?> <a href="https://www.yotuwp.com/document/" target="_blank"><?php _e( 'Check out document here', 'yotuwp-easy-youtube-embed' ); ?></a>
+						<?php esc_html_e( 'Do you need help?', 'yotuwp-easy-youtube-embed' ); ?> <a href="https://www.yotuwp.com/document/" target="_blank"><?php esc_html_e( 'Check out document here', 'yotuwp-easy-youtube-embed' ); ?></a>
 					</p>
 					<?php
 
@@ -654,12 +654,12 @@ class YotuViews {
 				</div>
 				<?php if ( $is_panel ) : ?>
 					<div class="yotu-actions">
-						<a href="#" class="yotu-button yotu-button-primary"><?php _e( 'Insert Shortcode', 'yotuwp-easy-youtube-embed' ); ?></a>
+						<a href="#" class="yotu-button yotu-button-primary"><?php esc_html_e( 'Insert Shortcode', 'yotuwp-easy-youtube-embed' ); ?></a>
 					</div>
 				<?php else : ?>
 					<div class="yotu-step">
-						<h4><?php _e( 'Step #3: Copy your shortcode', 'yotuwp-easy-youtube-embed' ); ?></h4>
-						<p><?php _e( 'Click on the input the select shortcode text then paste into your place you want to display gallery.', 'yotuwp-easy-youtube-embed' ); ?></p>
+						<h4><?php esc_html_e( 'Step #3: Copy your shortcode', 'yotuwp-easy-youtube-embed' ); ?></h4>
+						<p><?php esc_html_e( 'Click on the input the select shortcode text then paste into your place you want to display gallery.', 'yotuwp-easy-youtube-embed' ); ?></p>
 						<div class="yotu-shortcode-gen yotu-input-url">
 							<input type="text" name="shortcode" id="shortcode_val" value="" class="yotu-input-value" />
 						</div>
@@ -669,9 +669,18 @@ class YotuViews {
 			<?php else : ?>
 
 				<h4 style="color: #f00;">
-					<?php printf( __( 'Please enter your Youtube API key from <a href="%s#api">setting page</a> to use this feature.', 'yotuwp-easy-youtube-embed' ), menu_page_url( 'yotuwp', false ) ); ?>
+					<?php
+
+					$anchor = sprintf( '<a href="%s#api">', menu_page_url( 'yotuwp', false ) );
+					printf(
+						esc_html__( 'Please enter your Youtube API key in %1$sthe setting page%2$s to use this feature.', 'yotuwp-easy-youtube-embed' ),
+						$anchor, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						'</a>'
+					);
+
+					?>
 				</h4>
-				<p><?php _e( 'You can follow guide to get API Key and setup it.', 'yotuwp-easy-youtube-embed' ); ?> <a href="https://www.yotuwp.com/how-to-get-youtube-api-key/" target="_blank"><?php _e( 'Check out document here', 'yotuwp-easy-youtube-embed' ); ?> >></a></p>
+				<p><?php esc_html_e( 'You can follow guide to get API Key and setup it.', 'yotuwp-easy-youtube-embed' ); ?> <a href="https://www.yotuwp.com/how-to-get-youtube-api-key/" target="_blank"><?php esc_html_e( 'Check out document here', 'yotuwp-easy-youtube-embed' ); ?> >></a></p>
 
 			<?php endif; ?>
 
@@ -694,7 +703,7 @@ class YotuViews {
 
 		if ( ! isset( $yotuwp->api['api_key'] ) || empty( $yotuwp->api['api_key'] ) ) {
 			$html = __( 'YouTube Gallery warning: API Key was removed, please contact to your admin about this issues.', 'yotuwp-easy-youtube-embed' );
-		} else if ( is_array( $data ) ) {
+		} elseif ( is_array( $data ) ) {
 			$html = ( isset( $data['error'] ) && $data['error'] == 1 ) ? $data['msg'] : __( 'YouTube Gallery: An issue happend when getting the videos, please check your connection and refresh page again .', 'yotuwp-easy-youtube-embed' );
 		} else {
 
@@ -748,8 +757,11 @@ class YotuViews {
 								<div class="yotu-playing">
 									<?php if ( count( $data->items ) > 0 ) : ?>
 										<?php
+
 										$video_title = yotuwp_video_title( $data->items[0] );
+										// TODO: Review.
 										echo yotuwp_kses( $video_title );
+
 										?>
 									<?php endif; ?>
 								</div>
@@ -764,6 +776,7 @@ class YotuViews {
 										<?php
 
 										$video_desc = yotuwp_video_description( $data->items[0] );
+										// TODO: Review.
 										echo yotuwp_kses( $video_desc );
 
 										?>
@@ -785,6 +798,7 @@ class YotuViews {
 					}
 
 					$template_html = $yotuwp->template( $template, $data, $settings );
+					// TODO: Review.
 					echo yotuwp_kses( $template_html );
 
 					if (
@@ -813,6 +827,7 @@ class YotuViews {
 	 * Admin page handler.
 	 */
 	public function admin_page() {
+
 		global $yotuwp;
 
 		?>
@@ -820,9 +835,9 @@ class YotuViews {
 			<h1></h1>
 			<div class="yotu-body">
 
-				<?php if ( isset( $_GET['install'] ) ) : ?>
+				<?php if ( isset( $_GET['install'] ) ) : // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
 					<div id="message" class="updated notice notice-success is-dismissible megabounce-msg">
-						<p><?php _e( 'Thank you for activation YotuWP! Set your API key to start using. <a href="https://www.yotuwp.com/document/?utm_source=clientsite&amp;utm_medium=docs&amp;utm_campaign=doc" target="_blank">Read more</a>', 'yotuwp-easy-youtube-embed' ); ?></p>
+						<p><?php esc_html_e( 'Thank you for activation YotuWP! Set your API key to start using. <a href="https://www.yotuwp.com/document/?utm_source=clientsite&amp;utm_medium=docs&amp;utm_campaign=doc" target="_blank">Read more</a>', 'yotuwp-easy-youtube-embed' ); ?></p>
 					</div>
 				<?php endif ?>
 
@@ -835,7 +850,7 @@ class YotuViews {
 								<img src="<?php echo esc_url( $yotuwp->url ); ?>assets/images/yotu-small.png" height="80"/>
 								<div><?php printf( esc_html__( 'Version %s', 'yotuwp-easy-youtube-embed' ), esc_html( $yotuwp->version ) ); ?></div>
 							</div>
-							<span><?php _e( 'YouTube Gallery Settings', 'yotuwp-easy-youtube-embed' ); ?></span>
+							<span><?php esc_html_e( 'YouTube Gallery Settings', 'yotuwp-easy-youtube-embed' ); ?></span>
 							<?php submit_button(); ?>
 						</div>
 						<?php settings_errors(); ?>
@@ -872,6 +887,7 @@ class YotuViews {
 	public function slugify( $text ) {
 
 		$text = preg_replace( '~[^\pL\d]+~u', '-', $text );
+		// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
 		$text = @iconv( 'utf-8', 'us-ascii//TRANSLIT', $text );
 		$text = preg_replace( '~[^-\w]+~', '', $text );
 		$text = trim( $text, '-' );
@@ -949,10 +965,24 @@ class YotuViews {
 
 		?>
 		<div class="yotu-tabs">
-			<ul><?php echo yotuwp_kses( implode( '', $tabs_control ) ); ?></ul>
+			<ul>
+				<?php
+
+				// TODO: Review.
+				echo yotuwp_kses( implode( '', $tabs_control ) );
+
+				?>
+			</ul>
 		</div>
 
-		<div class="yotu-tabs-content"><?php echo yotuwp_kses( implode( '', $tabs_content ) ); ?></div>
+		<div class="yotu-tabs-content">
+			<?php
+
+				// TODO: Review.
+			echo yotuwp_kses( implode( '', $tabs_content ) );
+
+			?>
+		</div>
 		<?php if ( $is_panel ) : ?>
 			<div class="yotu-submit">
 				<?php

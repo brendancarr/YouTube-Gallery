@@ -25,8 +25,6 @@
 		<exclude name="Squiz.Commenting.BlockComment.HasEmptyLineBefore" />
 
 		<!-- Outstanding rules to apply. -->
-		<exclude name="WordPress.Security.NonceVerification.Missing" />
-		<exclude name="WordPress.Security.NonceVerification.Recommended" />
 		<exclude name="WordPress.PHP.StrictInArray.MissingTrueStrict" />
 		<exclude name="WordPress.WP.I18n.MissingTranslatorsComment" />
 
@@ -34,21 +32,10 @@
 		<exclude name="Generic.Commenting.DocComment.MissingShort" />
 		<exclude name="Generic.Commenting.DocComment.ShortNotCapital" />
 		<exclude name="Generic.Commenting.DocComment.SpacingBeforeTags" />
-		<exclude name="Generic.Formatting.DisallowMultipleStatements.SameLine" />
-		<exclude name="Generic.Functions.FunctionCallArgumentSpacing.NoSpaceAfterComma" />
 		<exclude name="Generic.Metrics.NestingLevel.MaxExceeded" />
 		<exclude name="Generic.Metrics.NestingLevel.TooHigh" />
 
-		<exclude name="PSR2.Classes.PropertyDeclaration.Underscore" />
-		<exclude name="PSR2.ControlStructures.ElseIfDeclaration.NotAllowed" />
-		<exclude name="PSR2.Methods.MethodDeclaration.Underscore" />
-
-		<exclude name="Squiz.Commenting.BlockComment.NoCapital" />
-		<exclude name="Squiz.Commenting.BlockComment.NoNewLine" />
-		<exclude name="Squiz.Commenting.ClassComment.Missing" />
-		<exclude name="Squiz.Commenting.ClassComment.WrongStyle" />
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
-		<exclude name="Squiz.Commenting.FunctionComment.Missing" />
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamName" />
 		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop" />
@@ -62,24 +49,13 @@
 		<exclude name="Squiz.Commenting.VariableComment.WrongStyle" />
 
 		<exclude name="WordPress.DateTime.CurrentTimeTimestamp.RequestedUTC" />
-		<exclude name="WordPress.DateTime.RestrictedFunctions.date_date" />
-		<exclude name="WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid" />
 		<exclude name="WordPress.NamingConventions.ValidVariableName.InterpolatedVariableNotSnakeCase" />
 		<exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid" />
 		<exclude name="WordPress.NamingConventions.ValidVariableName.PropertyNotSnakeCase" />
 		<exclude name="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase" />
 		<exclude name="WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase" />
-		<exclude name="WordPress.PHP.DevelopmentFunctions.error_log_var_export" />
-		<exclude name="WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode" />
-		<exclude name="WordPress.PHP.DontExtract.extract_extract" />
-		<exclude name="WordPress.PHP.NoSilencedErrors.Discouraged" />
 		<exclude name="WordPress.PHP.StrictComparisons.LooseComparison" />
 		<exclude name="WordPress.PHP.YodaConditions.NotYoda" />
-		<exclude name="WordPress.Security.EscapeOutput.OutputNotEscaped" />
-		<exclude name="WordPress.Security.EscapeOutput.UnsafePrintingFunction" />
-		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotSanitized" />
-		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotValidated" />
-		<exclude name="WordPress.Security.ValidatedSanitizedInput.MissingUnslash" />
 		<exclude name="WordPress.WP.CronInterval.CronSchedulesInterval" />
 		<exclude name="WordPress.WP.DeprecatedParameters.Load_plugin_textdomainParam2Found" />
 		<exclude name="WordPress.WP.EnqueuedResourceParameters.MissingVersion" />
