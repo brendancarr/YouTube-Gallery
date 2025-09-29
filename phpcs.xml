@@ -166,7 +166,6 @@
 		<exclude name="WordPress.WhiteSpace.OperatorSpacing.SpacingBefore" />
 		<exclude name="WordPress.WhiteSpace.PrecisionAlignment.Found" />
 		<exclude name="WordPress.WP.AlternativeFunctions.json_encode_json_encode" />
-		<exclude name="WordPress.WP.AlternativeFunctions.strip_tags_strip_tags" />
 		<exclude name="WordPress.WP.CapitalPDangit.Misspelled" />
 		<exclude name="WordPress.WP.CronInterval.CronSchedulesInterval" />
 		<exclude name="WordPress.WP.DeprecatedFunctions.sanitize_urlFound" />

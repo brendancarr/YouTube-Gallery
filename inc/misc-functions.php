@@ -37,7 +37,7 @@ function yotuwp_video_title( $video ) {
  * Gets the video description.
  */
 function yotuwp_video_description( $video ) {
-	$desc = apply_filters( 'yotuwp_video_description', nl2br(strip_tags($video->snippet->description)), $video );
+	$desc = apply_filters( 'yotuwp_video_description', nl2br( wp_strip_all_tags( $video->snippet->description ) ), $video );
 	return wp_kses_post( $desc );
 }
 
