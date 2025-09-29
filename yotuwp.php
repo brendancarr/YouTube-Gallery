@@ -14,6 +14,9 @@
  * @package YouTube_Gallery
  */
 
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
+
 if( !defined( 'YOTU_ADMIN_URI' ) )
 	define( 'YOTU_ADMIN_URI', plugin_dir_url( __FILE__ ) );
 

@@ -5,6 +5,9 @@
  * @package YouTube_Gallery
  */
 
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Views class.
  */

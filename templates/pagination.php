@@ -5,6 +5,9 @@
  * @package YouTube_Gallery
  */
 
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
+
 $buton_style    = ' yotu-button-prs '.(isset($settings['styling']['button'])? 'yotu-button-prs-' . $settings['styling']['button'] : ' yotu-button-prs');
 $buton_layout   = isset($settings['styling']['button'])? ' yotu-pager_layout-' . $settings['styling']['pager_layout'] : '';
 $prev_text      = apply_filters( 'yotuwp_prev_text', __('Prev', 'yotuwp-easy-youtube-embed'));
