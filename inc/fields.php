@@ -1,6 +1,12 @@
 <?php
 /**
- * Field system by YotuWP
+ * Field system class file.
+ *
+ * @package YouTube_Gallery
+ */
+
+/**
+ * Field system class.
  */
 class YotuFields{
 

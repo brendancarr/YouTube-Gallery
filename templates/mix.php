@@ -1,4 +1,10 @@
 <?php
+/**
+ * Mix template.
+ *
+ * @package YouTube_Gallery
+ */
+
 global $yotuwp;
 $settings = $yotuwp->data['settings'];
 $data = $yotuwp->data['data'];

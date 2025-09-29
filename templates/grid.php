@@ -1,4 +1,10 @@
 <?php
+/**
+ * Grid template.
+ *
+ * @package YouTube_Gallery
+ */
+
 global $yotuwp;
 
 $settings = $yotuwp->data['settings'];

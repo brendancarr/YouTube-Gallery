@@ -1,7 +1,12 @@
 <?php
+/**
+ * Views class file.
+ *
+ * @package YouTube_Gallery
+ */
 
 /**
- *
+ * Views class.
  */
 class YotuViews{
 

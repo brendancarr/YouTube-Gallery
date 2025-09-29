@@ -1,19 +1,19 @@
 <?php
-/*
-* Plugin Name: YouTube Gallery
-* Plugin URI: https://infinus.ca/plugins/youtube-gallery/
-* Description: Easy embed YouTube playlist, channel, videos and user videos to posts/pages/widgets.
-* Version: 1.3.16
-* Text Domain: yotuwp-easy-youtube-embed
-* Domain Path: /languages
-* License:     GPL-3.0
-* License URI: http://www.gnu.org/licenses/gpl-3.0.txt
-* Author:      YotuThemes + Infinus
-* Author URI:  https://infinus.ca
+/**
+ * Plugin Name: YouTube Gallery
+ * Plugin URI:  https://infinus.ca/plugins/youtube-gallery/
+ * Description: Easy embed YouTube playlist, channel, videos and user videos to posts/pages/widgets.
+ * Version:     1.3.16
+ * Text Domain: yotuwp-easy-youtube-embed
+ * Domain Path: /languages
+ * License:     GPL-3.0
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
+ * Author:      YotuThemes + Infinus
+ * Author URI:  https://infinus.ca
+ *
+ * @package YouTube_Gallery
+ */
 
-
-
-*/
 if( !defined( 'YOTU_ADMIN_URI' ) )
 	define( 'YOTU_ADMIN_URI', plugin_dir_url( __FILE__ ) );
 
@@ -1339,6 +1339,5 @@ class YotuWP{
 		return $actions;
 	}
 }
-
 
 $yotuwp = new YotuWP(YOTUWP_VERSION);

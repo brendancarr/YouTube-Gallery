@@ -1,5 +1,13 @@
 <?php
+/**
+ * Miscellaneous functions file.
+ *
+ * @package YouTube_Gallery
+ */
 
+/**
+ * Checks if cron is running.
+ */
 function yotuwp_doing_cron() {
 
 	// Bail if not doing WordPress cron (>4.8.0)
@@ -15,21 +23,32 @@ function yotuwp_doing_cron() {
 	return false;
 }
 
+/**
+ * Gets the video title.
+ */
 function yotuwp_video_title( $video ) {
 	return apply_filters('yotuwp_video_title', $video->snippet->title, $video );
 }
 
+/**
+ * Gets the video description.
+ */
 function yotuwp_video_description( $video ) {
 	$desc = apply_filters( 'yotuwp_video_description', nl2br(strip_tags($video->snippet->description)), $video );
 	return wp_kses_post( $desc );
 }
 
+/**
+ * Gets the video thumbnail.
+ */
 function yotuwp_video_thumb( $video ) {
 	$url = (isset( $video->snippet->thumbnails) && isset( $video->snippet->thumbnails->standard) )? $video->snippet->thumbnails->standard->url : $video->snippet->thumbnails->high->url;
 	return apply_filters( 'yotuwp_video_thumbnail', $url, $video );
 }
 
-
+/**
+ * Applieed KSES to content.
+ */
 function yotuwp_kses( $content ) {
 	//return $content;
 
