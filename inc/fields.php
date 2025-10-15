@@ -32,18 +32,19 @@ class YotuFields {
 		?>
 		<div class="yotu-field yotu-field-type-<?php echo esc_attr( $data['type'] ); ?><?php echo ( isset( $data['pro'] ) ) ? ' yotu-field-pro' : ''; ?>" id="yotuwp-field-<?php echo esc_attr( $data['name'] ); ?>">
 			<?php if ( isset( $data['label'] ) ) : ?>
-			<label for="yotu-<?php echo esc_attr( $data['group'] . '-' . $data['name'] ); ?>"><?php echo esc_attr( $data['label'] ); ?></label>
+				<label for="yotu-<?php echo esc_attr( $data['group'] . '-' . $data['name'] ); ?>"><?php echo esc_attr( $data['label'] ); ?></label>
 			<?php endif; ?>
 			<div class="yotu-field-input">
-
 				<?php call_user_func_array( array( $this, $data['type'] ), array( $data ) ); ?>
 				<?php do_action( 'yotuwp_after_render_field', $data ); ?>
 				<label class="yotu-field-description" for="yotu-<?php echo esc_attr( $data['group'] . '-' . $data['name'] ); ?>"><?php echo esc_html( $data['description'] ); ?></label>
 			</div>
 			<?php
+
 			if ( isset( $data['extbtn'] ) && $data['extbtn'] != '' ) {
 				echo wp_kses_post( $data['extbtn'] );
 			}
+
 			?>
 		</div>
 		<?php
@@ -110,6 +111,7 @@ class YotuFields {
 		$value = ( isset( $data['value'] ) && ! empty( $data['value'] ) ) ? $data['value'] : $data['default'];
 
 		foreach ( $data['options'] as $key => $val ) {
+
 			$key_id = $data['group'] . '-' . $data['name'] . '-' . $key;
 			$name   = $data['name'] . '|' . $key;
 
@@ -205,8 +207,10 @@ class YotuFields {
 			<?php
 
 			for ( $i = 1; $i <= 4; $i++ ) {
+
 				$id       = 'yotu-' . $data['group'] . '-' . $data['name'] . '-' . $i;
-				$selected = ( $value == $i ) ? ' yotu-field-radios-selected' : ''
+				$selected = ( $value == $i ) ? ' yotu-field-radios-selected' : '';
+
 				?>
 				<label class="yotu-field-radios<?php echo esc_attr( $selected ); ?>" for="<?php echo esc_attr( $id ); ?>">
 					<input value="<?php echo esc_attr( $i ); ?>" type="radio"<?php echo ( $value == $i ) ? ' checked="checked"' : ''; ?> id="<?php echo esc_attr( $id ); ?>" name="yotu-<?php echo esc_attr( $data['group'] ); ?>[<?php echo esc_attr( $data['name'] ); ?>]" class="yotu-param" />
@@ -239,9 +243,12 @@ class YotuFields {
 		?>
 		<div class="yotu-radios-img-buttons yotu-radios-img yotu-radios-img-<?php echo isset( $data['class'] ) ? esc_attr( $data['class'] ) : 'full'; ?>">
 			<?php
+
 			foreach ( $data['options'] as $key => $val ) {
+
 				$id       = 'yotu-' . $data['group'] . '-' . $data['name'] . '-' . $key;
-				$selected = ( $value == $key ) ? ' yotu-field-radios-selected' : ''
+				$selected = ( $value == $key ) ? ' yotu-field-radios-selected' : '';
+
 				?>
 				<label class="yotu-field-radios<?php echo esc_attr( $selected ); ?>" for="<?php echo esc_attr( $id ); ?>">
 					<input value="<?php echo esc_attr( $key ); ?>" type="radio"<?php echo ( $value == $key ) ? ' checked="checked"' : ''; ?> id="<?php echo esc_attr( $id ); ?>" name="yotu-<?php echo esc_attr( $data['group'] ); ?>[<?php echo esc_attr( $data['name'] ); ?>]" class="yotu-param" />
@@ -252,7 +259,9 @@ class YotuFields {
 					<span><?php echo esc_html( $val ); ?></span>
 				</label>
 				<?php
+
 			}
+
 			?>
 		</div>
 		<?php
@@ -275,7 +284,7 @@ class YotuFields {
 	 */
 	public function effects( $data ) {
 
-		$value   = ( isset( $data['value'] ) && ! empty( $data['value'] ) ) ? $data['value'] : $data['default'];
+		$value   = ! empty( $data['value'] ) ? $data['value'] : $data['default'];
 		$effects = array(
 			array( '', 'None' ),
 			array( 'ytef-grow', 'grow' ),
@@ -289,10 +298,12 @@ class YotuFields {
 			<?php
 
 			foreach ( $effects as $eff ) {
+
 				$selected       = ( $eff[0] == $value ) ? true : false;
 				$id             = 'yotu-' . $data['group'] . '-' . $data['name'] . '-' . $eff[0];
 				$selected_class = $selected ? ' yotu-field-effects-selected' : '';
 				$selected_attr  = ( $selected ) ? ' checked="checked"' : '';
+
 				?>
 				<label class="yotu-field-effects<?php echo esc_attr( $selected_class ); ?>" for="<?php echo esc_attr( $id ); ?>">
 					<span class="<?php echo esc_attr( $eff[0] ); ?>"><?php echo esc_html( $eff[1] ); ?></span>

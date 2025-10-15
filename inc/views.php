@@ -31,7 +31,8 @@ class YotuViews {
 		);
 
 		$templates = apply_filters( 'yotuwp_templates', $templates );
-		//Setting general
+
+		// Setting general.
 		$sections['settings'] = array(
 			'icon'     => 'dashicons-admin-generic',
 			'key'      => 'settings',
@@ -119,11 +120,10 @@ class YotuViews {
 						'169' => 'HD - 16:9',
 					),
 				),
-
 			),
 		);
 
-		//Player settings
+		// Player settings.
 		$sections['player'] = array(
 			'icon'     => 'dashicons-video-alt3',
 			'key'      => 'player',
@@ -263,7 +263,6 @@ class YotuViews {
 						'1' => __( 'Yes', 'yotuwp-easy-youtube-embed' ),
 					),
 				),
-
 				array(
 					'name'        => 'hl',
 					'type'        => 'text',
@@ -317,7 +316,6 @@ class YotuViews {
 					),
 
 				),
-
 				array(
 					'name'        => 'button',
 					'type'        => 'buttons',
@@ -398,7 +396,7 @@ class YotuViews {
 			),
 		);
 
-		//effect
+		// Effect.
 		$sections['effects'] = array(
 			'icon'     => 'dashicons-visibility',
 			'key'      => 'effects',
@@ -450,8 +448,7 @@ class YotuViews {
 			unset( $this->sections['styling'] );
 		}
 
-		//API settings
-
+		// API settings.
 		if ( isset( $data['api'] ) ) {
 			$api = $data['api'];
 
@@ -476,7 +473,7 @@ class YotuViews {
 			);
 		}
 
-		//Cache settings
+		// Cache settings.
 		if ( isset( $data['cache'] ) ) {
 			$cache                   = $data['cache'];
 			$this->sections['cache'] = array(
@@ -529,7 +526,6 @@ class YotuViews {
 
 						),
 					),
-
 					array(
 						'name'        => 'clearcache',
 						'type'        => 'button',
@@ -544,6 +540,7 @@ class YotuViews {
 		}
 
 		$this->render_tabs( $this->sections, ( isset( $data['is_panel'] ) ? true : false ) );
+
 	}
 
 	/**
@@ -693,6 +690,7 @@ class YotuViews {
 	 * Display handler.
 	 */
 	public function display( $template, $data, $settings ) {
+
 		global $yotuwp;
 
 		$is_single = false;
@@ -747,7 +745,7 @@ class YotuViews {
 			id="yotuwp-<?php echo esc_attr( $settings['gallery_id'] ); ?>"
 			data-yotu="<?php echo esc_attr( $playerId ); ?>"
 			data-total="<?php echo esc_attr( $data->totalPage ); ?>"
-			data-settings="<?php echo esc_attr( base64_encode( wp_json_encode( $settings ) ) ); ?>"
+			data-settings="<?php echo esc_attr( base64_encode( wp_json_encode( $settings ) ) ); /* phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode */ ?>"
 			data-player="<?php echo esc_attr( $settings['player']['mode'] ); ?>"
 			data-showdesc="<?php echo esc_attr( $settings['description'] ); ?>" >
 				<div>
@@ -758,8 +756,9 @@ class YotuViews {
 									<?php if ( count( $data->items ) > 0 ) : ?>
 										<?php
 
+										// Echoed with allowed tags, so no need to escape.
 										$video_title = yotuwp_video_title( $data->items[0] );
-										// TODO: Review.
+										// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 										echo yotuwp_kses( $video_title );
 
 										?>
@@ -775,8 +774,9 @@ class YotuViews {
 									<?php if ( count( $data->items ) > 1 ) : ?>
 										<?php
 
+										// Echoed with allowed tags, so no need to escape.
 										$video_desc = yotuwp_video_description( $data->items[0] );
-										// TODO: Review.
+										// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 										echo yotuwp_kses( $video_desc );
 
 										?>
@@ -797,8 +797,9 @@ class YotuViews {
 						include $yotuwp->path . YTDS . 'templates' . YTDS . 'pagination.php';
 					}
 
+					// Echoed with allowed tags, so no need to escape.
 					$template_html = $yotuwp->template( $template, $data, $settings );
-					// TODO: Review.
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					echo yotuwp_kses( $template_html );
 
 					if (
@@ -834,13 +835,11 @@ class YotuViews {
 		<div class="yotu-wrap wrap yotuwp-settings">
 			<h1></h1>
 			<div class="yotu-body">
-
 				<?php if ( isset( $_GET['install'] ) ) : // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
 					<div id="message" class="updated notice notice-success is-dismissible megabounce-msg">
 						<p><?php esc_html_e( 'Thank you for activating YouTube Gallery! Set your API key to start using.', 'yotuwp-easy-youtube-embed' ); ?></p>
 					</div>
 				<?php endif ?>
-
 				<div class="yotu-body-form">
 					<form method="post" action="options.php">
 						<input type="hidden" id="yotu-settings-last_tab" class="yotu-param" name="yotu-settings[last_tab]" value="<?php echo esc_attr( $yotuwp->options['last_tab'] ); ?>">
@@ -856,7 +855,7 @@ class YotuViews {
 						<?php settings_errors(); ?>
 
 						<?php
-						//unset($yotuwp->options['premium']);
+
 						$data = array(
 							'settings' => $yotuwp->options,
 							'player'   => $yotuwp->player,
@@ -872,10 +871,7 @@ class YotuViews {
 						?>
 					</form>
 				</div>
-
-
 			</div>
-
 		</div>
 		<?php
 
@@ -906,10 +902,12 @@ class YotuViews {
 	 * Render tabs.
 	 */
 	public function render_tabs( $sections, $is_panel = false ) {
+
 		global $yotuwp;
 
 		include $yotuwp->path . YTDS . 'inc' . YTDS . 'fields.php';
-		//include pro field
+
+		// Include pro field.
 		if ( defined( 'YOTUPRO_VERSION' ) && file_exists( $yotuwp->pro_path . YTDS . 'inc' . YTDS . 'fields.php' ) ) {
 			include $yotuwp->pro_path . YTDS . 'inc' . YTDS . 'fields.php';
 			$field_control = new YotuProFields();
@@ -968,17 +966,18 @@ class YotuViews {
 			<ul>
 				<?php
 
-				// TODO: Review.
+				// Echoed with allowed tags, so no need to escape.
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo yotuwp_kses( implode( '', $tabs_control ) );
 
 				?>
 			</ul>
 		</div>
-
 		<div class="yotu-tabs-content">
 			<?php
 
-				// TODO: Review.
+			// Echoed with allowed tags, so no need to escape.
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo yotuwp_kses( implode( '', $tabs_content ) );
 
 			?>
@@ -987,7 +986,7 @@ class YotuViews {
 			<div class="yotu-submit">
 				<?php
 
-				// This prints out all hidden setting fields
+				// This prints out all hidden setting fields.
 				settings_fields( 'yotu' );
 				do_settings_sections( 'yotu-settings' );
 				submit_button();
@@ -1010,6 +1009,7 @@ class YotuViews {
 		if ( ! get_user_meta( $user_id, 'yotuwp_scgen_ignore_notice' ) ) {
 			update_user_meta( $user_id, 'yotuwp_scgen_ignore_notice', false );
 		}
+
 		?>
 		<div class="yotu-wrap wrap">
 			<div class="yotu-logo">
@@ -1023,7 +1023,6 @@ class YotuViews {
 				<?php $this->popup( $yotuwp, false ); ?>
 
 			</div>
-
 		</div>
 		<?php
 
